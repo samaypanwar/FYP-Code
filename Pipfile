@@ -9,6 +9,7 @@ pandas = "*"
 jupyter = "*"
 tqdm = "*"
 matplotlib = "*"
+pytest = "*"
 
 [dev-packages]
 
