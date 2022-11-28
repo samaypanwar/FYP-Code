@@ -2,9 +2,6 @@ import numpy as np
 from tqdm import tqdm
 
 from helper.utils import BlackScholesPrice
-import os
-
-
 
 
 def create_features_linspace(vector_max: np.array, vector_min: np.array, num: int) -> np.array:
@@ -35,11 +32,10 @@ def create_features_linspace(vector_max: np.array, vector_min: np.array, num: in
 
 
 def generate_grid_data(
-        train_size: int = 40_000, test_size: int = 4_000, calibration_size: int = 4_000, num_params:
-        int = 7
+        train_size: int = 40_000, test_size: int = 4_000
         ):
 
-    # Two dimensional output sizes (the image)
+    # Two-dimensional output sizes (the image)
     K_vector = np.linspace(start = 31.6, stop = 33.2, num = 9)
     tau_vector = np.array([1 / 12, 2 / 12, 3 / 12, 4 / 12, 5 / 12, 6 / 12, 1])
 
@@ -89,11 +85,11 @@ def generate_grid_data(
     np.savetxt('data/gridbased/gridbased_parameters_nelson_siegel.dat', params_range)
     np.savetxt('data/gridbased/gridbased_price_nelson_siegel.dat', price_grid)
 
+    print("Data successfully generated!")
+
 
 def generate_pointwise_data(
-        train_size: int = 60_000, test_size: int = 6_000, calibration_size: int = 6_000,
-        num_input_params: int = 9, \
-        num_calibration_params: int = 7
+        train_size: int = 60_000, test_size: int = 6_000
         ):
 
     l = 1 / 12  # 1 month of delivery, fixed
@@ -101,18 +97,20 @@ def generate_pointwise_data(
 
     # Keeps track of the range of our parameters over which we are testing
     vector_ranges = {
-            'a' : [0.2, 0.5],
-            'b' : [0.5, 0.8],
-            'k' : [8, 9],
-            'a0': [34.2, 34.7],
-            'a1': [-1.5, -1],
-            'a2': [0.2, 1.2],
-            'a3': [4.5, 5]
+            'K'  : [31.6, 33.2],
+            'tau': [1 / 12, 1],
+            'a'  : [0.2, 0.5],
+            'b'  : [0.5, 0.8],
+            'k'  : [8, 9],
+            'a0' : [34.2, 34.7],
+            'a1' : [-1.5, -1],
+            'a2' : [0.2, 1.2],
+            'a3' : [4.5, 5]
             }
 
     params_range = create_features_linspace(
             num = train_size + test_size,
-            vector_min = [vector_ranges[key][0] for key in vector_ranges.keys()],  # [a, b, k, a0, a1, a2, a3]
+            vector_min = [vector_ranges[key][0] for key in vector_ranges.keys()],  # [K, tau, a, b, k, a0, a1, a2, a3]
             vector_max = [vector_ranges[key][1] for key in vector_ranges.keys()]
             )
 
@@ -134,3 +132,5 @@ def generate_pointwise_data(
 
     np.savetxt('data/pointwise/pointwise_parameters_nelson_siegel.dat', params_range)
     np.savetxt('data/pointwise/pointwise_price_nelson_siegel.dat', price)
+
+    print("Data successfully generated!")
