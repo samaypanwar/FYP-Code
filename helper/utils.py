@@ -1,5 +1,6 @@
-import numpy as np
 from typing import List
+
+import numpy as np
 from scipy.stats import norm
 
 from helper.parameterizations import NelsonSiegelCurve
@@ -17,7 +18,7 @@ class UniVolatility:
         k (float, positive) : covariance kernel coefficient
     """
 
-    def __init__(self, model_features: List[float]):
+    def __init__(self, model_features: np.ndarray):
         self.model_features = model_features
 
     def __call__(self, tau: float, T: float, length_of_contract: float, t: float = 0) -> float:
@@ -51,7 +52,7 @@ class BlackScholesPrice(NelsonSiegelCurve):
     def __init__(self, parameters: List[float]):
         NelsonSiegelCurve.__init__(self, parameters)
 
-    def __call__(self, option_features: List[float], model_features: List[float], t: float = 0) -> float:
+    def __call__(self, option_features: np.ndarray, model_features: np.ndarray, t: float = 0) -> float:
         K, tau, T, length_of_contract = option_features
         ns = NelsonSiegelCurve(parameters = self.parameters)
         s = UniVolatility(model_features = model_features)
