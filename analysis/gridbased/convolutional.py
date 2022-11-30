@@ -10,17 +10,17 @@ class CNN(tf.keras.Model):
         self.dense2 = tf.keras.layers.Dense(N1 * N2, activation = 'relu')
         self.reshape = tf.keras.layers.Reshape([N1, N2, 1])
         self.conv1 = tf.keras.layers.Conv2D(
-            filters = 30,
-            kernel_size = 3,
-            padding = 'same',
-            activation = 'relu'
-            )
+                filters = 30,
+                kernel_size = 3,
+                padding = 'same',
+                activation = 'relu'
+                )
         self.conv2 = tf.keras.layers.Conv2D(
-            filters = 1,
-            kernel_size = 3,
-            padding = 'same',
-            activation = None
-            )
+                filters = 1,
+                kernel_size = 3,
+                padding = 'same',
+                activation = None
+                )
 
     def call(self, x):
         x = self.dense1(x)

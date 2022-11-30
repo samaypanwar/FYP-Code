@@ -1,0 +1,19 @@
+
+2022-11-30 15:23:02,187 | INFO | model.py | 126: Model of type: dense has been initialized
+2022-11-30 15:23:20,006 | INFO | model.py | 243: Beginning training for model dense with nelson_siegel
+2022-11-30 15:23:20,006 | INFO | model.py | 244: Beginning training for model dense with nelson_siegel
+2022-11-30 15:24:44,658 | INFO | model.py | 288: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-11-30 15:29:01,147 | INFO | model.py | 154: Weights loaded successfully
+2022-11-30 15:29:12,328 | INFO | model.py | 436: Beginning training for model dense with nelson_siegel
+2022-11-30 15:29:12,328 | INFO | model.py | 437: Beginning training for model dense with nelson_siegel
+2022-11-30 15:32:57,116 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
+2022-11-30 15:32:57,116 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
+2022-11-30 15:32:57,116 | INFO | model.py | 437: Beginning calibration for model dense with nelson_siegel
+2022-11-30 15:33:19,623 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
+2022-11-30 15:33:19,623 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
+2022-11-30 15:33:19,623 | INFO | model.py | 437: Beginning calibration for model dense with nelson_siegel
+2022-11-30 15:33:44,209 | INFO | model.py | 459: Calibration complete! change in parameters: 1.0158133778079521
+2022-11-30 15:33:44,209 | INFO | model.py | 459: Calibration complete! change in parameters: 1.0158133778079521
+2022-11-30 15:33:44,210 | INFO | model.py | 460: Calibration complete! change in parameters: 1.0158133778079521
+2022-11-30 15:33:44,211 | INFO | model.py | 463: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat
+2022-11-30 15:33:44,211 | INFO | model.py | 463: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat

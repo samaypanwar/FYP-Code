@@ -1,5 +1,5 @@
-import tensorflow as tf
 import numpy as np
+import tensorflow as tf
 
 tf.keras.backend.set_floatx('float64');
 
@@ -18,7 +18,6 @@ if gpus:
 # Size of the data
 train_size = 40000;  # Size of the training set
 test_size = 4000;  # Size of the test set
-calibration_size = test_size;
 param_in = 7;  # Input size to the neural network
 
 K_vector = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
