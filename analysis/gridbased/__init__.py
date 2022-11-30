@@ -1,7 +1,11 @@
 import numpy as np
 import tensorflow as tf
+from analysis.utils import begin_logging
 
 tf.keras.backend.set_floatx('float64');
+
+
+logger, training_logger, calibration_logger = begin_logging()
 
 gpus = tf.config.experimental.list_physical_devices('GPU')
 if gpus:

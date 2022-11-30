@@ -3,7 +3,6 @@ Choose model then check if weights present otherwise train it and save the weigh
 
 if weights are present then test / calibrate
 """
-import logging
 import os
 
 import matplotlib.pyplot as plt
@@ -11,52 +10,10 @@ import matplotlib.ticker as mtick
 from tqdm import tqdm
 
 from analysis.gridbased import *
-from analysis.gridbased.convolutional import CNN
-from analysis.gridbased.dense import DenseModel
+from analysis.convolutional import CNN
+from analysis.dense import DenseModel
 
 
-def begin_logging():
-    """This function takes care of the logging configuration"""
-
-    logger = logging.getLogger('main')
-    logger.setLevel(logging.NOTSET)
-
-    # our first handler is a console handler
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.WARNING)
-    console_handler_format = '%(asctime)s | %(levelname)s: | %(filename)s | %(funcName)s | %(lineno)d: %(message)s'
-    console_handler.setFormatter(logging.Formatter(console_handler_format))
-    logger.addHandler(console_handler)
-
-    # the second handler is a file handler
-    file_handler = logging.FileHandler('log.log')
-    file_handler.setLevel(logging.INFO)
-    file_handler_format = '%(asctime)s | %(levelname)s | %(filename)s | %(lineno)d: %(message)s'
-    file_handler.setFormatter(logging.Formatter(file_handler_format))
-    logger.addHandler(file_handler)
-
-    # the third handler is a file handler for training epochs
-    training_logger = logging.getLogger('training')
-
-    training_handler = logging.FileHandler('training.log')
-    training_handler.setLevel(logging.DEBUG)
-    training_handler_format = '%(asctime)s | %(levelname)s | %(message)s'
-    training_handler.setFormatter(logging.Formatter(training_handler_format))
-    training_logger.addHandler(training_handler)
-
-    # the third handler is a file handler for calibration epochs
-    calibration_logger = logging.getLogger('calibration')
-
-    calibration_handler = logging.FileHandler('calibration.log')
-    calibration_handler.setLevel(logging.DEBUG)
-    calibration_handler_format = '%(asctime)s | %(levelname)s | %(message)s'
-    calibration_handler.setFormatter(logging.Formatter(calibration_handler_format))
-    calibration_logger.addHandler(calibration_handler)
-
-    return logger, training_logger, calibration_logger
-
-
-logger, training_logger, calibration_logger = begin_logging()
 
 
 def load_data(parameterization: str = 'nelson_siegel'):
@@ -291,7 +248,9 @@ def train_model(
     if plot:
         plot_path = 'plotting/gridbased/'
         price_predicted_train = model(params_range_train).numpy()
+        price_predicted_train = np.squeeze(price_predicted_train)
         price_predicted_test = model(params_range_test).numpy()
+        price_predicted_test = np.squeeze(price_predicted_test)
 
         err_training_train = abs(price_predicted_train - price_train) / price_train
         err_training_test = abs(price_predicted_test - price_test) / price_test
@@ -463,8 +422,8 @@ def calibrate(
 
     np.savetxt(f'data/gridbased/gridbased_params_calibrated_{model_type}_{parameterization}.dat', new_input_guess)
     logger.info(
-        f"Saved parameters to file: {f'data/gridbased/gridbased_params_calibrated_{model_type}_{parameterization}.dat'}"
-        )
+            f"Saved parameters to file: {f'data/gridbased/gridbased_params_calibrated_{model_type}_{parameterization}.dat'}"
+            )
 
     # Errors and plots
     percentage_err = np.abs(new_input_guess - parameters) / np.abs(parameters)

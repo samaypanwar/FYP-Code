@@ -1,19 +1,43 @@
-
-2022-11-30 15:23:02,187 | INFO | model.py | 126: Model of type: dense has been initialized
-2022-11-30 15:23:20,006 | INFO | model.py | 243: Beginning training for model dense with nelson_siegel
-2022-11-30 15:23:20,006 | INFO | model.py | 244: Beginning training for model dense with nelson_siegel
-2022-11-30 15:24:44,658 | INFO | model.py | 288: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
-2022-11-30 15:29:01,147 | INFO | model.py | 154: Weights loaded successfully
-2022-11-30 15:29:12,328 | INFO | model.py | 436: Beginning training for model dense with nelson_siegel
-2022-11-30 15:29:12,328 | INFO | model.py | 437: Beginning training for model dense with nelson_siegel
-2022-11-30 15:32:57,116 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
-2022-11-30 15:32:57,116 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
-2022-11-30 15:32:57,116 | INFO | model.py | 437: Beginning calibration for model dense with nelson_siegel
-2022-11-30 15:33:19,623 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
-2022-11-30 15:33:19,623 | INFO | model.py | 436: Beginning calibration for model dense with nelson_siegel
-2022-11-30 15:33:19,623 | INFO | model.py | 437: Beginning calibration for model dense with nelson_siegel
-2022-11-30 15:33:44,209 | INFO | model.py | 459: Calibration complete! change in parameters: 1.0158133778079521
-2022-11-30 15:33:44,209 | INFO | model.py | 459: Calibration complete! change in parameters: 1.0158133778079521
-2022-11-30 15:33:44,210 | INFO | model.py | 460: Calibration complete! change in parameters: 1.0158133778079521
-2022-11-30 15:33:44,211 | INFO | model.py | 463: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat
-2022-11-30 15:33:44,211 | INFO | model.py | 463: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 01:09:45,246 | INFO | model.py | 84: Model of type: dense has been initialized
+2022-12-01 01:09:59,753 | INFO | model.py | 201: Beginning training for model dense with nelson_siegel
+2022-12-01 01:10:05,210 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 01:11:20,954 | INFO | model.py | 201: Beginning training for model dense with nelson_siegel
+2022-12-01 01:11:26,469 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 01:11:43,775 | INFO | model.py | 84: Model of type: cnn has been initialized
+2022-12-01 01:11:53,366 | INFO | model.py | 201: Beginning training for model dense with nelson_siegel
+2022-12-01 01:12:13,330 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 01:12:18,394 | INFO | model.py | 201: Beginning training for model cnn with nelson_siegel
+2022-12-01 01:12:36,930 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_cnn_nelson_siegel.h5
+2022-12-01 01:12:42,012 | INFO | model.py | 112: Weights loaded successfully
+2022-12-01 01:12:54,757 | INFO | model.py | 397: Beginning calibration for model dense with nelson_siegel
+2022-12-01 01:12:55,895 | INFO | model.py | 420: Calibration complete! change in parameters: 3.019741974937553
+2022-12-01 01:12:55,909 | INFO | model.py | 424: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 01:13:13,471 | INFO | model.py | 397: Beginning calibration for model cnn with nelson_siegel
+2022-12-01 01:13:14,599 | INFO | model.py | 420: Calibration complete! change in parameters: 3.0316509124175606
+2022-12-01 01:13:14,613 | INFO | model.py | 424: Saved parameters to file: data/gridbased/gridbased_params_calibrated_cnn_nelson_siegel.dat
+2022-12-01 01:15:34,611 | INFO | model.py | 201: Beginning training for model cnn with nelson_siegel
+2022-12-01 01:15:52,753 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_cnn_nelson_siegel.h5
+2022-12-01 01:16:06,572 | INFO | model.py | 84: Model of type: cnn has been initialized
+2022-12-01 01:16:46,970 | INFO | model.py | 84: Model of type: cnn has been initialized
+2022-12-01 01:20:16,677 | INFO | model.py | 84: Model of type: cnn has been initialized
+2022-12-01 01:20:51,864 | INFO | model.py | 201: Beginning training for model cnn with nelson_siegel
+2022-12-01 01:21:09,068 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_cnn_nelson_siegel.h5
+2022-12-01 01:21:20,953 | INFO | model.py | 112: Weights loaded successfully
+2022-12-01 01:21:27,306 | INFO | model.py | 397: Beginning calibration for model cnn with nelson_siegel
+2022-12-01 01:21:28,481 | INFO | model.py | 420: Calibration complete! change in parameters: 2.96088379365683
+2022-12-01 01:21:28,495 | INFO | model.py | 424: Saved parameters to file: data/gridbased/gridbased_params_calibrated_cnn_nelson_siegel.dat
+2022-12-01 01:47:29,058 | INFO | model.py | 84: Model of type: dense has been initialized
+2022-12-01 01:48:37,076 | INFO | model.py | 84: Model of type: dense has been initialized
+2022-12-01 01:48:46,060 | INFO | model.py | 201: Beginning training for model dense with nelson_siegel
+2022-12-01 01:50:53,108 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 01:51:22,389 | INFO | model.py | 112: Weights loaded successfully
+2022-12-01 01:51:29,777 | INFO | model.py | 397: Beginning calibration for model dense with nelson_siegel
+2022-12-01 01:51:34,811 | INFO | model.py | 420: Calibration complete! change in parameters: 6.327756841422786
+2022-12-01 01:51:34,826 | INFO | model.py | 424: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 01:51:46,257 | INFO | model.py | 84: Model of type: cnn has been initialized
+2022-12-01 01:51:50,379 | INFO | model.py | 201: Beginning training for model cnn with nelson_siegel
+2022-12-01 01:59:18,508 | INFO | model.py | 246: Saved weights to file: weights/gridbased/gridbased_weights_cnn_nelson_siegel.h5
+2022-12-01 01:59:20,597 | INFO | model.py | 112: Weights loaded successfully
+2022-12-01 01:59:21,261 | INFO | model.py | 397: Beginning calibration for model cnn with nelson_siegel
+2022-12-01 02:00:17,482 | INFO | model.py | 420: Calibration complete! change in parameters: 13.651684094374739
+2022-12-01 02:00:17,513 | INFO | model.py | 424: Saved parameters to file: data/gridbased/gridbased_params_calibrated_cnn_nelson_siegel.dat
