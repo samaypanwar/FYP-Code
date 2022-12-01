@@ -41,3 +41,81 @@
 2022-12-01 01:59:21,261 | INFO | model.py | 397: Beginning calibration for model cnn with nelson_siegel
 2022-12-01 02:00:17,482 | INFO | model.py | 420: Calibration complete! change in parameters: 13.651684094374739
 2022-12-01 02:00:17,513 | INFO | model.py | 424: Saved parameters to file: data/gridbased/gridbased_params_calibrated_cnn_nelson_siegel.dat
+2022-12-01 14:32:55,316 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:32:55,316 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:34:42,888 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:34:42,888 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:35:34,272 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:35:34,272 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:35:41,324 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:35:41,324 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:40:36,777 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:40:36,777 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:40:45,606 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:40:45,606 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:40:58,028 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:40:58,028 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:42:57,109 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:42:57,109 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:43:09,295 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:43:09,295 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:43:36,022 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:43:36,022 | INFO | model.py | 79: Model of type: dense has been initialized
+2022-12-01 14:43:38,479 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:43:38,479 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:43:50,816 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:43:50,816 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:44:38,286 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:44:38,286 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:44:50,945 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:44:50,945 | INFO | model.py | 239: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2022-12-01 14:45:45,139 | ERROR | model.py | 108: Failed to load the weights file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2022-12-01 14:45:45,139 | ERROR | model.py | 108: Failed to load the weights file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2022-12-01 14:48:45,857 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:48:45,857 | INFO | model.py | 194: Beginning training for model dense with nelson_siegel
+2022-12-01 14:48:57,089 | INFO | model.py | 239: Saved weights to file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2022-12-01 14:48:57,089 | INFO | model.py | 239: Saved weights to file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2022-12-01 14:49:10,261 | INFO | model.py | 105: Weights loaded successfully
+2022-12-01 14:49:10,261 | INFO | model.py | 105: Weights loaded successfully
+2022-12-01 14:49:22,065 | INFO | model.py | 105: Weights loaded successfully
+2022-12-01 14:49:22,065 | INFO | model.py | 105: Weights loaded successfully
+2022-12-01 14:50:36,784 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 14:50:36,784 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 14:50:38,965 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 14:50:38,965 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 14:54:50,756 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 14:54:50,756 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 14:54:53,832 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 14:54:53,832 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 14:57:54,183 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 14:57:54,183 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 14:57:56,816 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 14:57:56,816 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 15:00:02,787 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 15:00:02,787 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 15:00:06,668 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 15:00:06,668 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 15:03:51,366 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 15:03:51,366 | INFO | model.py | 80: Model of type: dense has been initialized
+2022-12-01 15:03:53,490 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 15:03:53,490 | INFO | model.py | 106: Weights loaded successfully
+2022-12-01 15:04:44,981 | INFO | model.py | 439: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:04:44,981 | INFO | model.py | 439: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:10:19,624 | INFO | model.py | 443: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:10:19,624 | INFO | model.py | 443: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:15:06,085 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:15:06,085 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:15:30,933 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:15:30,933 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:16:06,056 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:16:06,056 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:16:06,677 | INFO | model.py | 475: Calibration complete! change in parameters: 51.86470713158703
+2022-12-01 15:16:06,677 | INFO | model.py | 475: Calibration complete! change in parameters: 51.86470713158703
+2022-12-01 15:16:06,679 | INFO | model.py | 479: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 15:16:06,679 | INFO | model.py | 479: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 15:17:26,567 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:17:26,567 | INFO | model.py | 447: Beginning calibration for model dense with nelson_siegel
+2022-12-01 15:17:27,028 | INFO | model.py | 475: Calibration complete! change in parameters: 54.817752969854126
+2022-12-01 15:17:27,028 | INFO | model.py | 475: Calibration complete! change in parameters: 54.817752969854126
+2022-12-01 15:17:27,029 | INFO | model.py | 479: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 15:17:27,029 | INFO | model.py | 479: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat

@@ -9,11 +9,9 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 from tqdm import tqdm
 
+from analysis.gridbased.convolutional import CNN
+from analysis.gridbased.dense import DenseModel
 from analysis.gridbased import *
-from analysis.convolutional import CNN
-from analysis.dense import DenseModel
-
-
 
 
 def load_data(parameterization: str = 'nelson_siegel'):
@@ -261,11 +259,11 @@ def train_model(
         plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
         plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
         plt.legend(['Training Loss', 'Test Loss'])
-        plt.xlabel("Epoch", fontsize = 15, labelpad = 5);
-        plt.ylabel("Loss", fontsize = 15, labelpad = 5);
+        plt.xlabel("Epoch", fontsize = 15, labelpad = 5)
+        plt.ylabel("Loss", fontsize = 15, labelpad = 5)
         text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
                 epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
-        plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12);
+        plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12)
 
         figure1.savefig(f'{plot_path}gridbased_loss_step1_{model_type}_{parameterization}.pdf')
 
@@ -283,8 +281,8 @@ def train_model(
         ax.set_xticklabels(K_label)
         ax.set_yticks(np.linspace(0, N2 - 1, N2))
         ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
+        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         ax = plt.subplot(1, 2, 2)
         max_err = np.max(100 * err_training_train, axis = 0)
@@ -295,8 +293,8 @@ def train_model(
         ax.set_xticklabels(K_label)
         ax.set_yticks(np.linspace(0, N2 - 1, N2))
         ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
+        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         figure_train.savefig(
                 f'{plot_path}gridbased_error_step1_train_{model_type}_{parameterization}.pdf', bbox_inches = 'tight',
@@ -314,8 +312,8 @@ def train_model(
         ax.set_xticklabels(K_label)
         ax.set_yticks(np.linspace(0, N2 - 1, N2))
         ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
+        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         ax = plt.subplot(1, 2, 2)
         max_err = np.max(100 * err_training_test, axis = 0)
@@ -326,8 +324,8 @@ def train_model(
         ax.set_xticklabels(K_label)
         ax.set_yticks(np.linspace(0, N2 - 1, N2))
         ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
+        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         figure_test.savefig(
                 f'{plot_path}gridbased_error_step1_test_{model_type}_{parameterization}.pdf', bbox_inches =
@@ -413,7 +411,7 @@ def calibrate(
 
         calibration_logger.debug(message)
 
-    new_input_guess = tf_var_input_guess.numpy();
+    new_input_guess = tf_var_input_guess.numpy()
 
     change = new_input_guess - old_input_guess
     message = f"Calibration complete! change in parameters: {np.linalg.norm(change, 'fro')}"
@@ -438,7 +436,7 @@ def calibrate(
         plt.subplot(3, 3, 1)
         plt.plot(parameters[:, 0], percentage_err[:, 0] * 100, '*', color = 'midnightblue')
         plt.title('a')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         s0 = 'Average: %.2f' % mean_percentage_err[0] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[0] + r'%'
         plt.text(np.mean(parameters[:, 0]), np.max(percentage_err[:, 0] * 90), s0, fontsize = 15, weight = 'bold')
@@ -447,7 +445,7 @@ def calibrate(
         plt.plot(parameters[:, 1], percentage_err[:, 1] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('b')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         s1 = 'Average: %.2f' % mean_percentage_err[1] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[1] + r'%'
         plt.text(np.mean(parameters[:, 1]), np.max(percentage_err[:, 1] * 90), s1, fontsize = 15, weight = 'bold')
 
@@ -455,7 +453,7 @@ def calibrate(
         plt.plot(parameters[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('k')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[2] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[2] + r'%'
         plt.text(np.mean(parameters[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
 
@@ -463,7 +461,7 @@ def calibrate(
         plt.plot(parameters[:, 3], percentage_err[:, 3] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('$\\alpha_0$')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[3] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[3] + r'%'
         plt.text(np.mean(parameters[:, 3]), np.max(percentage_err[:, 3] * 90), s2, fontsize = 15, weight = 'bold')
 
@@ -471,7 +469,7 @@ def calibrate(
         plt.plot(parameters[:, 4], percentage_err[:, 4] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('$\\alpha_1$')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[4] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[4] + r'%'
         plt.text(np.mean(parameters[:, 4]), np.max(percentage_err[:, 4] * 90), s2, fontsize = 15, weight = 'bold')
 
@@ -479,7 +477,7 @@ def calibrate(
         plt.plot(parameters[:, 5], percentage_err[:, 5] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('$\\alpha_2$')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[5] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[5] + r'%'
         plt.text(np.mean(parameters[:, 5]), np.max(percentage_err[:, 5] * 90), s2, fontsize = 15, weight = 'bold')
 
@@ -487,9 +485,9 @@ def calibrate(
         plt.plot(parameters[:, 6], percentage_err[:, 6] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('$\\alpha_3$')
-        plt.ylabel('Percentage error');
+        plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[6] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[6] + r'%'
-        plt.text(np.mean(parameters[:, 6]), np.max(percentage_err[:, 6] * 90), s2, fontsize = 15, weight = 'bold');
+        plt.text(np.mean(parameters[:, 6]), np.max(percentage_err[:, 6] * 90), s2, fontsize = 15, weight = 'bold')
 
         f.savefig(
                 f'plotting/gridbased/gridbased_calibrated_{model_type}_{parameterization}.pdf', bbox_inches = 'tight',

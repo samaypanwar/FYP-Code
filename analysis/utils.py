@@ -1,12 +1,17 @@
 import logging
 import os
+from stat import S_IWUSR, S_IREAD, S_IRGRP, S_IROTH # Need to add this import to the ones above
 
-path = "/"
+path = "/Users/samaypanwar/Library/CloudStorage/OneDrive-NanyangTechnologicalUniversity/Uni/FYP/FYP-Code"
 os.chdir(path)
 
 
 def begin_logging():
     """This function takes care of the logging configuration"""
+
+    os.chmod('log.log', S_IWUSR | S_IREAD)  # This makes the file read/write for the owner
+    os.chmod('training.log', S_IWUSR | S_IREAD)  # This makes the file read/write for the owner
+    os.chmod('calibration.log', S_IWUSR | S_IREAD)  # This makes the file read/write for the owner
 
     logger = logging.getLogger('main')
     logger.setLevel(logging.DEBUG)
