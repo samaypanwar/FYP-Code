@@ -119,3 +119,74 @@
 2022-12-01 15:17:27,028 | INFO | model.py | 475: Calibration complete! change in parameters: 54.817752969854126
 2022-12-01 15:17:27,029 | INFO | model.py | 479: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
 2022-12-01 15:17:27,029 | INFO | model.py | 479: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-01 16:57:58,457 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-01 16:57:58,457 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-01 16:57:58,457 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-01 16:58:58,653 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-01 16:58:58,653 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-01 16:58:58,653 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-01 16:59:08,364 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-01 16:59:08,364 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-01 16:59:08,364 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-01 17:01:24,753 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_svensson.h5
+2022-12-01 17:01:24,753 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_svensson.h5
+2022-12-01 17:01:24,753 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_svensson.h5
+2022-12-01 17:01:25,770 | INFO | model.py | 123: Weights loaded successfully
+2022-12-01 17:01:25,770 | INFO | model.py | 123: Weights loaded successfully
+2022-12-01 17:01:25,770 | INFO | model.py | 123: Weights loaded successfully
+2022-12-01 17:03:32,783 | INFO | model.py | 123: Weights loaded successfully
+2022-12-01 17:03:32,783 | INFO | model.py | 123: Weights loaded successfully
+2022-12-01 17:03:32,783 | INFO | model.py | 123: Weights loaded successfully
+2022-12-01 17:05:46,887 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-01 17:05:46,887 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-01 17:05:46,887 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-01 17:05:51,541 | INFO | model.py | 442: Calibration complete! change in parameters: 4.943653119752312
+2022-12-01 17:05:51,541 | INFO | model.py | 442: Calibration complete! change in parameters: 4.943653119752312
+2022-12-01 17:05:51,541 | INFO | model.py | 442: Calibration complete! change in parameters: 4.943653119752312
+2022-12-01 17:05:51,557 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-01 17:05:51,557 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-01 17:05:51,557 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-01 17:17:17,027 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:17:17,027 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:17:17,027 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:17:45,867 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:17:45,867 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:17:45,867 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:18:23,390 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:18:23,390 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:18:23,390 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:18:29,187 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:18:29,187 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:18:29,187 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:18:30,690 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:18:30,690 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:18:30,690 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:19:01,717 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:19:01,717 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:19:06,689 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:19:06,689 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:19:58,707 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:19:58,707 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:20:12,459 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:20:12,459 | INFO | model.py | 91: Model of type: dense has been initialized
+2022-12-01 17:20:15,218 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:20:15,218 | INFO | model.py | 206: Beginning training for model dense with svensson
+2022-12-01 17:20:57,525 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-01 17:20:57,525 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-01 17:21:01,826 | INFO | model.py | 207: Beginning training for model dense with svensson
+2022-12-01 17:21:01,826 | INFO | model.py | 207: Beginning training for model dense with svensson
+2022-12-01 17:21:13,828 | INFO | model.py | 252: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2022-12-01 17:21:13,828 | INFO | model.py | 252: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2022-12-01 17:21:48,467 | INFO | model.py | 118: Weights loaded successfully
+2022-12-01 17:21:48,467 | INFO | model.py | 118: Weights loaded successfully
+2022-12-01 17:22:01,498 | INFO | model.py | 464: Beginning calibration for model dense with svensson
+2022-12-01 17:22:01,498 | INFO | model.py | 464: Beginning calibration for model dense with svensson
+2022-12-01 17:23:30,671 | INFO | model.py | 464: Beginning calibration for model dense with svensson
+2022-12-01 17:23:30,671 | INFO | model.py | 464: Beginning calibration for model dense with svensson
+2022-12-01 17:23:30,671 | INFO | model.py | 464: Beginning calibration for model dense with svensson
+2022-12-01 17:23:31,165 | INFO | model.py | 492: Calibration complete! change in parameters: 78.47766655019058
+2022-12-01 17:23:31,165 | INFO | model.py | 492: Calibration complete! change in parameters: 78.47766655019058
+2022-12-01 17:23:31,165 | INFO | model.py | 492: Calibration complete! change in parameters: 78.47766655019058
+2022-12-01 17:23:31,167 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat
+2022-12-01 17:23:31,167 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat
+2022-12-01 17:23:31,167 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat

@@ -22,7 +22,6 @@ if gpus:
 # Size of the data
 train_size = 40000;  # Size of the training set
 test_size = 4000;  # Size of the test set
-param_in = 7;  # Input size to the neural network
 
 K_vector = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
 tau_vector = np.array([1 / 12, 2 / 12, 3 / 12, 4 / 12, 5 / 12, 6 / 12, 1])

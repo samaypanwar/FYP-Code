@@ -45,17 +45,19 @@ def load_data(parameterization: str = 'nelson_siegel'):
     return params_range_train, params_range_test, price_train, price_test
 
 
-def init_model(model_type: str = 'dense'):
+def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel'):
     """
     This function initializes and compiles our model type with the stated optimizer and loss function
 
     Parameters
     ----------
     model_type : model architecture we are using (either 'dense' or 'cnn')
+    parameterization: parameterization that we are using for our forward curve model
 
     Returns
     -------
     Instance of built model class
+
     """
 
     # Create an instance of the model
@@ -69,6 +71,16 @@ def init_model(model_type: str = 'dense'):
         logger.error("Unknown model type: %s" % model_type)
         raise ValueError("Unknown model type")
 
+    if parameterization == 'nelson_siegel':
+        parameter_size = 7
+
+    elif parameterization == 'svensson':
+        parameter_size = 9
+
+    else:
+        logger.error("Unknown parameterization: %s" % parameterization)
+        raise ValueError("Unknown parameterization")
+
     # Choose optimizer and type of loss function
     init_model.optimizer = tf.keras.optimizers.Adam()
     init_model.loss_object = tf.keras.losses.MeanSquaredError()
@@ -76,12 +88,13 @@ def init_model(model_type: str = 'dense'):
     model.compile(
             loss = init_model.loss_object, optimizer = init_model.optimizer
             )
-    model.build(input_shape = (1, param_in))
+
+    model.build(input_shape = (1, parameter_size))
     model.summary()
 
     logger.info(f"Model of type: {model_type} has been initialized")
 
-    model(tf.ones(shape = (1, param_in)))
+    model(tf.ones(shape = (1, parameter_size)))
 
     return model
 
@@ -139,7 +152,7 @@ def train_model(
     """
 
     # Creating our train test split for data
-    params_range_train, params_range_test, price_train, price_test = load_data()
+    params_range_train, params_range_test, price_train, price_test = load_data(parameterization = parameterization)
 
     # Choose what type of information you want to print
     train_loss = tf.keras.metrics.Mean(name = 'train_mean')
@@ -154,12 +167,12 @@ def train_model(
     test_dataset = tf.data.Dataset.from_tensor_slices((params_range_test, price_test)).batch(batch_size)
 
     # Define the early stop function
-    def early_stop(loss_vec):
+    def early_stop(loss_vector):
         """
         If the cumulative product of the change in our test loss is less than our delta for the past 'patience'
         number of epochs then stop training the model
         """
-        delta_loss = np.abs(np.diff(loss_vec))
+        delta_loss = np.abs(np.diff(loss_vector))
         delta_loss = delta_loss[-patience:]
 
         return np.prod(delta_loss < delta)
@@ -205,17 +218,17 @@ def train_model(
         train_loss.reset_states()
         test_loss.reset_states()
 
-        for input_param, prices in train_dataset:
+        for input_parameter, prices in train_dataset:
             # For each batch of images, and prices, compute the gradient and update
             # the gradient of the network
-            train_step(input_param, prices)
+            train_step(input_parameter, prices)
 
         for test_images, test_prices in test_dataset:
             # For each of the test data, compute how the network performs on the data
             # We do not compute any gradients here
             test_step(test_images, test_prices)
 
-        # Print some usfull information
+        # Print some useful information
         template = 'Training Epoch {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}'
         message = template.format(
                 epoch + 1,
@@ -254,7 +267,7 @@ def train_model(
         err_training_test = abs(price_predicted_test - price_test) / price_test
 
         # Loss plots
-        figure1 = plt.figure(figsize = (14, 5))
+        figure1 = plt.figure(figsize = (10, 5))
         plt.subplot(1, 2, 1)
         plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
         plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
@@ -265,13 +278,13 @@ def train_model(
                 epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
         plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12)
 
-        figure1.savefig(f'{plot_path}gridbased_loss_step1_{model_type}_{parameterization}.pdf')
+        figure1.savefig(f'{plot_path}gridbased_loss_{model_type}_{parameterization}.png')
 
         # Heatmap train loss
         K_label = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
         tau_label = ['1', '2', '3', '4', '5', '6', '12']
 
-        figure_train = plt.figure(1, figsize = (16, 5))
+        figure_train = plt.figure(1, figsize = (10, 5))
         ax = plt.subplot(1, 2, 1)
         mean_err = np.mean(100 * err_training_train, axis = 0)
         plt.title("Average percentage error", fontsize = 15, y = 1.04)
@@ -297,7 +310,7 @@ def train_model(
         plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         figure_train.savefig(
-                f'{plot_path}gridbased_error_step1_train_{model_type}_{parameterization}.pdf', bbox_inches = 'tight',
+                f'{plot_path}gridbased_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
                 pad_inches = 0.01
                 )
 
@@ -328,7 +341,7 @@ def train_model(
         plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         figure_test.savefig(
-                f'{plot_path}gridbased_error_step1_test_{model_type}_{parameterization}.pdf', bbox_inches =
+                f'{plot_path}gridbased_error_test_{model_type}_{parameterization}.png', bbox_inches =
                 'tight', pad_inches = 0.01
                 )
 
@@ -357,7 +370,17 @@ def calibrate(
     """
     # The network is done training. We are ready to start on the Calibration step
 
-    calibration_size = parameters.reshape(-1, param_in).shape[0]
+    if parameterization == 'nelson_siegel':
+        parameter_size = 7
+
+    elif parameterization == 'svensson':
+        parameter_size = 9
+
+    else:
+        logger.error("Unknown parameterization: %s" % parameterization)
+        raise ValueError("Unknown parameterization")
+
+    calibration_size = parameters.reshape(-1, parameter_size).shape[0]
 
     # Choose optimizer and type of loss function
     optimizer = tf.keras.optimizers.Adam()
@@ -380,9 +403,10 @@ def calibrate(
         grads = tape.gradient(c_loss, [input_guess])
         optimizer.apply_gradients(zip(grads, [input_guess]))
 
+    # TODO: Instead of artificially inducing errors in our params, we can use new prices or shift prices by a bit
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
-    input_guess = parameters + np.random.rand(calibration_size, param_in) * np.array(
-            [0.05, 0.05, 0.5, 0.5, 0.05, 0.05, 0.05]
+    input_guess = parameters + np.random.rand(calibration_size, parameter_size) * np.array(
+            [0.05]*parameter_size
             )
 
     # I just copy the starting parameters for convenience. This is not necessary
@@ -490,7 +514,7 @@ def calibrate(
         plt.text(np.mean(parameters[:, 6]), np.max(percentage_err[:, 6] * 90), s2, fontsize = 15, weight = 'bold')
 
         f.savefig(
-                f'plotting/gridbased/gridbased_calibrated_{model_type}_{parameterization}.pdf', bbox_inches = 'tight',
+                f'plotting/gridbased/gridbased_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
                 pad_inches =
                 0.01
                 )

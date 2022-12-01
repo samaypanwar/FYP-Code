@@ -21,8 +21,12 @@ if gpus:
 # Size of the data
 train_size = 40000;  # Size of the training set
 test_size = 4000;  # Size of the test set
-param_in = 9;  # Input size to the neural network
-parameter_cal = 7;  # Size of training variables
 
 l = 1 / 12  # 1 month of delivery, fixed
 # NOTE: T_1 = tau, assumption for all the experiments
+
+# TODO: Fix plot dimensions and create functions for the same if necessary
+# TODO: Test out different parameter ranges and see what works best
+# TODO: Change model architecture for our dense and cnn models
+# TODO: Calibrate models using real world data
+# TODO: Fix as much linting errors as possible
