@@ -149,8 +149,10 @@ def generate_pointwise_data(
 
     for i in tqdm(range(train_size + test_size)):
 
+        # a, b, k
         model_features = params_range[i, 2:5]
 
+        # forward curve
         curve_parameters = list(params_range[i, 5:])
         black_scholes_price = BlackScholesPrice(parameters = curve_parameters, parameterization = parameterization)
 

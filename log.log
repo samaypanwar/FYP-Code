@@ -190,3 +190,70 @@
 2022-12-01 17:23:31,167 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat
 2022-12-01 17:23:31,167 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat
 2022-12-01 17:23:31,167 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat
+2022-12-21 16:26:29,776 | INFO | model.py | 95: Model of type: dense has been initialized
+2022-12-21 16:26:43,542 | INFO | model.py | 123: Weights loaded successfully
+2022-12-21 16:26:50,086 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-21 16:26:57,059 | INFO | model.py | 442: Calibration complete! change in parameters: 4.958621048101916
+2022-12-21 16:26:57,086 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-21 16:31:21,954 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-21 16:31:30,219 | INFO | model.py | 442: Calibration complete! change in parameters: 4.953012146069433
+2022-12-21 16:31:30,249 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-21 16:37:23,052 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-21 16:37:30,035 | INFO | model.py | 442: Calibration complete! change in parameters: 4.955175789953567
+2022-12-21 16:37:30,073 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-21 16:37:58,406 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-21 16:38:04,937 | INFO | model.py | 442: Calibration complete! change in parameters: 4.970752890609095
+2022-12-21 16:38:04,965 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-21 16:38:49,860 | INFO | model.py | 419: Beginning calibration for model dense with svensson
+2022-12-21 16:38:56,612 | INFO | model.py | 442: Calibration complete! change in parameters: 4.955822158635879
+2022-12-21 16:38:56,639 | INFO | model.py | 446: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2022-12-21 16:41:47,859 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:41:47,859 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:41:59,193 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-21 16:41:59,193 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-21 16:45:54,125 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:45:54,125 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:45:58,567 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-21 16:45:58,567 | INFO | model.py | 212: Beginning training for model dense with svensson
+2022-12-21 16:46:36,719 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:46:36,719 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:46:41,053 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2022-12-21 16:46:41,053 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2022-12-21 16:46:54,253 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:46:54,253 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:46:57,607 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2022-12-21 16:46:57,607 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2022-12-21 16:50:07,610 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:50:07,610 | INFO | model.py | 92: Model of type: dense has been initialized
+2022-12-21 16:50:41,841 | INFO | model.py | 207: Beginning training for model dense with nelson_siegel
+2022-12-21 16:50:41,841 | INFO | model.py | 207: Beginning training for model dense with nelson_siegel
+2022-12-21 16:53:36,458 | INFO | model.py | 252: Saved weights to file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2022-12-21 16:53:36,458 | INFO | model.py | 252: Saved weights to file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2022-12-21 16:54:12,827 | INFO | model.py | 118: Weights loaded successfully
+2022-12-21 16:54:12,827 | INFO | model.py | 118: Weights loaded successfully
+2022-12-21 16:54:20,088 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:54:20,088 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:54:20,868 | INFO | model.py | 492: Calibration complete! change in parameters: 58.55851149699377
+2022-12-21 16:54:20,868 | INFO | model.py | 492: Calibration complete! change in parameters: 58.55851149699377
+2022-12-21 16:54:20,870 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 16:54:20,870 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 16:54:27,354 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:54:27,354 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:54:28,109 | INFO | model.py | 492: Calibration complete! change in parameters: 57.07154052126205
+2022-12-21 16:54:28,109 | INFO | model.py | 492: Calibration complete! change in parameters: 57.07154052126205
+2022-12-21 16:54:28,110 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 16:54:28,110 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 16:57:21,843 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:57:21,843 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:57:23,320 | INFO | model.py | 492: Calibration complete! change in parameters: 64.03676452231721
+2022-12-21 16:57:23,320 | INFO | model.py | 492: Calibration complete! change in parameters: 64.03676452231721
+2022-12-21 16:57:23,322 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 16:57:23,322 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 16:58:12,808 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:58:12,808 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:59:23,560 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 16:59:23,560 | INFO | model.py | 464: Beginning calibration for model dense with nelson_siegel
+2022-12-21 18:34:04,519 | INFO | model.py | 492: Calibration complete! change in parameters: 35.83369603625452
+2022-12-21 18:34:04,519 | INFO | model.py | 492: Calibration complete! change in parameters: 35.83369603625452
+2022-12-21 18:34:04,542 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2022-12-21 18:34:04,542 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat

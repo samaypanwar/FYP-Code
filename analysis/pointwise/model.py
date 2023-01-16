@@ -276,6 +276,7 @@ def train_model(
         figure1.savefig(f'{plot_path}pointwise_loss_{model_type}_{parameterization}.png')
 
         # I cluster the errors so to create the same plot as in the grid approach
+        # TODO: Init of time to contract start and strikes
         K_vector = np.array([31.6, 31.7, 31.9, 32.1, 32.3, 32.5, 32.7, 32.9, 33.1, 33.2])
         tau_vector = np.array(
                 [1 / 12, 1 / 12 + 1 / 24, 2 / 12 + 1 / 24, 3 / 12 + 1 / 24, 4 / 12 + 1 / 24, 5 / 12 + 1 / 24,
@@ -468,7 +469,7 @@ def calibrate(
 
     new_input_guess = np.zeros((calibration_size, parameter_size))
     # Start the actual calibration
-    for j in range(calibration_size):
+    for j in tqdm(range(calibration_size)):
         np_price_local = np.reshape(prices_calibrate[j, :, :], [N1 * N2, 1])
         tf_var_input_guess_local = tf.Variable(tf.reshape(tf_input_guess[j, :], (1, parameter_size)))
         calibration_step_local = tf.function(calibration_step)
@@ -507,62 +508,45 @@ def calibrate(
 
     if plot:
 
+        print(parameters)
+
         f = plt.figure(figsize = (20, 15))
         plt.subplot(3, 3, 1)
-        plt.plot(parameters[:, 0], percentage_err[:, 0] * 100, '*', color = 'midnightblue')
+        plt.plot(parameters_to_calibrate[:, 0], percentage_err[:, 0] * 100, '*', color = 'midnightblue')
         plt.title('a')
         plt.ylabel('Percentage error');
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         s0 = 'Average: %.2f' % mean_percentage_err[0] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[0] + r'%'
-        plt.text(np.mean(parameters[:, 0]), np.max(percentage_err[:, 0] * 90), s0, fontsize = 15, weight = 'bold')
+        plt.text(np.mean(parameters_to_calibrate[:, 0]), np.max(percentage_err[:, 0] * 90), s0, fontsize = 15, weight = 'bold')
 
         plt.subplot(3, 3, 2)
-        plt.plot(parameters[:, 1], percentage_err[:, 1] * 100, '*', color = 'midnightblue')
+        plt.plot(parameters_to_calibrate[:, 1], percentage_err[:, 1] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('b')
         plt.ylabel('Percentage error');
         s1 = 'Average: %.2f' % mean_percentage_err[1] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[1] + r'%'
-        plt.text(np.mean(parameters[:, 1]), np.max(percentage_err[:, 1] * 90), s1, fontsize = 15, weight = 'bold')
+        plt.text(np.mean(parameters_to_calibrate[:, 1]), np.max(percentage_err[:, 1] * 90), s1, fontsize = 15, weight = 'bold')
 
         plt.subplot(3, 3, 3)
-        plt.plot(parameters[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
+        plt.plot(parameters_to_calibrate[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('k')
         plt.ylabel('Percentage error');
         s2 = 'Average: %.2f' % mean_percentage_err[2] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[2] + r'%'
-        plt.text(np.mean(parameters[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
+        plt.text(np.mean(parameters_to_calibrate[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
 
-        plt.subplot(3, 3, 4)
-        plt.plot(parameters[:, 3], percentage_err[:, 3] * 100, '*', color = 'midnightblue')
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('$\\alpha_0$')
-        plt.ylabel('Percentage error');
-        s2 = 'Average: %.2f' % mean_percentage_err[3] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[3] + r'%'
-        plt.text(np.mean(parameters[:, 3]), np.max(percentage_err[:, 3] * 90), s2, fontsize = 15, weight = 'bold')
+        for i in range(1, parameter_size - 2):
 
-        plt.subplot(3, 3, 5)
-        plt.plot(parameters[:, 4], percentage_err[:, 4] * 100, '*', color = 'midnightblue')
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('$\\alpha_1$')
-        plt.ylabel('Percentage error');
-        s2 = 'Average: %.2f' % mean_percentage_err[4] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[4] + r'%'
-        plt.text(np.mean(parameters[:, 4]), np.max(percentage_err[:, 4] * 90), s2, fontsize = 15, weight = 'bold')
+            plt.subplot(3, 3, 3 + i)
+            plt.plot(parameters_to_calibrate[:, 2 + i], percentage_err[:, 2 + i] * 100, '*', color = 'midnightblue')
+            plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
+            plt.title(f'$z_{i}$')
+            plt.ylabel('Percentage error')
+            s2 = 'Average: %.2f' % mean_percentage_err[2 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
+                2 + i] + r'%'
+            plt.text(np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i] * 90), s2, fontsize = 15,
+                     weight = 'bold')
 
-        plt.subplot(3, 3, 6)
-        plt.plot(parameters[:, 5], percentage_err[:, 5] * 100, '*', color = 'midnightblue')
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('$\\alpha_2$')
-        plt.ylabel('Percentage error');
-        s2 = 'Average: %.2f' % mean_percentage_err[5] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[5] + r'%'
-        plt.text(np.mean(parameters[:, 5]), np.max(percentage_err[:, 5] * 90), s2, fontsize = 15, weight = 'bold')
-
-        plt.subplot(3, 3, 7)
-        plt.plot(parameters[:, 6], percentage_err[:, 6] * 100, '*', color = 'midnightblue')
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('$\\alpha_3$')
-        plt.ylabel('Percentage error');
-        s2 = 'Average: %.2f' % mean_percentage_err[6] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[6] + r'%'
-        plt.text(np.mean(parameters[:, 6]), np.max(percentage_err[:, 6] * 90), s2, fontsize = 15, weight = 'bold');
 
         f.savefig(
                 f'plotting/pointwise/pointwise_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
