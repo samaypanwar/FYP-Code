@@ -1,6 +1,10 @@
 ## Final Year Project
+#### Bond Pricing
 
-Directory Structure:
+In this branch, we are interested in estimating the a, b variables in the vasicek model
+on top of deterministic volatility rather than estimating parameters for the forward curve parameterisation
+
+#### Directory Structure:
 
 helper
 * parameterization
