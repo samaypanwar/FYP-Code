@@ -9,18 +9,18 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 from tqdm import tqdm
 
-from analysis.gridbased.convolutional import CNN
 from analysis.gridbased.dense import DenseModel
 from analysis.gridbased import *
+from helper.utils import assert_file_existence
 
 
-def load_data(parameterization: str = 'nelson_siegel'):
+def load_data(parameterization: str = 'vasicek'):
     """
     This function loads up our data for the prices/parameters and creates train test splits on the same
 
     Parameters
     ----------
-    parameterization : parameterization that we are using for our forward curve model
+    parameterization : parameterization that we are using for our bond pricing model
 
     Returns
     -------
@@ -30,29 +30,28 @@ def load_data(parameterization: str = 'nelson_siegel'):
     params_range = np.loadtxt(f'data/gridbased/gridbased_parameters_{parameterization}.dat')
     price = np.reshape(
             np.loadtxt(f'data/gridbased/gridbased_price_{parameterization}.dat'),
-            newshape = (train_size + test_size, N1,
-                        N2),
+            newshape = (train_size + test_size, N1),
             order = 'F'
             )
 
     # Train and test sets
-    params_range_train = params_range[:train_size, :]  # size=[train_size, param_in]
-    params_range_test = params_range[train_size: train_size + test_size, :]  # size=[test_size, param_in]
+    params_range_train = params_range[:train_size, :]
+    params_range_test = params_range[train_size: train_size + test_size, :]
 
-    price_train = price[:train_size, :, :]  # size=[train_size, N1, N2]
-    price_test = price[train_size: train_size + test_size, :, :]  # size=[test_size, N1, N2]
+    price_train = price[:train_size, :]
+    price_test = price[train_size: train_size + test_size, :]
 
     return params_range_train, params_range_test, price_train, price_test
 
 
-def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel'):
+def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
     """
     This function initializes and compiles our model type with the stated optimizer and loss function
 
     Parameters
     ----------
-    model_type : model architecture we are using (either 'dense' or 'cnn')
-    parameterization: parameterization that we are using for our forward curve model
+    model_type : model architecture we are using ('dense')
+    parameterization: parameterization that we are using for our bond pricing model
 
     Returns
     -------
@@ -64,18 +63,12 @@ def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel
     if model_type.lower() == 'dense':
         model = DenseModel()
 
-    elif model_type.lower() == 'cnn':
-        model = CNN()
-
     else:
         logger.error("Unknown model type: %s" % model_type)
         raise ValueError("Unknown model type")
 
-    if parameterization == 'nelson_siegel':
-        parameter_size = 7
-
-    elif parameterization == 'svensson':
-        parameter_size = 9
+    if parameterization == 'vasicek':
+        parameter_size = 4
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -99,15 +92,15 @@ def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel
     return model
 
 
-def load_weights(model, model_type: str = 'dense', parameterization: str = 'nelson_siegel'):
+def load_weights(model, model_type: str = 'dense', parameterization: str = 'vasicek'):
     """
     This function loads the weight of a trained model into the compiled model if they exist
 
     Parameters
     ----------
     model : instance of model class
-    model_type : model architecture we are using (either 'dense' or 'cnn')
-    parameterization : parameterization that we are using for our forward curve model
+    model_type : model architecture we are using ('dense')
+    parameterization : parameterization that we are using for our bond pricing model
 
     Returns
     -------
@@ -129,7 +122,7 @@ def load_weights(model, model_type: str = 'dense', parameterization: str = 'nels
 
 def train_model(
         model, epochs: int = 200, batch_size: int = 30, patience: int = 20, delta: int = 0.0002,
-        model_type: str = 'dense', parameterization: str = 'nelson_siegel', plot: bool = True
+        model_type: str = 'dense', parameterization: str = 'vasicek', plot: bool = True
         ):
     """
     This function trains our model with the given parameters and prices.
@@ -142,8 +135,8 @@ def train_model(
     batch_size : bath size for training
     patience : epochs to wait before an early stopping condition
     delta : criterion in terms of change in test loss for early stopping
-    model_type : model architecture we are using (either 'dense' or 'cnn')
-    parameterization : parameterization that we are using for our forward curve model
+    model_type : model architecture we are using ('dense')
+    parameterization : parameterization that we are using for our bond pricing model
     plot : Do we want to plot our results? (True)
 
     Returns
@@ -166,6 +159,7 @@ def train_model(
 
     test_dataset = tf.data.Dataset.from_tensor_slices((params_range_test, price_test)).batch(batch_size)
 
+
     # Define the early stop function
     def early_stop(loss_vector):
         """
@@ -185,10 +179,13 @@ def train_model(
     @tf.function
     def train_step(input_parameters, prices):
         with tf.GradientTape() as tape:
+            # print(input_parameters, prices)
             # training=True is only needed if there are layers with different
             # behavior during training versus inference (e.g. Dropout).
             predictions = model(input_parameters, training = True)
+
             loss = loss_object(prices, predictions)
+
         gradients = tape.gradient(loss, model.trainable_variables)
         optimizer.apply_gradients(zip(gradients, model.trainable_variables))
 
@@ -220,6 +217,7 @@ def train_model(
 
         for input_parameter, prices in train_dataset:
             # For each batch of images, and prices, compute the gradient and update
+            # print(prices)
             # the gradient of the network
             train_step(input_parameter, prices)
 
@@ -229,7 +227,7 @@ def train_model(
             test_step(test_images, test_prices)
 
         # Print some useful information
-        template = 'Training Epoch {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}'
+        template = 'Training Epoch: {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}'
         message = template.format(
                 epoch + 1,
                 epochs,
@@ -243,6 +241,7 @@ def train_model(
         train_loss_vec = np.append(train_loss_vec, train_loss.result())
         test_loss_vec = np.append(test_loss_vec, test_loss.result())
 
+
         if epoch > patience and early_stop(test_loss_vec):
 
             message = f"Early stopping at epoch = {epoch + 1}"
@@ -253,6 +252,7 @@ def train_model(
             break
 
     path_to_weights = f"weights/gridbased/gridbased_weights_{model_type}_{parameterization}.h5"
+    assert_file_existence(path_to_weights)
     model.save_weights(path_to_weights)
     logger.info("Saved weights to file: {}".format(path_to_weights))
 
@@ -269,45 +269,38 @@ def train_model(
         # Loss plots
         figure1 = plt.figure(figsize = (10, 5))
         plt.subplot(1, 2, 1)
-        plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
-        plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
+        plt.plot(np.arange(epochs)[:len(train_loss_vec)-1], train_loss_vec[1:], '-g')
+        plt.plot(np.arange(epochs)[:len(train_loss_vec)-1], test_loss_vec[1:], '-m')
         plt.legend(['Training Loss', 'Test Loss'])
         plt.xlabel("Epoch", fontsize = 15, labelpad = 5)
         plt.ylabel("Loss", fontsize = 15, labelpad = 5)
         text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
-                epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
+                min(epochs, len(train_loss_vec))) + '\n' + 'Batch Size = %d' % batch_size
         plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12)
 
         figure1.savefig(f'{plot_path}gridbased_loss_{model_type}_{parameterization}.png')
 
         # Heatmap train loss
-        K_label = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
-        tau_label = ['1', '2', '3', '4', '5', '6', '12']
+        maturities_label = ['1M', '2M', '3M', '4M', '5M', '6M', '1Y', '2Y', '3Y', '5Y', '10Y', '20Y', '30Y']
 
-        figure_train = plt.figure(1, figsize = (10, 5))
-        ax = plt.subplot(1, 2, 1)
-        mean_err = np.mean(100 * err_training_train, axis = 0)
-        plt.title("Average percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(mean_err))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
+        mean_err = 100*np.mean(err_training_train, axis = 0)
+        max_err = 100*np.max(err_training_train, axis = 0)
 
-        ax = plt.subplot(1, 2, 2)
-        max_err = np.max(100 * err_training_train, axis = 0)
-        plt.title("Maximum percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(max_err))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
+        import pandas as pd
+        import seaborn as sns
+
+        errors = pd.DataFrame(data = {'Mean Error': mean_err, 'Maximum Error': max_err, 'Maturities': maturities_label})
+
+        errors.set_index("Maturities", inplace = True)
+
+        figure_train, (ax1, ax2) = plt.subplots(nrows = 2, figsize = (15, 3))
+        figure_train.suptitle("Training Error in Prices", fontsize = 15)
+        sns.heatmap(errors[['Mean Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax= ax1)
+        sns.heatmap(errors[['Maximum Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax = ax2,
+                    )
+        # norm=matplotlib.colors.LogNorm()
+        plt.tight_layout()
+        plt.show()
 
         figure_train.savefig(
                 f'{plot_path}gridbased_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
@@ -315,30 +308,20 @@ def train_model(
                 )
 
         # Heatmap test loss
-        figure_test = plt.figure(1, figsize = (16, 5))
-        ax = plt.subplot(1, 2, 1)
-        mean_err = np.mean(100 * err_training_test, axis = 0)
-        plt.title("Average percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(mean_err))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
+        mean_err = 100*np.mean(err_training_test, axis = 0)
+        max_err = 100*np.max(err_training_test, axis = 0)
 
-        ax = plt.subplot(1, 2, 2)
-        max_err = np.max(100 * err_training_test, axis = 0)
-        plt.title("Maximum percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(max_err))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5)
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
+        errors = pd.DataFrame(data = {'Mean Error': mean_err, 'Maximum Error': max_err, 'Maturities': maturities_label})
+        errors.set_index("Maturities", inplace = True)
+
+        # print(errors)
+
+        figure_test, (ax1, ax2) = plt.subplots(nrows = 2, figsize = (15, 3))
+        figure_test.suptitle("Test Error in Prices", fontsize = 15)
+        sns.heatmap(errors[['Mean Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax = ax1)
+        sns.heatmap(errors[['Maximum Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax = ax2)
+        plt.tight_layout()
+        plt.show()
 
         figure_test.savefig(
                 f'{plot_path}gridbased_error_test_{model_type}_{parameterization}.png', bbox_inches =
@@ -348,7 +331,7 @@ def train_model(
 
 def calibrate(
         model, prices, parameters, epochs: int = 1000, model_type: str = 'dense', parameterization: str =
-        'nelson_siegel',
+        'vasicek',
         plot: bool = False
         ):
     """

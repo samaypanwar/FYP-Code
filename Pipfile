@@ -10,6 +10,8 @@ jupyter = "*"
 tqdm = "*"
 matplotlib = "*"
 pytest = "*"
+seaborn = "*"
+ipympl = "*"
 
 [dev-packages]
 

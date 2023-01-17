@@ -42,10 +42,10 @@ def generate_grid_data(
     N1 = len(maturities)
 
     vector_ranges = {
-            'a'    : [0.2, 0.5],
-            'b'    : [0.5, 0.8],
-            'sigma': [8, 9],
-            'r'    : [0, 5]
+            'a'    : [0.01, 0.1],
+            'b'    : [0.25, 0.8],
+            'sigma': [0.1, 0.2],
+            'r'    : [0.001, 0.06]
             }
 
     params_range = create_features_linspace(
@@ -85,10 +85,10 @@ def generate_pointwise_data(
     # Keeps track of the range of our parameters over which we are testing
     vector_ranges = {
             'maturity': [1 / 12, 30],
-            'a'       : [0.2, 0.5],
-            'b'       : [0.5, 0.8],
-            'sigma'   : [8, 9],
-            'r'       : [0, 5]
+            'a'    : [0.01, 0.1],
+            'b'    : [0.25, 0.8],
+            'sigma': [0.1, 0.2],
+            'r'    : [0.001, 0.06]
             }
 
     params_range = create_features_linspace(

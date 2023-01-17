@@ -257,3 +257,134 @@
 2022-12-21 18:34:04,519 | INFO | model.py | 492: Calibration complete! change in parameters: 35.83369603625452
 2022-12-21 18:34:04,542 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
 2022-12-21 18:34:04,542 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2023-01-17 18:53:39,692 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 18:54:24,675 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 18:54:24,678 | ERROR | model.py | 119: Failed to load the weights file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 18:55:06,357 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 18:55:18,100 | INFO | model.py | 205: Beginning training for model dense with vasicek
+2023-01-17 18:55:23,339 | INFO | model.py | 251: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 18:57:10,258 | INFO | model.py | 207: Beginning training for model dense with vasicek
+2023-01-17 18:57:11,090 | INFO | model.py | 253: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 18:57:38,289 | INFO | model.py | 208: Beginning training for model dense with vasicek
+2023-01-17 18:57:39,055 | INFO | model.py | 254: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 18:57:57,175 | INFO | model.py | 208: Beginning training for model dense with vasicek
+2023-01-17 18:57:58,128 | INFO | model.py | 254: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:03:10,957 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:03:15,653 | INFO | model.py | 208: Beginning training for model dense with vasicek
+2023-01-17 19:03:16,403 | INFO | model.py | 254: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:09:02,347 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:09:09,647 | INFO | model.py | 208: Beginning training for model dense with vasicek
+2023-01-17 19:09:10,546 | INFO | model.py | 254: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:11:47,037 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:11:49,939 | INFO | model.py | 208: Beginning training for model dense with vasicek
+2023-01-17 19:11:50,794 | INFO | model.py | 254: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:13:16,031 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:16:53,963 | INFO | model.py | 207: Beginning training for model dense with vasicek
+2023-01-17 19:16:54,694 | INFO | model.py | 253: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:17:47,719 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:17:48,704 | INFO | model.py | 255: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:18:20,297 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:18:21,447 | INFO | model.py | 255: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:20:01,956 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:20:35,006 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:20:41,536 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:20:49,693 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:20:54,205 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:21:10,078 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:21:14,019 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:22:20,299 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:22:29,463 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:22:55,014 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:22:57,611 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:22:58,853 | INFO | model.py | 255: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:25:15,855 | INFO | model.py | 210: Beginning training for model dense with vasicek
+2023-01-17 19:26:14,957 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:26:15,717 | INFO | model.py | 255: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:26:35,173 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:27:33,176 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:27:41,998 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:27:42,679 | INFO | model.py | 255: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:30:33,704 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:30:34,615 | INFO | model.py | 255: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:32:16,910 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:32:18,127 | INFO | model.py | 256: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:33:38,942 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:33:39,604 | INFO | model.py | 258: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:34:17,834 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:34:19,841 | INFO | model.py | 258: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:55:15,106 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 19:55:18,304 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:55:20,278 | INFO | model.py | 258: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:55:31,626 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:55:32,405 | INFO | model.py | 258: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:56:03,609 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:56:18,012 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:56:28,734 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 19:56:28,738 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:58:32,457 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:58:43,433 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 19:58:43,439 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:58:59,964 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:59:11,027 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 19:59:11,032 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:59:25,849 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:59:36,817 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 19:59:36,821 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 19:59:49,059 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 19:59:59,739 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 19:59:59,743 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 20:03:02,936 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 20:03:13,506 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 20:03:13,510 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 20:05:28,412 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 20:05:38,849 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 20:05:38,856 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:08:37,623 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:08:42,735 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:09:55,066 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:10:00,148 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:14:21,321 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:14:22,978 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:15:56,806 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:15:57,926 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:18:18,261 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:18:19,434 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:28:05,374 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-17 23:28:13,935 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:28:24,661 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 23:28:24,666 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:29:57,583 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:30:07,968 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 23:30:07,972 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:33:14,731 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:33:26,178 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 23:33:26,183 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:33:49,946 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:34:01,941 | WARNING | model.py | 250: Early stopping at epoch = 22
+2023-01-17 23:34:01,946 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:37:22,441 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:37:23,539 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:39:21,317 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:39:21,998 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-17 23:39:36,585 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-17 23:39:38,524 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:38:35,827 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:38:37,574 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:40:16,902 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:40:18,545 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:42:44,782 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:42:46,383 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:43:47,812 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:43:49,306 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:46:04,284 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:46:05,886 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:47:41,933 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:47:43,980 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:50:16,697 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:50:18,300 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:50:42,280 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:50:44,189 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 00:52:14,897 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-18 00:52:24,792 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 00:52:37,363 | WARNING | model.py | 250: Early stopping at epoch = 26
+2023-01-18 00:52:37,367 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5

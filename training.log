@@ -1,0 +1,434 @@
+2023-01-17 18:55:18,101 | INFO | Beginning training for model dense with vasicek
+2023-01-17 18:55:18,986 | DEBUG | Training Epoch 1/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:19,462 | DEBUG | Training Epoch 2/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:19,935 | DEBUG | Training Epoch 3/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:20,402 | DEBUG | Training Epoch 4/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:20,886 | DEBUG | Training Epoch 5/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:21,423 | DEBUG | Training Epoch 6/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:21,905 | DEBUG | Training Epoch 7/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:22,375 | DEBUG | Training Epoch 8/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:22,848 | DEBUG | Training Epoch 9/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:55:23,325 | DEBUG | Training Epoch 10/10, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:57:10,259 | INFO | Beginning training for model dense with vasicek
+2023-01-17 18:57:11,086 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:57:38,290 | INFO | Beginning training for model dense with vasicek
+2023-01-17 18:57:39,051 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 18:57:57,176 | INFO | Beginning training for model dense with vasicek
+2023-01-17 18:57:58,124 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:03:15,653 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:03:16,398 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:09:09,648 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:09:10,542 | DEBUG | Training Epoch 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:11:49,939 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:11:50,790 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:16:53,964 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:16:54,689 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:17:47,720 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:17:48,700 | DEBUG | Training Epoch 1/1, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:18:20,297 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:18:20,978 | DEBUG | Training Epoch 1/2, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:18:21,443 | DEBUG | Training Epoch 2/2, Loss: nan,  Test Loss: nan, Delta Test Loss: nan
+2023-01-17 19:20:01,956 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:20:35,007 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:20:54,205 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:21:14,019 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:22:29,463 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:22:57,611 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:22:58,392 | DEBUG | Training Epoch 1/2, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:22:58,848 | DEBUG | Training Epoch 2/2, Loss: inf,  Test Loss: inf, Delta Test Loss: nan
+2023-01-17 19:25:15,856 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:26:14,957 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:26:15,712 | DEBUG | Training Epoch 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:26:35,173 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:27:33,176 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:27:41,999 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:27:42,674 | DEBUG | Training Epoch 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:30:33,705 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:30:34,611 | DEBUG | Training Epoch 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:32:16,910 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:32:18,122 | DEBUG | Training Epoch 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:33:38,943 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:33:39,600 | DEBUG | Training Epoch 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:34:17,834 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:34:19,837 | DEBUG | Training Epoch: 1/1, Loss: inf,  Test Loss: inf, Delta Test Loss: inf
+2023-01-17 19:55:18,304 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:55:20,273 | DEBUG | Training Epoch: 1/1, Loss: 0.000343,  Test Loss: 0.000006, Delta Test Loss: 0.000006
+2023-01-17 19:55:31,626 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:55:32,401 | DEBUG | Training Epoch: 1/1, Loss: 0.000006,  Test Loss: 0.000003, Delta Test Loss: 0.000003
+2023-01-17 19:56:03,609 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:56:04,357 | DEBUG | Training Epoch: 1/100, Loss: 0.000005,  Test Loss: 0.000003, Delta Test Loss: 0.000003
+2023-01-17 19:56:04,827 | DEBUG | Training Epoch: 2/100, Loss: 0.000004,  Test Loss: 0.000003, Delta Test Loss: 0.000000
+2023-01-17 19:56:05,291 | DEBUG | Training Epoch: 3/100, Loss: 0.000003,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 19:56:05,760 | DEBUG | Training Epoch: 4/100, Loss: 0.000002,  Test Loss: 0.000002, Delta Test Loss: 0.000000
+2023-01-17 19:56:06,228 | DEBUG | Training Epoch: 5/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:06,704 | DEBUG | Training Epoch: 6/100, Loss: 0.000002,  Test Loss: 0.000005, Delta Test Loss: 0.000003
+2023-01-17 19:56:07,175 | DEBUG | Training Epoch: 7/100, Loss: 0.000002,  Test Loss: 0.000002, Delta Test Loss: 0.000003
+2023-01-17 19:56:07,649 | DEBUG | Training Epoch: 8/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:56:08,131 | DEBUG | Training Epoch: 9/100, Loss: 0.000002,  Test Loss: 0.000005, Delta Test Loss: 0.000004
+2023-01-17 19:56:08,600 | DEBUG | Training Epoch: 10/100, Loss: 0.000002,  Test Loss: 0.000002, Delta Test Loss: 0.000004
+2023-01-17 19:56:09,089 | DEBUG | Training Epoch: 11/100, Loss: 0.000002,  Test Loss: 0.000003, Delta Test Loss: 0.000001
+2023-01-17 19:56:09,575 | DEBUG | Training Epoch: 12/100, Loss: 0.000002,  Test Loss: 0.000002, Delta Test Loss: 0.000000
+2023-01-17 19:56:10,059 | DEBUG | Training Epoch: 13/100, Loss: 0.000002,  Test Loss: 0.000008, Delta Test Loss: 0.000006
+2023-01-17 19:56:18,012 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:56:18,809 | DEBUG | Training Epoch: 1/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:56:19,264 | DEBUG | Training Epoch: 2/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:19,710 | DEBUG | Training Epoch: 3/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:20,301 | DEBUG | Training Epoch: 4/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:20,752 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:21,192 | DEBUG | Training Epoch: 6/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:21,635 | DEBUG | Training Epoch: 7/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:22,077 | DEBUG | Training Epoch: 8/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:22,523 | DEBUG | Training Epoch: 9/100, Loss: 0.000001,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 19:56:22,983 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:56:23,421 | DEBUG | Training Epoch: 11/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:56:23,862 | DEBUG | Training Epoch: 12/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:24,313 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:56:24,774 | DEBUG | Training Epoch: 14/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:56:25,294 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:56:25,772 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:56:26,399 | DEBUG | Training Epoch: 17/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:56:26,851 | DEBUG | Training Epoch: 18/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:27,297 | DEBUG | Training Epoch: 19/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:56:27,827 | DEBUG | Training Epoch: 20/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:28,288 | DEBUG | Training Epoch: 21/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:56:28,733 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 19:56:28,734 | WARNING | Early stopping at epoch = 22
+2023-01-17 19:58:32,457 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:58:33,120 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:58:33,575 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:58:34,017 | DEBUG | Training Epoch: 3/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:34,461 | DEBUG | Training Epoch: 4/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:34,908 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:36,232 | DEBUG | Training Epoch: 6/100, Loss: 0.000001,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 19:58:36,703 | DEBUG | Training Epoch: 7/100, Loss: 0.000001,  Test Loss: 0.000002, Delta Test Loss: 0.000000
+2023-01-17 19:58:37,189 | DEBUG | Training Epoch: 8/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:58:37,643 | DEBUG | Training Epoch: 9/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:58:38,085 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:38,542 | DEBUG | Training Epoch: 11/100, Loss: 0.000001,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 19:58:38,989 | DEBUG | Training Epoch: 12/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:58:39,435 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:39,879 | DEBUG | Training Epoch: 14/100, Loss: 0.000001,  Test Loss: 0.000004, Delta Test Loss: 0.000003
+2023-01-17 19:58:40,326 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000003
+2023-01-17 19:58:40,767 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:41,210 | DEBUG | Training Epoch: 17/100, Loss: 0.000001,  Test Loss: 0.000007, Delta Test Loss: 0.000007
+2023-01-17 19:58:41,652 | DEBUG | Training Epoch: 18/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000007
+2023-01-17 19:58:42,099 | DEBUG | Training Epoch: 19/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:58:42,543 | DEBUG | Training Epoch: 20/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:58:42,984 | DEBUG | Training Epoch: 21/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:58:43,432 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:58:43,433 | WARNING | Early stopping at epoch = 22
+2023-01-17 19:58:59,964 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:59:00,926 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:01,413 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:01,902 | DEBUG | Training Epoch: 3/100, Loss: 0.000001,  Test Loss: 0.000005, Delta Test Loss: 0.000004
+2023-01-17 19:59:02,385 | DEBUG | Training Epoch: 4/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000005
+2023-01-17 19:59:02,868 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:03,347 | DEBUG | Training Epoch: 6/100, Loss: 0.000001,  Test Loss: 0.000004, Delta Test Loss: 0.000003
+2023-01-17 19:59:03,827 | DEBUG | Training Epoch: 7/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000003
+2023-01-17 19:59:04,308 | DEBUG | Training Epoch: 8/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:04,807 | DEBUG | Training Epoch: 9/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:05,290 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:05,769 | DEBUG | Training Epoch: 11/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:06,245 | DEBUG | Training Epoch: 12/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:06,710 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:07,178 | DEBUG | Training Epoch: 14/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:59:07,657 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:08,140 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:08,627 | DEBUG | Training Epoch: 17/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:09,111 | DEBUG | Training Epoch: 18/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:09,595 | DEBUG | Training Epoch: 19/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:10,070 | DEBUG | Training Epoch: 20/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:10,543 | DEBUG | Training Epoch: 21/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:11,027 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:11,027 | WARNING | Early stopping at epoch = 22
+2023-01-17 19:59:25,849 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:59:26,540 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000003, Delta Test Loss: 0.000003
+2023-01-17 19:59:27,034 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 19:59:27,527 | DEBUG | Training Epoch: 3/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:28,013 | DEBUG | Training Epoch: 4/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:28,500 | DEBUG | Training Epoch: 5/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:28,985 | DEBUG | Training Epoch: 6/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:29,472 | DEBUG | Training Epoch: 7/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:29,960 | DEBUG | Training Epoch: 8/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:30,446 | DEBUG | Training Epoch: 9/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:30,931 | DEBUG | Training Epoch: 10/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:31,421 | DEBUG | Training Epoch: 11/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:59:31,908 | DEBUG | Training Epoch: 12/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:32,397 | DEBUG | Training Epoch: 13/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:32,893 | DEBUG | Training Epoch: 14/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:59:33,380 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:33,870 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:34,356 | DEBUG | Training Epoch: 17/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:34,847 | DEBUG | Training Epoch: 18/100, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 19:59:35,336 | DEBUG | Training Epoch: 19/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 19:59:35,829 | DEBUG | Training Epoch: 20/100, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 19:59:36,322 | DEBUG | Training Epoch: 21/100, Loss: 0.000000,  Test Loss: 0.000003, Delta Test Loss: 0.000001
+2023-01-17 19:59:36,817 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 19:59:36,817 | WARNING | Early stopping at epoch = 22
+2023-01-17 19:59:49,059 | INFO | Beginning training for model dense with vasicek
+2023-01-17 19:59:49,952 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:50,422 | DEBUG | Training Epoch: 2/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:50,892 | DEBUG | Training Epoch: 3/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:59:51,355 | DEBUG | Training Epoch: 4/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:51,829 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:52,291 | DEBUG | Training Epoch: 6/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:52,760 | DEBUG | Training Epoch: 7/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:53,221 | DEBUG | Training Epoch: 8/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:53,688 | DEBUG | Training Epoch: 9/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:54,152 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:54,618 | DEBUG | Training Epoch: 11/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:55,086 | DEBUG | Training Epoch: 12/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:55,548 | DEBUG | Training Epoch: 13/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:56,017 | DEBUG | Training Epoch: 14/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:56,475 | DEBUG | Training Epoch: 15/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:56,942 | DEBUG | Training Epoch: 16/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:57,403 | DEBUG | Training Epoch: 17/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 19:59:57,872 | DEBUG | Training Epoch: 18/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:58,338 | DEBUG | Training Epoch: 19/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 19:59:58,803 | DEBUG | Training Epoch: 20/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 19:59:59,272 | DEBUG | Training Epoch: 21/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:59,739 | DEBUG | Training Epoch: 22/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 19:59:59,739 | WARNING | Early stopping at epoch = 22
+2023-01-17 20:03:02,936 | INFO | Beginning training for model dense with vasicek
+2023-01-17 20:03:03,606 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:04,079 | DEBUG | Training Epoch: 2/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:04,544 | DEBUG | Training Epoch: 3/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:05,014 | DEBUG | Training Epoch: 4/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:05,483 | DEBUG | Training Epoch: 5/100, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 20:03:05,957 | DEBUG | Training Epoch: 6/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 20:03:06,426 | DEBUG | Training Epoch: 7/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:06,898 | DEBUG | Training Epoch: 8/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:07,365 | DEBUG | Training Epoch: 9/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:07,840 | DEBUG | Training Epoch: 10/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:08,308 | DEBUG | Training Epoch: 11/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:08,779 | DEBUG | Training Epoch: 12/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:09,253 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 20:03:09,726 | DEBUG | Training Epoch: 14/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 20:03:10,202 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 20:03:10,674 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:11,147 | DEBUG | Training Epoch: 17/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:11,617 | DEBUG | Training Epoch: 18/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:12,089 | DEBUG | Training Epoch: 19/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:12,560 | DEBUG | Training Epoch: 20/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:13,031 | DEBUG | Training Epoch: 21/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:03:13,505 | DEBUG | Training Epoch: 22/100, Loss: 0.000000,  Test Loss: 0.000003, Delta Test Loss: 0.000003
+2023-01-17 20:03:13,506 | WARNING | Early stopping at epoch = 22
+2023-01-17 20:05:28,412 | INFO | Beginning training for model dense with vasicek
+2023-01-17 20:05:29,104 | DEBUG | Training Epoch: 1/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:29,578 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:30,045 | DEBUG | Training Epoch: 3/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 20:05:30,537 | DEBUG | Training Epoch: 4/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:31,005 | DEBUG | Training Epoch: 5/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:31,463 | DEBUG | Training Epoch: 6/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:31,923 | DEBUG | Training Epoch: 7/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:32,382 | DEBUG | Training Epoch: 8/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 20:05:32,840 | DEBUG | Training Epoch: 9/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 20:05:33,299 | DEBUG | Training Epoch: 10/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 20:05:33,760 | DEBUG | Training Epoch: 11/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:34,224 | DEBUG | Training Epoch: 12/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 20:05:34,684 | DEBUG | Training Epoch: 13/100, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 20:05:35,143 | DEBUG | Training Epoch: 14/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 20:05:35,603 | DEBUG | Training Epoch: 15/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:36,071 | DEBUG | Training Epoch: 16/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:36,534 | DEBUG | Training Epoch: 17/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:36,994 | DEBUG | Training Epoch: 18/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:37,458 | DEBUG | Training Epoch: 19/100, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 20:05:37,926 | DEBUG | Training Epoch: 20/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 20:05:38,389 | DEBUG | Training Epoch: 21/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 20:05:38,848 | DEBUG | Training Epoch: 22/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 20:05:38,849 | WARNING | Early stopping at epoch = 22
+2023-01-17 23:08:37,624 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:08:38,591 | DEBUG | Training Epoch: 1/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:08:39,048 | DEBUG | Training Epoch: 2/10, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 23:08:39,512 | DEBUG | Training Epoch: 3/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 23:08:39,985 | DEBUG | Training Epoch: 4/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:08:40,437 | DEBUG | Training Epoch: 5/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:08:40,895 | DEBUG | Training Epoch: 6/10, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:08:41,348 | DEBUG | Training Epoch: 7/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:08:41,804 | DEBUG | Training Epoch: 8/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:08:42,253 | DEBUG | Training Epoch: 9/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:08:42,709 | DEBUG | Training Epoch: 10/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:55,066 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:09:55,753 | DEBUG | Training Epoch: 1/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:56,247 | DEBUG | Training Epoch: 2/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:56,737 | DEBUG | Training Epoch: 3/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:57,218 | DEBUG | Training Epoch: 4/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:57,711 | DEBUG | Training Epoch: 5/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:58,201 | DEBUG | Training Epoch: 6/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:09:58,697 | DEBUG | Training Epoch: 7/10, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 23:09:59,181 | DEBUG | Training Epoch: 8/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 23:09:59,666 | DEBUG | Training Epoch: 9/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:10:00,144 | DEBUG | Training Epoch: 10/10, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:14:21,321 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:14:22,405 | DEBUG | Training Epoch: 1/2, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:14:22,972 | DEBUG | Training Epoch: 2/2, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:15:56,806 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:15:57,454 | DEBUG | Training Epoch: 1/2, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:15:57,922 | DEBUG | Training Epoch: 2/2, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:18:18,261 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:18:18,954 | DEBUG | Training Epoch: 1/2, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:18:19,429 | DEBUG | Training Epoch: 2/2, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:28:13,935 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:28:14,803 | DEBUG | Training Epoch: 1/100, Loss: 0.000264,  Test Loss: 0.000007, Delta Test Loss: 0.000007
+2023-01-17 23:28:15,281 | DEBUG | Training Epoch: 2/100, Loss: 0.000005,  Test Loss: 0.000003, Delta Test Loss: 0.000003
+2023-01-17 23:28:15,754 | DEBUG | Training Epoch: 3/100, Loss: 0.000004,  Test Loss: 0.000004, Delta Test Loss: 0.000001
+2023-01-17 23:28:16,335 | DEBUG | Training Epoch: 4/100, Loss: 0.000003,  Test Loss: 0.000003, Delta Test Loss: 0.000001
+2023-01-17 23:28:16,797 | DEBUG | Training Epoch: 5/100, Loss: 0.000002,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 23:28:17,252 | DEBUG | Training Epoch: 6/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:28:17,716 | DEBUG | Training Epoch: 7/100, Loss: 0.000002,  Test Loss: 0.000002, Delta Test Loss: 0.000000
+2023-01-17 23:28:18,172 | DEBUG | Training Epoch: 8/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:28:18,636 | DEBUG | Training Epoch: 9/100, Loss: 0.000002,  Test Loss: 0.000004, Delta Test Loss: 0.000003
+2023-01-17 23:28:19,092 | DEBUG | Training Epoch: 10/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000003
+2023-01-17 23:28:19,555 | DEBUG | Training Epoch: 11/100, Loss: 0.000002,  Test Loss: 0.000004, Delta Test Loss: 0.000003
+2023-01-17 23:28:20,023 | DEBUG | Training Epoch: 12/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000003
+2023-01-17 23:28:20,488 | DEBUG | Training Epoch: 13/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:28:20,956 | DEBUG | Training Epoch: 14/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:28:21,420 | DEBUG | Training Epoch: 15/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:28:21,889 | DEBUG | Training Epoch: 16/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:28:22,361 | DEBUG | Training Epoch: 17/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:28:22,826 | DEBUG | Training Epoch: 18/100, Loss: 0.000002,  Test Loss: 0.000004, Delta Test Loss: 0.000003
+2023-01-17 23:28:23,279 | DEBUG | Training Epoch: 19/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000003
+2023-01-17 23:28:23,741 | DEBUG | Training Epoch: 20/100, Loss: 0.000002,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:28:24,204 | DEBUG | Training Epoch: 21/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:28:24,661 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:28:24,661 | WARNING | Early stopping at epoch = 22
+2023-01-17 23:29:57,583 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:29:58,328 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000002, Delta Test Loss: 0.000002
+2023-01-17 23:29:58,798 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:29:59,260 | DEBUG | Training Epoch: 3/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:29:59,725 | DEBUG | Training Epoch: 4/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 23:30:00,208 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:30:00,681 | DEBUG | Training Epoch: 6/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:30:01,149 | DEBUG | Training Epoch: 7/100, Loss: 0.000001,  Test Loss: 0.000005, Delta Test Loss: 0.000005
+2023-01-17 23:30:01,610 | DEBUG | Training Epoch: 8/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000005
+2023-01-17 23:30:02,071 | DEBUG | Training Epoch: 9/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:30:02,542 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:30:02,979 | DEBUG | Training Epoch: 11/100, Loss: 0.000001,  Test Loss: 0.000003, Delta Test Loss: 0.000002
+2023-01-17 23:30:03,416 | DEBUG | Training Epoch: 12/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000003
+2023-01-17 23:30:03,853 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:30:04,289 | DEBUG | Training Epoch: 14/100, Loss: 0.000001,  Test Loss: 0.000006, Delta Test Loss: 0.000005
+2023-01-17 23:30:04,745 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000005
+2023-01-17 23:30:05,205 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:30:05,661 | DEBUG | Training Epoch: 17/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:30:06,122 | DEBUG | Training Epoch: 18/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:30:06,578 | DEBUG | Training Epoch: 19/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:30:07,039 | DEBUG | Training Epoch: 20/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:30:07,506 | DEBUG | Training Epoch: 21/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:30:07,968 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 23:30:07,968 | WARNING | Early stopping at epoch = 22
+2023-01-17 23:33:14,731 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:33:15,666 | DEBUG | Training Epoch: 1/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:16,136 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:33:16,600 | DEBUG | Training Epoch: 3/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:33:17,090 | DEBUG | Training Epoch: 4/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:33:17,594 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:18,059 | DEBUG | Training Epoch: 6/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:18,523 | DEBUG | Training Epoch: 7/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:33:18,992 | DEBUG | Training Epoch: 8/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:19,456 | DEBUG | Training Epoch: 9/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:19,933 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:20,535 | DEBUG | Training Epoch: 11/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:33:21,141 | DEBUG | Training Epoch: 12/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 23:33:21,662 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:22,303 | DEBUG | Training Epoch: 14/100, Loss: 0.000001,  Test Loss: 0.000003, Delta Test Loss: 0.000002
+2023-01-17 23:33:22,807 | DEBUG | Training Epoch: 15/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 23:33:23,308 | DEBUG | Training Epoch: 16/100, Loss: 0.000001,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:33:23,820 | DEBUG | Training Epoch: 17/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 23:33:24,297 | DEBUG | Training Epoch: 18/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:24,761 | DEBUG | Training Epoch: 19/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000000
+2023-01-17 23:33:25,233 | DEBUG | Training Epoch: 20/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:25,709 | DEBUG | Training Epoch: 21/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:26,178 | DEBUG | Training Epoch: 22/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:26,178 | WARNING | Early stopping at epoch = 22
+2023-01-17 23:33:49,946 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:33:50,622 | DEBUG | Training Epoch: 1/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:51,102 | DEBUG | Training Epoch: 2/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:51,670 | DEBUG | Training Epoch: 3/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:52,217 | DEBUG | Training Epoch: 4/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:52,819 | DEBUG | Training Epoch: 5/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:53,281 | DEBUG | Training Epoch: 6/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:33:53,717 | DEBUG | Training Epoch: 7/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 23:33:54,188 | DEBUG | Training Epoch: 8/100, Loss: 0.000000,  Test Loss: 0.000003, Delta Test Loss: 0.000002
+2023-01-17 23:33:54,707 | DEBUG | Training Epoch: 9/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-17 23:33:55,246 | DEBUG | Training Epoch: 10/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:55,762 | DEBUG | Training Epoch: 11/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:56,236 | DEBUG | Training Epoch: 12/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:56,704 | DEBUG | Training Epoch: 13/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:57,135 | DEBUG | Training Epoch: 14/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:57,574 | DEBUG | Training Epoch: 15/100, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:58,001 | DEBUG | Training Epoch: 16/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:58,434 | DEBUG | Training Epoch: 17/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:58,865 | DEBUG | Training Epoch: 18/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:33:59,397 | DEBUG | Training Epoch: 19/100, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:34:00,251 | DEBUG | Training Epoch: 20/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000001
+2023-01-17 23:34:01,372 | DEBUG | Training Epoch: 21/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:34:01,941 | DEBUG | Training Epoch: 22/100, Loss: 0.000000,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:34:01,941 | WARNING | Early stopping at epoch = 22
+2023-01-17 23:37:22,441 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:37:23,535 | DEBUG | Training Epoch: 1/1, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:39:21,317 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:39:21,994 | DEBUG | Training Epoch: 1/1, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000000
+2023-01-17 23:39:36,585 | INFO | Beginning training for model dense with vasicek
+2023-01-17 23:39:37,378 | DEBUG | Training Epoch: 1/3, Loss: 0.000000,  Test Loss: 0.000001, Delta Test Loss: 0.000001
+2023-01-17 23:39:37,935 | DEBUG | Training Epoch: 2/3, Loss: 0.000000,  Test Loss: 0.000002, Delta Test Loss: 0.000001
+2023-01-17 23:39:38,518 | DEBUG | Training Epoch: 3/3, Loss: 0.000001,  Test Loss: 0.000000, Delta Test Loss: 0.000002
+2023-01-18 00:38:35,827 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:38:36,630 | DEBUG | Training Epoch: 1/3, Loss: 0.029767,  Test Loss: 0.004060, Delta Test Loss: 0.004060
+2023-01-18 00:38:37,111 | DEBUG | Training Epoch: 2/3, Loss: 0.002454,  Test Loss: 0.001411, Delta Test Loss: 0.002649
+2023-01-18 00:38:37,569 | DEBUG | Training Epoch: 3/3, Loss: 0.001063,  Test Loss: 0.000934, Delta Test Loss: 0.000477
+2023-01-18 00:40:16,903 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:40:17,579 | DEBUG | Training Epoch: 1/3, Loss: 0.000737,  Test Loss: 0.000646, Delta Test Loss: 0.000646
+2023-01-18 00:40:18,068 | DEBUG | Training Epoch: 2/3, Loss: 0.000520,  Test Loss: 0.000437, Delta Test Loss: 0.000209
+2023-01-18 00:40:18,540 | DEBUG | Training Epoch: 3/3, Loss: 0.000420,  Test Loss: 0.000776, Delta Test Loss: 0.000340
+2023-01-18 00:42:44,782 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:42:45,446 | DEBUG | Training Epoch: 1/3, Loss: 0.000359,  Test Loss: 0.000387, Delta Test Loss: 0.000387
+2023-01-18 00:42:45,917 | DEBUG | Training Epoch: 2/3, Loss: 0.000307,  Test Loss: 0.000256, Delta Test Loss: 0.000131
+2023-01-18 00:42:46,379 | DEBUG | Training Epoch: 3/3, Loss: 0.000264,  Test Loss: 0.000324, Delta Test Loss: 0.000068
+2023-01-18 00:43:47,813 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:43:48,442 | DEBUG | Training Epoch: 1/3, Loss: 0.000243,  Test Loss: 0.000307, Delta Test Loss: 0.000307
+2023-01-18 00:43:48,874 | DEBUG | Training Epoch: 2/3, Loss: 0.000221,  Test Loss: 0.000193, Delta Test Loss: 0.000114
+2023-01-18 00:43:49,301 | DEBUG | Training Epoch: 3/3, Loss: 0.000205,  Test Loss: 0.000229, Delta Test Loss: 0.000036
+2023-01-18 00:46:04,284 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:46:04,948 | DEBUG | Training Epoch: 1/3, Loss: 0.000187,  Test Loss: 0.000186, Delta Test Loss: 0.000186
+2023-01-18 00:46:05,417 | DEBUG | Training Epoch: 2/3, Loss: 0.000192,  Test Loss: 0.000228, Delta Test Loss: 0.000042
+2023-01-18 00:46:05,882 | DEBUG | Training Epoch: 3/3, Loss: 0.000169,  Test Loss: 0.000141, Delta Test Loss: 0.000087
+2023-01-18 00:47:41,934 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:47:42,799 | DEBUG | Training Epoch: 1/3, Loss: 0.000166,  Test Loss: 0.000153, Delta Test Loss: 0.000153
+2023-01-18 00:47:43,408 | DEBUG | Training Epoch: 2/3, Loss: 0.000158,  Test Loss: 0.000138, Delta Test Loss: 0.000016
+2023-01-18 00:47:43,975 | DEBUG | Training Epoch: 3/3, Loss: 0.000154,  Test Loss: 0.000154, Delta Test Loss: 0.000017
+2023-01-18 00:50:16,698 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:50:17,365 | DEBUG | Training Epoch: 1/3, Loss: 0.000155,  Test Loss: 0.000146, Delta Test Loss: 0.000146
+2023-01-18 00:50:17,839 | DEBUG | Training Epoch: 2/3, Loss: 0.000142,  Test Loss: 0.000113, Delta Test Loss: 0.000033
+2023-01-18 00:50:18,295 | DEBUG | Training Epoch: 3/3, Loss: 0.000137,  Test Loss: 0.000126, Delta Test Loss: 0.000012
+2023-01-18 00:50:42,280 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:50:43,225 | DEBUG | Training Epoch: 1/3, Loss: 0.000128,  Test Loss: 0.000096, Delta Test Loss: 0.000096
+2023-01-18 00:50:43,712 | DEBUG | Training Epoch: 2/3, Loss: 0.000121,  Test Loss: 0.000191, Delta Test Loss: 0.000095
+2023-01-18 00:50:44,184 | DEBUG | Training Epoch: 3/3, Loss: 0.000125,  Test Loss: 0.000188, Delta Test Loss: 0.000003
+2023-01-18 00:52:24,792 | INFO | Beginning training for model dense with vasicek
+2023-01-18 00:52:25,788 | DEBUG | Training Epoch: 1/100, Loss: 0.040174,  Test Loss: 0.007173, Delta Test Loss: 0.007173
+2023-01-18 00:52:26,316 | DEBUG | Training Epoch: 2/100, Loss: 0.003745,  Test Loss: 0.001959, Delta Test Loss: 0.005214
+2023-01-18 00:52:26,773 | DEBUG | Training Epoch: 3/100, Loss: 0.001273,  Test Loss: 0.001150, Delta Test Loss: 0.000809
+2023-01-18 00:52:27,248 | DEBUG | Training Epoch: 4/100, Loss: 0.000914,  Test Loss: 0.000851, Delta Test Loss: 0.000300
+2023-01-18 00:52:27,718 | DEBUG | Training Epoch: 5/100, Loss: 0.000748,  Test Loss: 0.000646, Delta Test Loss: 0.000204
+2023-01-18 00:52:28,189 | DEBUG | Training Epoch: 6/100, Loss: 0.000447,  Test Loss: 0.000398, Delta Test Loss: 0.000248
+2023-01-18 00:52:28,654 | DEBUG | Training Epoch: 7/100, Loss: 0.000345,  Test Loss: 0.000345, Delta Test Loss: 0.000052
+2023-01-18 00:52:29,114 | DEBUG | Training Epoch: 8/100, Loss: 0.000291,  Test Loss: 0.000252, Delta Test Loss: 0.000094
+2023-01-18 00:52:29,579 | DEBUG | Training Epoch: 9/100, Loss: 0.000261,  Test Loss: 0.000226, Delta Test Loss: 0.000025
+2023-01-18 00:52:30,043 | DEBUG | Training Epoch: 10/100, Loss: 0.000238,  Test Loss: 0.000198, Delta Test Loss: 0.000028
+2023-01-18 00:52:30,501 | DEBUG | Training Epoch: 11/100, Loss: 0.000216,  Test Loss: 0.000187, Delta Test Loss: 0.000011
+2023-01-18 00:52:30,966 | DEBUG | Training Epoch: 12/100, Loss: 0.000206,  Test Loss: 0.000218, Delta Test Loss: 0.000031
+2023-01-18 00:52:31,422 | DEBUG | Training Epoch: 13/100, Loss: 0.000197,  Test Loss: 0.000170, Delta Test Loss: 0.000048
+2023-01-18 00:52:31,887 | DEBUG | Training Epoch: 14/100, Loss: 0.000183,  Test Loss: 0.000150, Delta Test Loss: 0.000019
+2023-01-18 00:52:32,343 | DEBUG | Training Epoch: 15/100, Loss: 0.000182,  Test Loss: 0.000162, Delta Test Loss: 0.000011
+2023-01-18 00:52:32,805 | DEBUG | Training Epoch: 16/100, Loss: 0.000174,  Test Loss: 0.000173, Delta Test Loss: 0.000011
+2023-01-18 00:52:33,260 | DEBUG | Training Epoch: 17/100, Loss: 0.000170,  Test Loss: 0.000177, Delta Test Loss: 0.000004
+2023-01-18 00:52:33,699 | DEBUG | Training Epoch: 18/100, Loss: 0.000162,  Test Loss: 0.000226, Delta Test Loss: 0.000049
+2023-01-18 00:52:34,135 | DEBUG | Training Epoch: 19/100, Loss: 0.000155,  Test Loss: 0.000148, Delta Test Loss: 0.000077
+2023-01-18 00:52:34,589 | DEBUG | Training Epoch: 20/100, Loss: 0.000136,  Test Loss: 0.000104, Delta Test Loss: 0.000044
+2023-01-18 00:52:35,052 | DEBUG | Training Epoch: 21/100, Loss: 0.000128,  Test Loss: 0.000120, Delta Test Loss: 0.000016
+2023-01-18 00:52:35,512 | DEBUG | Training Epoch: 22/100, Loss: 0.000118,  Test Loss: 0.000098, Delta Test Loss: 0.000022
+2023-01-18 00:52:35,978 | DEBUG | Training Epoch: 23/100, Loss: 0.000114,  Test Loss: 0.000102, Delta Test Loss: 0.000003
+2023-01-18 00:52:36,434 | DEBUG | Training Epoch: 24/100, Loss: 0.000111,  Test Loss: 0.000094, Delta Test Loss: 0.000008
+2023-01-18 00:52:36,898 | DEBUG | Training Epoch: 25/100, Loss: 0.000106,  Test Loss: 0.000098, Delta Test Loss: 0.000004
+2023-01-18 00:52:37,363 | DEBUG | Training Epoch: 26/100, Loss: 0.000101,  Test Loss: 0.000075, Delta Test Loss: 0.000023
+2023-01-18 00:52:37,363 | WARNING | Early stopping at epoch = 26

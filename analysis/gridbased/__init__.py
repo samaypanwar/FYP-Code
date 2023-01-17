@@ -20,11 +20,9 @@ if gpus:
         print(e)
 
 # Size of the data
-train_size = 40000;  # Size of the training set
-test_size = 4000;  # Size of the test set
+train_size = 40_000;  # Size of the training set
+test_size = 4_000;  # Size of the test set
 
-K_vector = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
-tau_vector = np.array([1 / 12, 2 / 12, 3 / 12, 4 / 12, 5 / 12, 6 / 12, 1])
+maturities = np.array([1 / 12, 2 / 12, 3 / 12, 4 / 12, 5 / 12, 6 / 12, 1, 2, 3, 5, 10, 20, 30])
 
-N1 = len(K_vector)
-N2 = len(tau_vector)
+N1 = len(maturities)
