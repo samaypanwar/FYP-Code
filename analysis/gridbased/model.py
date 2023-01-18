@@ -353,11 +353,8 @@ def calibrate(
     """
     # The network is done training. We are ready to start on the Calibration step
 
-    if parameterization == 'nelson_siegel':
-        parameter_size = 7
-
-    elif parameterization == 'svensson':
-        parameter_size = 9
+    if parameterization == 'vasicek':
+        parameter_size = 4
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -440,7 +437,7 @@ def calibrate(
     if plot:
 
         f = plt.figure(figsize = (20, 15))
-        plt.subplot(3, 3, 1)
+        plt.subplot(2, 2, 1)
         plt.plot(parameters[:, 0], percentage_err[:, 0] * 100, '*', color = 'midnightblue')
         plt.title('a')
         plt.ylabel('Percentage error')
@@ -448,7 +445,7 @@ def calibrate(
         s0 = 'Average: %.2f' % mean_percentage_err[0] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[0] + r'%'
         plt.text(np.mean(parameters[:, 0]), np.max(percentage_err[:, 0] * 90), s0, fontsize = 15, weight = 'bold')
 
-        plt.subplot(3, 3, 2)
+        plt.subplot(2, 2, 2)
         plt.plot(parameters[:, 1], percentage_err[:, 1] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title('b')
@@ -456,25 +453,22 @@ def calibrate(
         s1 = 'Average: %.2f' % mean_percentage_err[1] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[1] + r'%'
         plt.text(np.mean(parameters[:, 1]), np.max(percentage_err[:, 1] * 90), s1, fontsize = 15, weight = 'bold')
 
-        plt.subplot(3, 3, 3)
+        plt.subplot(2, 2, 3)
         plt.plot(parameters[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('k')
+        plt.title('sigma')
         plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[2] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[2] + r'%'
         plt.text(np.mean(parameters[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
 
-        for i in range(1, parameter_size - 2):
+        plt.subplot(2, 2, 4)
+        plt.plot(parameters[:, 3], percentage_err[:, 3] * 100, '*', color = 'midnightblue')
+        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
+        plt.title('r')
+        plt.ylabel('Percentage error')
+        s2 = 'Average: %.2f' % mean_percentage_err[3] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[3] + r'%'
+        plt.text(np.mean(parameters[:, 3]), np.max(percentage_err[:, 3] * 90), s2, fontsize = 15, weight = 'bold')
 
-            plt.subplot(3, 3, 3 + i)
-            plt.plot(parameters[:, 2 + i], percentage_err[:, 2 + i] * 100, '*', color = 'midnightblue')
-            plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-            plt.title(f'$z_{i}$')
-            plt.ylabel('Percentage error')
-            s2 = 'Average: %.2f' % mean_percentage_err[2 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
-                2 + i] + r'%'
-            plt.text(np.mean(parameters[:, 2 + i]), np.max(percentage_err[:, 2 + i] * 90), s2, fontsize = 15,
-                     weight = 'bold')
 
         f.savefig(
                 f'plotting/gridbased/gridbased_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
