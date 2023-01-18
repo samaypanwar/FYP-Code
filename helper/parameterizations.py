@@ -31,9 +31,10 @@ class VasicekModel:
 
         a, b, sigma, r = self.parameters
 
-        A = ((4 * a * b - 3 * sigma ** 2) / 4 * (b ** 3)) + time_to_expiry * (
-                    (sigma ** 2 - 2 * a * b) / 2 * (b ** 2)) + np.exp(-b * time_to_expiry) * (
-                        (sigma ** 2 - a * b) / b ** 3) - np.exp(-2 * b * time_to_expiry) * (sigma ** 2) / (4 * (b ** 3))
+        A = ((4 * a * b - 3 * sigma ** 2) / (4 * (b ** 3))) + time_to_expiry * (
+                    (sigma ** 2 - 2 * a * b) / (2 * (b ** 2))) + np.exp(-b * time_to_expiry) * (
+                        (sigma ** 2 - a * b) / (b ** 3)) - np.exp(-2 * b * time_to_expiry) * (sigma ** 2) / (4 * (b **
+                                                                                                                 3))
 
         C = (-1 / b) * (1 - np.exp(-b * time_to_expiry))
 

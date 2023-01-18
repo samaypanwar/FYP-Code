@@ -30,7 +30,7 @@ class BondPricing(VasicekModel):
 
         result = np.exp(A + r * C)
 
-        return result
+        return 100*result
 
 
 def assert_file_existence(path):

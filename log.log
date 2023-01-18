@@ -391,3 +391,9 @@
 2023-01-18 10:23:11,251 | INFO | model.py | 399: Beginning calibration for model dense with vasicek
 2023-01-18 10:23:15,195 | INFO | model.py | 422: Calibration complete! change in parameters: 3.471288909731333
 2023-01-18 10:23:15,204 | INFO | model.py | 426: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_vasicek.dat
+2023-01-18 19:39:21,461 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-18 19:39:34,194 | INFO | model.py | 209: Beginning training for model dense with vasicek
+2023-01-18 19:40:53,468 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-18 19:42:35,163 | INFO | model.py | 399: Beginning calibration for model dense with vasicek
+2023-01-18 19:42:43,195 | INFO | model.py | 422: Calibration complete! change in parameters: 3.4435006816666003
+2023-01-18 19:42:43,215 | INFO | model.py | 426: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_vasicek.dat
