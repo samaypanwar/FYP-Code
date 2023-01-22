@@ -267,24 +267,24 @@ def train_model(
         err_training_test = abs(price_predicted_test - price_test) / price_test
 
         # Loss plots
-        figure1 = plt.figure(figsize = (10, 5))
-        plt.subplot(1, 2, 1)
-        plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
-        plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
-        plt.legend(['Training Loss', 'Test Loss'])
-        plt.xlabel("Epoch", fontsize = 15, labelpad = 5)
-        plt.ylabel("Loss", fontsize = 15, labelpad = 5)
-        text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
-                epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
-        plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12)
-
-        figure1.savefig(f'{plot_path}gridbased_loss_{model_type}_{parameterization}.png')
+        # figure1 = plt.figure(figsize = (10, 5))
+        # plt.subplot(1, 2, 1)
+        # plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
+        # plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
+        # plt.legend(['Training Loss', 'Test Loss'])
+        # plt.xlabel("Epoch", fontsize = 15, labelpad = 5)
+        # plt.ylabel("Loss", fontsize = 15, labelpad = 5)
+        # text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
+        #         epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
+        # plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12)
+        #
+        # figure1.savefig(f'{plot_path}gridbased_loss_{model_type}_{parameterization}.png')
 
         # Heatmap train loss
         K_label = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
         tau_label = ['1', '2', '3', '4', '5', '6', '12']
 
-        figure_train = plt.figure(1, figsize = (10, 5))
+        figure_train = plt.figure(1, figsize = (16, 5))
         ax = plt.subplot(1, 2, 1)
         mean_err = np.mean(100 * err_training_train, axis = 0)
         plt.title("Average percentage error", fontsize = 15, y = 1.04)
@@ -310,8 +310,8 @@ def train_model(
         plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         figure_train.savefig(
-                f'{plot_path}gridbased_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
-                pad_inches = 0.01
+                f'{plot_path}gridbased_error_train_{model_type}_{parameterization}.png',
+                pad_inches = 0.1
                 )
 
         # Heatmap test loss
@@ -341,8 +341,7 @@ def train_model(
         plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5)
 
         figure_test.savefig(
-                f'{plot_path}gridbased_error_test_{model_type}_{parameterization}.png', bbox_inches =
-                'tight', pad_inches = 0.01
+                f'{plot_path}gridbased_error_test_{model_type}_{parameterization}.png', pad_inches = 0.1
                 )
 
 

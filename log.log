@@ -257,3 +257,22 @@
 2022-12-21 18:34:04,519 | INFO | model.py | 492: Calibration complete! change in parameters: 35.83369603625452
 2022-12-21 18:34:04,542 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
 2022-12-21 18:34:04,542 | INFO | model.py | 496: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_nelson_siegel.dat
+2023-01-20 23:04:35,078 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-01-20 23:04:59,306 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2023-01-20 23:08:45,693 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2023-01-20 23:21:44,985 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2023-01-20 23:25:32,701 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2023-01-20 23:34:38,124 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-01-20 23:34:42,435 | INFO | model.py | 212: Beginning training for model dense with nelson_siegel
+2023-01-20 23:38:37,946 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_nelson_siegel.h5
+2023-01-20 23:54:51,137 | INFO | model.py | 123: Weights loaded successfully
+2023-01-20 23:55:01,433 | INFO | model.py | 418: Beginning calibration for model dense with nelson_siegel
+2023-01-20 23:55:05,559 | INFO | model.py | 441: Calibration complete! change in parameters: 12.84365725183579
+2023-01-20 23:55:05,580 | INFO | model.py | 445: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_nelson_siegel.dat
+2023-01-21 00:05:30,612 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-01-21 00:05:37,638 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-01-21 00:09:48,346 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_svensson.h5
+2023-01-21 00:10:51,581 | INFO | model.py | 123: Weights loaded successfully
+2023-01-21 00:10:53,970 | INFO | model.py | 418: Beginning calibration for model dense with svensson
+2023-01-21 00:10:59,885 | INFO | model.py | 441: Calibration complete! change in parameters: 4.8806879603645115
+2023-01-21 00:10:59,931 | INFO | model.py | 445: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
