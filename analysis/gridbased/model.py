@@ -150,6 +150,7 @@ def train_model(
     # Choose what type of information you want to print
     train_loss = tf.keras.metrics.Mean(name = 'train_mean')
     test_loss = tf.keras.metrics.Mean(name = 'test_mean')
+    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 
     # To speed up training we need to create a some object which can send the data
     # fast to the GPU. Notice that they depend on the bactch_size
@@ -199,6 +200,7 @@ def train_model(
         t_loss = model.loss(prices, predictions)
 
         test_loss(t_loss)
+        mape(prices, predictions)
 
     # Vectors of loss
     test_loss_vec = np.array([0.0])
@@ -214,6 +216,7 @@ def train_model(
         # Reset the metrics at the start of the next epoch
         train_loss.reset_states()
         test_loss.reset_states()
+        mape.reset_states()
 
         for input_parameter, prices in train_dataset:
             # For each batch of images, and prices, compute the gradient and update
@@ -227,13 +230,15 @@ def train_model(
             test_step(test_images, test_prices)
 
         # Print some useful information
-        template = 'Training Epoch: {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}'
+        template = 'Training Epoch: {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}, ' \
+                   'Test MAPE : {5:.3f}'
         message = template.format(
                 epoch + 1,
                 epochs,
                 train_loss.result().numpy(),
                 test_loss.result().numpy(),
-                np.abs(test_loss.result() - test_loss_vec[-1])
+                np.abs(test_loss.result() - test_loss_vec[-1]),
+                mape.result().numpy()
                 )
 
         training_logger.debug(message)
@@ -366,6 +371,7 @@ def calibrate(
     optimizer = tf.keras.optimizers.Adam()
     loss_object = tf.keras.losses.MeanSquaredError()
     calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
+    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 
     # This does depend on the calibration size
     calibration_dataset = tf.data.Dataset.from_tensor_slices(
@@ -382,6 +388,7 @@ def calibrate(
         calibration_loss(c_loss)
         grads = tape.gradient(c_loss, [input_guess])
         optimizer.apply_gradients(zip(grads, [input_guess]))
+        mape(prices, prediction)
 
     # TODO: Instead of artificially inducing errors in our params, we can use new prices or shift prices by a bit
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
@@ -402,15 +409,18 @@ def calibrate(
     # Start the actual calibration
     for epoch in tqdm(range(epochs)):
         calibration_loss.reset_states()
+        mape.reset_states()
         for labels in calibration_dataset:
             # For each set of labels, compute the gradient of the network, and
             # preform a gradient update on the input parameters.
             calibration_step(tf_var_input_guess, labels)
 
-        template = 'Calibration Epoch {}, Loss: {}'
+        template = 'Calibration Epoch {0}/{1}, Loss: {2: .6f}, MAPE Loss: {3:.3f}'
         message = template.format(
                 epoch + 1,
+                epochs,
                 calibration_loss.result(),
+                mape.result().numpy(),
                 )
 
         calibration_logger.debug(message)

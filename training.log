@@ -533,3 +533,25 @@
 2023-01-18 19:40:52,024 | DEBUG | Training Epoch: 98/100, Loss: 0.503040,  Test Loss: 0.428259, Delta Test Loss: 0.015142
 2023-01-18 19:40:52,725 | DEBUG | Training Epoch: 99/100, Loss: 0.497271,  Test Loss: 0.428417, Delta Test Loss: 0.000159
 2023-01-18 19:40:53,436 | DEBUG | Training Epoch: 100/100, Loss: 0.511081,  Test Loss: 0.425424, Delta Test Loss: 0.002993
+2023-01-23 22:10:52,789 | INFO | Beginning training for model dense with vasicek
+2023-01-23 22:10:54,195 | DEBUG | Training Epoch: 1/10, Loss: 940.038440,  Test Loss: 314.699064, Delta Test Loss: 314.699064
+2023-01-23 22:10:54,952 | DEBUG | Training Epoch: 2/10, Loss: 200.996299,  Test Loss: 97.186363, Delta Test Loss: 217.512702
+2023-01-23 22:10:55,670 | DEBUG | Training Epoch: 3/10, Loss: 42.085203,  Test Loss: 23.544432, Delta Test Loss: 73.641930
+2023-01-23 22:10:56,362 | DEBUG | Training Epoch: 4/10, Loss: 17.816164,  Test Loss: 15.392592, Delta Test Loss: 8.151840
+2023-01-23 22:10:57,060 | DEBUG | Training Epoch: 5/10, Loss: 11.530991,  Test Loss: 10.376720, Delta Test Loss: 5.015872
+2023-01-23 22:10:57,817 | DEBUG | Training Epoch: 6/10, Loss: 7.728201,  Test Loss: 7.702203, Delta Test Loss: 2.674517
+2023-01-23 22:10:58,543 | DEBUG | Training Epoch: 7/10, Loss: 5.229581,  Test Loss: 5.040347, Delta Test Loss: 2.661856
+2023-01-23 22:10:59,273 | DEBUG | Training Epoch: 8/10, Loss: 3.849006,  Test Loss: 4.793116, Delta Test Loss: 0.247231
+2023-01-23 22:11:00,023 | DEBUG | Training Epoch: 9/10, Loss: 3.115838,  Test Loss: 3.339593, Delta Test Loss: 1.453522
+2023-01-23 22:11:00,794 | DEBUG | Training Epoch: 10/10, Loss: 2.679580,  Test Loss: 3.007788, Delta Test Loss: 0.331805
+2023-01-27 00:23:19,005 | INFO | Beginning training for model dense with vasicek
+2023-01-27 00:23:19,964 | DEBUG | Training Epoch: 1/10, Loss: 2.301859,  Test Loss: 2.399550, Delta Test Loss: 2.399550, Test MAPE : 156.949
+2023-01-27 00:23:20,443 | DEBUG | Training Epoch: 2/10, Loss: 2.061686,  Test Loss: 2.082488, Delta Test Loss: 0.317062, Test MAPE : 143.728
+2023-01-27 00:23:20,914 | DEBUG | Training Epoch: 3/10, Loss: 1.910924,  Test Loss: 1.875717, Delta Test Loss: 0.206771, Test MAPE : 138.584
+2023-01-27 00:23:21,385 | DEBUG | Training Epoch: 4/10, Loss: 1.804795,  Test Loss: 1.751317, Delta Test Loss: 0.124400, Test MAPE : 135.140
+2023-01-27 00:23:21,854 | DEBUG | Training Epoch: 5/10, Loss: 1.708768,  Test Loss: 1.827162, Delta Test Loss: 0.075845, Test MAPE : 136.656
+2023-01-27 00:23:22,319 | DEBUG | Training Epoch: 6/10, Loss: 1.638912,  Test Loss: 1.848225, Delta Test Loss: 0.021064, Test MAPE : 145.051
+2023-01-27 00:23:22,818 | DEBUG | Training Epoch: 7/10, Loss: 1.585159,  Test Loss: 1.513970, Delta Test Loss: 0.334255, Test MAPE : 133.219
+2023-01-27 00:23:23,416 | DEBUG | Training Epoch: 8/10, Loss: 1.513185,  Test Loss: 1.568531, Delta Test Loss: 0.054561, Test MAPE : 129.699
+2023-01-27 00:23:23,879 | DEBUG | Training Epoch: 9/10, Loss: 1.442283,  Test Loss: 1.691253, Delta Test Loss: 0.122722, Test MAPE : 141.369
+2023-01-27 00:23:24,341 | DEBUG | Training Epoch: 10/10, Loss: 1.412840,  Test Loss: 1.302385, Delta Test Loss: 0.388868, Test MAPE : 121.301
