@@ -1,7 +1,9 @@
 import logging
 import os
-from stat import S_IWUSR, S_IREAD, S_IRGRP, S_IROTH # Need to add this import to the ones above
+import sys
+from stat import S_IREAD, S_IWUSR  # Need to add this import to the ones above
 
+# ADD YOUR PATH HERE
 path = "/Users/samaypanwar/Library/CloudStorage/OneDrive-NanyangTechnologicalUniversity/Uni/FYP/FYP-Code"
 os.chdir(path)
 
@@ -17,8 +19,8 @@ def begin_logging():
     logger.setLevel(logging.DEBUG)
 
     # our first handler is a console handler
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.WARNING)
+    console_handler = logging.StreamHandler(stream = sys.stdout)
+    console_handler.setLevel(logging.DEBUG)
     console_handler_format = '%(asctime)s | %(levelname)s: | %(filename)s | %(funcName)s | %(lineno)d: %(message)s'
     console_handler.setFormatter(logging.Formatter(console_handler_format))
     logger.addHandler(console_handler)
@@ -39,6 +41,7 @@ def begin_logging():
     training_handler_format = '%(asctime)s | %(levelname)s | %(message)s'
     training_handler.setFormatter(logging.Formatter(training_handler_format))
     training_logger.addHandler(training_handler)
+    # training_logger.addHandler(console_handler)
 
     # the third handler is a file handler for calibration epochs
     calibration_logger = logging.getLogger('calibration')

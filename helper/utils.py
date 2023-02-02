@@ -18,19 +18,19 @@ class BondPricing(VasicekModel):
         else:
             raise ValueError(f'Parameterization {parameterization} not recognized')
 
-    def __call__(self, time_to_expiry: float) -> float:
+    def __call__(self, time_to_expiry: float, coupon: float = 0) -> float:
 
         if self.parameterization == 'vasicek':
 
             vm = VasicekModel(parameters = self.parameters)
 
-            a, b, sigma, r = self.parameters
+            a, b, r, sigma = self.parameters
 
             A, C = vm(time_to_expiry = time_to_expiry)
 
-        result = np.exp(A + r * C)
+        result = np.exp(coupon * time_to_expiry) * np.exp(A + r * C)
 
-        return 100*result
+        return 100 * result
 
 
 def assert_file_existence(path):

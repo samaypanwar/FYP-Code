@@ -4,25 +4,29 @@ Choose model then check if weights present otherwise train it and save the weigh
 if weights are present then test / calibrate
 """
 import os
-from itertools import product
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import numpy as np
+import pandas as pd
+import seaborn as sns
 from tqdm import tqdm
 
+from analysis.gridbased import calibration_logger, logger, training_logger
 from analysis.pointwise import *
-from analysis.pointwise.convolutional import CNN
 from analysis.pointwise.dense import DenseModel
+from helper.utils import assert_file_existence
+from hyperparameters import coupon_range, maturities, maturities_label, number_of_coupon_rates, number_of_maturities, \
+    test_size, train_size
 
 
-def load_data(parameterization: str = 'nelson_siegel'):
+def load_data(parameterization: str = 'vasicek'):
     """
     This function loads up our data for the prices/parameters and creates train test splits on the same
 
     Parameters
     ----------
-    parameterization : parameterization that we are using for our forward curve model
+    parameterization : parameterization that we are using for our bond pricing model
 
     Returns
     -------
@@ -33,46 +37,49 @@ def load_data(parameterization: str = 'nelson_siegel'):
     price = np.loadtxt(f'data/pointwise/pointwise_price_{parameterization}.dat')
 
     # Train and test sets
-    params_range_train = params_range[:train_size, :]  # size=[train_size, param_in]
-    params_range_test = params_range[train_size: train_size + test_size, :]  # size=[test_size, param_in]
+    params_range_train = params_range[:train_size, :]
+    params_range_test = params_range[train_size: train_size + test_size, :]
 
-    price_train = price[:train_size]  # size=[train_size, N1, N2]
-    price_test = price[train_size: train_size + test_size]  # size=[test_size, N1, N2]
+    price_train = price[:train_size]
+    price_test = price[train_size: train_size + test_size]
 
     return params_range_train, params_range_test, price_train, price_test
 
 
-def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel'):
+def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
     """
     This function initializes and compiles our model type with the stated optimizer and loss function
 
     Parameters
     ----------
-    model_type : model architecture we are using (either 'dense' or 'cnn')
-    parameterization: parameterization that we are using for our forward curve model
+    model_type : model architecture we are using ('dense')
+    parameterization: parameterization that we are using for our bond pricing model
 
     Returns
     -------
     Instance of built model class
+
     """
 
     # Create an instance of the model
     if model_type.lower() == 'dense':
         model = DenseModel()
 
-    elif model_type.lower() == 'cnn':
-        model = CNN()
-
     else:
         logger.error("Unknown model type: %s" % model_type)
         raise ValueError("Unknown model type")
 
-    if parameterization == 'nelson_siegel':
-        parameter_size = 7
-
-    elif parameterization == 'svensson':
-        parameter_size = 9
-
+    if parameterization == 'vasicek':
+        """
+        The number of parameters we consider in our model in pointwise are:
+        a: vasicek process parameter
+        b: vasicek process parameter
+        sigma: vasicek process parameter
+        r: yield of our bond
+        
+        It returns the price of the bond
+        """
+        parameter_size = 4
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -86,6 +93,8 @@ def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel
             loss = loss_object,
             optimizer = optimizer
             )
+
+    #  tau: time to maturity for our bond + coupon rate, which is not to be calibrated
     model.build(input_shape = (1, parameter_size + 2))
     model.summary()
 
@@ -94,15 +103,15 @@ def init_model(model_type: str = 'dense', parameterization: str = 'nelson_siegel
     return model
 
 
-def load_weights(model, model_type: str = 'dense', parameterization: str = 'nelson_siegel'):
+def load_weights(model, model_type: str = 'dense', parameterization: str = 'vasicek'):
     """
     This function loads the weight of a trained model into the compiled model if they exist
 
     Parameters
     ----------
     model : instance of model class
-    model_type : model architecture we are using (either 'dense' or 'cnn')
-    parameterization : parameterization that we are using for our forward curve model
+    model_type : model architecture we are using ('dense')
+    parameterization : parameterization that we are using for our bond pricing model
 
     Returns
     -------
@@ -124,7 +133,7 @@ def load_weights(model, model_type: str = 'dense', parameterization: str = 'nels
 
 def train_model(
         model, epochs: int = 200, batch_size: int = 30, patience: int = 20, delta: int = 0.0002,
-        model_type: str = 'dense', parameterization: str = 'nelson_siegel', plot: bool = True
+        model_type: str = 'dense', parameterization: str = 'vasicek', plot: bool = True
         ):
     """
     This function trains our model with the given parameters and prices.
@@ -137,8 +146,8 @@ def train_model(
     batch_size : bath size for training
     patience : epochs to wait before an early stopping condition
     delta : criterion in terms of change in test loss for early stopping
-    model_type : model architecture we are using (either 'dense' or 'cnn')
-    parameterization : parameterization that we are using for our forward curve model
+    model_type : model architecture we are using ('dense')
+    parameterization : parameterization that we are using for our bond pricing model
     plot : Do we want to plot our results? (True)
 
     Returns
@@ -152,6 +161,7 @@ def train_model(
     # Choose what type of information you want to print
     train_loss = tf.keras.metrics.Mean(name = 'train_mean')
     test_loss = tf.keras.metrics.Mean(name = 'test_mean')
+    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 
     # To speed up training we need to create a some object which can send the data
     # fast to the GPU. Notice that they depend on the batch_size
@@ -160,6 +170,8 @@ def train_model(
             ).shuffle(10000).batch(batch_size)
 
     test_dataset = tf.data.Dataset.from_tensor_slices((params_range_test, price_test)).batch(batch_size)
+
+    # TODO: ReduceLROnPlateau callback
 
     # Define the early stop function
     def early_stop(loss_vector):
@@ -197,6 +209,7 @@ def train_model(
         t_loss = model.loss(prices, predictions)
 
         test_loss(t_loss)
+        mape(prices, predictions)
 
     # Vectors of loss
     test_loss_vec = np.array([0.0])
@@ -212,6 +225,7 @@ def train_model(
         # Reset the metrics at the start of the next epoch
         train_loss.reset_states()
         test_loss.reset_states()
+        mape.reset_states()
 
         for input_parameter, prices in train_dataset:
             # For each batch of images, and prices, compute the gradient and update
@@ -224,13 +238,15 @@ def train_model(
             test_step(test_images, test_prices)
 
         # Print some useful information
-        template = 'Training Epoch {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}'
+        template = 'Training Epoch: {0}/{1}, Loss: {2:.6f},  Test Loss: {3:.6f}, Delta Test Loss: {4:.6f}, ' \
+                   'Test MAPE : {5:.3f}'
         message = template.format(
                 epoch + 1,
                 epochs,
                 train_loss.result().numpy(),
                 test_loss.result().numpy(),
-                np.abs(test_loss.result() - test_loss_vec[-1])
+                np.abs(test_loss.result() - test_loss_vec[-1]),
+                mape.result().numpy()
                 )
 
         training_logger.debug(message)
@@ -248,135 +264,168 @@ def train_model(
             break
 
     path_to_weights = f"weights/pointwise/pointwise_weights_{model_type}_{parameterization}.h5"
+    assert_file_existence(path_to_weights)
     model.save_weights(path_to_weights)
     logger.info("Saved weights to file: {}".format(path_to_weights))
 
-    if plot:
-        plot_path = 'plotting/pointwise/'
-        price_predicted_train = model(params_range_train).numpy()
-        price_predicted_train = np.squeeze(price_predicted_train)
-        price_predicted_test = model(params_range_test).numpy()
-        price_predicted_test = np.squeeze(price_predicted_test)
+    plot_path = 'plotting/pointwise/'
+    price_predicted_train = model(params_range_train).numpy()
+    price_predicted_train = np.squeeze(price_predicted_train)
+    price_predicted_test = model(params_range_test).numpy()
+    price_predicted_test = np.squeeze(price_predicted_test)
 
-        err_training_train = abs(price_predicted_train - price_train) / price_train
-        err_training_test = abs(price_predicted_test - price_test) / price_test
+    err_training_train = abs(price_predicted_train - price_train) / price_train
+    err_training_test = abs(price_predicted_test - price_test) / price_test
 
-        # Loss plots
-        figure1 = plt.figure(figsize = (10, 5))
-        plt.subplot(1, 2, 1)
-        plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
-        plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
-        plt.legend(['Training Loss', 'Test Loss'])
-        plt.xlabel("Epoch", fontsize = 15, labelpad = 5);
-        plt.ylabel("Loss", fontsize = 15, labelpad = 5);
-        text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
-                epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
-        plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12);
+    # Loss plots
+    figure1 = plt.figure(figsize = (10, 5))
+    plt.subplot(1, 2, 1)
+    plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
+    plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
+    plt.legend(['Training Loss', 'Test Loss'])
+    plt.xlabel("Epoch", fontsize = 15, labelpad = 5);
+    plt.ylabel("Loss", fontsize = 15, labelpad = 5);
+    text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
+            epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
+    plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12);
 
-        figure1.savefig(f'{plot_path}pointwise_loss_{model_type}_{parameterization}.png')
+    figure1.savefig(f'{plot_path}pointwise_loss_{model_type}_{parameterization}.png')
 
-        # I cluster the errors so to create the same plot as in the grid approach
-        # TODO: Init of time to contract start and strikes
-        K_vector = np.array([31.6, 31.7, 31.9, 32.1, 32.3, 32.5, 32.7, 32.9, 33.1, 33.2])
-        tau_vector = np.array(
-                [1 / 12, 1 / 12 + 1 / 24, 2 / 12 + 1 / 24, 3 / 12 + 1 / 24, 4 / 12 + 1 / 24, 5 / 12 + 1 / 24,
-                 6 / 12 + 1 / 24, 1]
-                )
-        N1 = len(K_vector) - 1
-        N2 = len(tau_vector) - 1
+    # I cluster the errors so to create the same plot as in the grid approach
 
-        mean_square_err_training_train = np.zeros((N1, N2))
-        max_square_err_training_train = np.zeros((N1, N2))
-        for k in np.arange(N2):
-            pos_tau = (params_range_train[:, 1] >= tau_vector[k]) * (params_range_train[:, 1] < tau_vector[k + 1])
-            for j in np.arange(N1):
-                pos_K = (params_range_train[:, 0] >= K_vector[j]) * (params_range_train[:, 0] < K_vector[j + 1])
-                mean_square_err_training_train[j, k] = 100 * np.mean(err_training_train[pos_K * pos_tau])
-                max_square_err_training_train[j, k] = 100 * np.max(err_training_train[pos_K * pos_tau])
+    N1 = number_of_coupon_rates - 1
+    N2 = number_of_maturities - 1
 
-        mean_square_err_training_test = np.zeros((N1, N2))
-        max_square_err_training_test = np.zeros((N1, N2))
-        for k in np.arange(N2):
-            pos_tau = (params_range_test[:, 1] >= tau_vector[k]) * (params_range_test[:, 1] < tau_vector[k + 1])
-            for j in np.arange(N1):
-                pos_K = (params_range_test[:, 0] >= K_vector[j]) * (params_range_test[:, 0] < K_vector[j + 1])
+    mean_square_err_training_train = np.zeros((N1, N2))
+    max_square_err_training_train = np.zeros((N1, N2))
+
+    # for each maturity column
+    for k in np.arange(N2):
+        # get the different maturities fed as the 1st parameter in the parameter range
+        # find the maturities range that lies between the maturities that we are considering
+        pos_tau = (params_range_train[:, 0] >= maturities[k]) * (params_range_train[:, 0] < maturities[k + 1])
+
+        # for each coupon rate row
+        for j in np.arange(N1):
+            # group by coupon rate between the given range, where coupon rate is the 2nd parameter in the parameter
+            # range vector
+
+            pos_K = (params_range_train[:, 1] >= coupon_range[j]) * (params_range_train[:, 1] < coupon_range[j + 1])
+
+            # now that you have two ranges for our maturities and coupon rates, find the mean error for that range
+
+            mean_square_err_training_train[j, k] = 100 * np.mean(err_training_train[pos_K * pos_tau])
+            max_square_err_training_train[j, k] = 100 * np.max(err_training_train[pos_K * pos_tau])
+
+    mean_square_err_training_test = np.zeros((N1, N2))
+    max_square_err_training_test = np.zeros((N1, N2))
+
+    # for each maturity column
+    for k in np.arange(N2):
+        # get the different maturities fed as the 1st parameter in the parameter range
+        # find the maturities range that lies between the maturities that we are considering
+        pos_tau = (params_range_test[:, 0] >= maturities[k]) * (params_range_test[:, 0] < maturities[k + 1])
+
+        # for each coupon rate row
+        for j in np.arange(N1):
+            # group by coupon rate between the given range, where coupon rate is the 1st parameter in the parameter
+            # range vector
+            pos_K = (params_range_test[:, 1] >= coupon_range[j]) * (params_range_test[:, 1] < coupon_range[j + 1])
+            # print("Num of samples in grid: ", sum(pos_K*pos_tau))
+            # now that you have two ranges for our maturities and coupon rates, find the mean error for that range
+
+            try:
                 mean_square_err_training_test[j, k] = 100 * np.mean(err_training_test[pos_K * pos_tau])
                 max_square_err_training_test[j, k] = 100 * np.max(err_training_test[pos_K * pos_tau])
 
-        # Heatmap train loss
-        K_label = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
-        tau_label = ['1', '2', '3', '4', '5', '6', '12']
+            except:
+                mean_square_err_training_test[j, k] = 0
+                max_square_err_training_test[j, k] = 0
 
-        figure_train = plt.figure(1, figsize = (10, 5))
-        ax = plt.subplot(1, 2, 1)
-        plt.title("Average percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(mean_square_err_training_train))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+    # Heatmap train loss
 
-        ax = plt.subplot(1, 2, 2)
-        plt.title("Maximum percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(max_square_err_training_train))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+    mean_square_err_training_train = pd.DataFrame(mean_square_err_training_train).T
+    max_square_err_training_train = pd.DataFrame(max_square_err_training_train).T
 
-        figure_train.savefig(
-                f'{plot_path}pointwise_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
-                pad_inches = 0.01
-                )
+    mean_square_err_training_train['Maturity'] = maturities_label
+    max_square_err_training_train['Maturity'] = maturities_label
 
-        # Heatmap test loss
-        figure_test = plt.figure(1, figsize = (16, 5))
-        ax = plt.subplot(1, 2, 1)
-        plt.title("Average percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(mean_square_err_training_test))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+    mean_square_err_training_train.set_index('Maturity', inplace = True)
+    max_square_err_training_train.set_index('Maturity', inplace = True)
 
-        ax = plt.subplot(1, 2, 2)
-        plt.title("Maximum percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(max_square_err_training_test))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+    mean_square_err_training_train.columns = coupon_range[1:]
+    max_square_err_training_train.columns = coupon_range[1:]
 
-        figure_test.savefig(
-                f'{plot_path}pointwise_error_test_{model_type}_{parameterization}.png', bbox_inches =
-                'tight', pad_inches = 0.01
-                )
+    figure_train, (ax1, ax2) = plt.subplots(nrows = 1, ncols = 2, figsize = (16, 7))
+    figure_train.suptitle("Training Error", fontsize = 15)
+    sns.heatmap(
+            mean_square_err_training_train, annot = True, fmt = ".2f", linewidths = 0.0, cmap = 'viridis',
+            ax = ax1
+            )
+
+    ax1.set_xlabel("Coupon Rate")
+    sns.heatmap(
+            max_square_err_training_train, annot = True, fmt = ".2f", linewidths = 0.0, cmap = 'viridis', ax = ax2,
+            )
+    ax2.set_xlabel("Coupon Rate")
+    ax1.title.set_text('Average Percentage Error')
+    ax2.title.set_text('Maximum Percentage Error')
+    plt.tight_layout()
+    plt.show()
+
+    figure_train.savefig(
+            f'{plot_path}pointwise_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
+            pad_inches = 0.01
+            )
+
+    # Heatmap test loss
+    mean_square_err_training_test = pd.DataFrame(mean_square_err_training_test).T
+    max_square_err_training_test = pd.DataFrame(max_square_err_training_test).T
+
+    mean_square_err_training_test['Maturity'] = maturities_label
+    max_square_err_training_test['Maturity'] = maturities_label
+
+    mean_square_err_training_test.set_index('Maturity', inplace = True)
+    max_square_err_training_test.set_index('Maturity', inplace = True)
+
+    mean_square_err_training_test.columns = coupon_range[1:]
+    max_square_err_training_test.columns = coupon_range[1:]
+
+    figure_test, (ax1, ax2) = plt.subplots(nrows = 1, ncols = 2, figsize = (16, 7))
+    figure_test.suptitle("Test Error", fontsize = 15)
+    sns.heatmap(
+            mean_square_err_training_test, annot = True, fmt = ".2f", linewidths = 0.0, cmap = 'viridis',
+            ax = ax1
+            )
+
+    ax1.set_xlabel("Coupon Rate")
+    sns.heatmap(
+            max_square_err_training_test, annot = True, fmt = ".2f", linewidths = 0.0, cmap = 'viridis', ax = ax2,
+            )
+    ax2.set_xlabel("Coupon Rate")
+    ax1.title.set_text('Average Percentage Error')
+    ax2.title.set_text('Maximum Percentage Error')
+    plt.tight_layout()
+    plt.show()
+    figure_test.savefig(
+            f'{plot_path}pointwise_error_test_{model_type}_{parameterization}.png', bbox_inches =
+            'tight', pad_inches = 0.01
+            )
 
 
-def calibrate(
-        model, prices, parameters, epochs: int = 1000, model_type: str = 'dense', parameterization: str =
-        'nelson_siegel',
-        plot: bool = False
+def calibrate_synthetic(
+        model, calibration_size: int = 10_000, epochs: int = 1000, model_type: str = 'dense', parameterization:
+        str =
+        'vasicek',
+        plot: bool = False,
+        verbose_length: int = 1
         ):
     """
 
     Parameters
     ----------
     model : instance of model class
-    prices : prices to calibrate our parameters to
-    parameters : old set of parameters to act as initial estimates
+    calibration_size : size of the calibration set
     epochs: number of epochs to calibrate
     model_type : model architecture we are using (either 'dense' or 'cnn')
     parameterization : parameterization that we are using for our forward curve model
@@ -388,118 +437,114 @@ def calibrate(
 
     """
     # The network is done training. We are ready to start on the Calibration step
-    if parameterization == 'nelson_siegel':
-        parameter_size = 7
-        parameter_input = parameter_size + 2
-
-    elif parameterization == 'svensson':
-        parameter_size = 9
-        parameter_input = parameter_size + 2
+    if parameterization == 'vasicek':
+        parameter_size = 4
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
         raise ValueError("Unknown parameterization")
 
-    K_vector = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
-    tau_vector = np.array([1 / 12, 2 / 12, 3 / 12, 4 / 12, 5 / 12, 6 / 12, 1])
-
-    # TODO: old params, new prices give with one set of old parameters to get our new parameters
-
-    N1 = len(K_vector)
-    N2 = len(tau_vector)
-
-    calibration_grid = N1 * N2;
-    grid = np.array(list(product(K_vector, tau_vector))).reshape(N1, N2, 2)
-    np_input_first = np.reshape(grid, (N1 * N2, 2));  # reshape reads by rows
-
-    parameters_to_calibrate = np.loadtxt(f'data/gridbased/gridbased_parameters_{parameterization}.dat')
+    parameters_to_calibrate = np.loadtxt(f'data/pointwise/pointwise_parameters_{parameterization}.dat')
     prices_calibrate = np.reshape(
-            np.loadtxt(f'data/gridbased/gridbased_price_{parameterization}.dat'), newshape = (train_size + test_size,
-                                                                                              N1, N2), order = 'F'
+            np.loadtxt(f'data/pointwise/pointwise_price_{parameterization}.dat'),
+            newshape = (train_size + test_size, 1), order = 'F'
             )
 
-    parameters_to_calibrate = parameters_to_calibrate[train_size + np.arange(test_size), :]  # size=[test_size, parameter_cal]
-    prices_calibrate = prices_calibrate[train_size + np.arange(test_size), :, :]  # size=[test_size, N1, N2]
-
-    calibration_size = parameters.reshape(-1, parameter_input).shape[0]
+    parameters_to_calibrate = parameters_to_calibrate[train_size + np.arange(calibration_size), :]
+    prices_calibrate = prices_calibrate[train_size + np.arange(calibration_size)]
 
     # Choose optimizer and type of loss function
     optimizer = tf.keras.optimizers.Adam()
     loss_object = tf.keras.losses.MeanSquaredError()
     calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
+    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 
-    # This does depend on the calibration size
-    calibration_dataset = tf.data.Dataset.from_tensor_slices(
-            prices
-            ).batch(calibration_size)
-
-    def calibration_step(input_guess, tf_input_first, prices):
+    @tf.function
+    def calibration_step(fixed_input, variable_input, price):
 
         with tf.GradientTape() as tape:
-            tape.watch(input_guess)
+            tape.watch(variable_input)
 
-            input_guess_rep = tf.tile(input_guess, [N1 * N2, 1])
+            prediction = model(tf.concat([fixed_input, variable_input], axis = 1))
+            c_loss = loss_object(price, prediction)
+            calibration_loss(c_loss)
+            grads = tape.gradient(c_loss, [variable_input])
+            optimizer.apply_gradients(zip(grads, [variable_input]))
 
-            network_input = tf.concat([tf_input_first, input_guess_rep], axis = 1);
-            prediction = model(network_input)
-            c_loss = loss_object(prices, prediction)
-        calibration_loss(c_loss)
-        grads = tape.gradient(c_loss, [input_guess])
-        optimizer.apply_gradients(zip(grads, [input_guess]))
+        mape(price, prediction)
 
+    # TODO: don't induce errors in the fixed columns
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
-    input_guess = parameters_to_calibrate + np.random.rand(calibration_size, parameter_size) * np.array(
-            [0.05]*parameter_size
+    parameters_with_errors = parameters_to_calibrate + np.concatenate(
+            (
+                    np.zeros(shape = (calibration_size, 2)),
+                    np.random.rand(
+                            calibration_size,
+                            parameter_size
+                            ) * np.array([0.05] * parameter_size)),
+            axis = 1
             )
-
-
     # I just copy the starting parameters for convenience. This is not necessary
-    old_input_guess = input_guess.copy()
-
-    # Prepare the data to have the right shape
-    tf_input_first = tf.constant(np_input_first);
+    old_input_guess = parameters_with_errors.copy()
 
     # Important: First convert to tensor, then to variable
-    tf_input_guess = tf.convert_to_tensor(input_guess)
+    prices = tf.convert_to_tensor(prices_calibrate)
 
     logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
     calibration_logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
 
-    # Start the actual calibration
+    ta = tf.TensorArray(tf.float64, size = 0, dynamic_size = True, clear_after_read = False)
 
-    new_input_guess = np.zeros((calibration_size, parameter_size))
     # Start the actual calibration
     for j in tqdm(range(calibration_size)):
-        np_price_local = np.reshape(prices_calibrate[j, :, :], [N1 * N2, 1])
-        tf_var_input_guess_local = tf.Variable(tf.reshape(tf_input_guess[j, :], (1, parameter_size)))
-        calibration_step_local = tf.function(calibration_step)
+
+        variable_input_guess = tf.Variable(
+                tf.reshape(
+                        tf.convert_to_tensor(parameters_with_errors[j, 2:]), shape = (1,
+                                                                                      -1)
+                        )
+                )
+        fixed_input_guess = tf.reshape(
+                tf.convert_to_tensor(parameters_with_errors[j, :2]), shape = (1,
+                                                                              -1)
+                )
+
         for epoch in range(epochs):
             calibration_loss.reset_states()
-            calibration_step_local(tf_var_input_guess_local, tf_input_first, np_price_local)
+            mape.reset_states()
 
-            template = 'Set {} Calibration Epoch {}, Loss: {}'
+            calibration_step(fixed_input_guess, variable_input_guess, prices[j])
+
+            template = 'Set: {0}/{1} Calibration Epoch: {2}/{3}, Loss: {4}, MAPE: {5}'
             message = template.format(
-                    j,
-                    epoch + 1,
-                    calibration_loss.result(),
+                    j, calibration_size, epoch + 1, epochs, calibration_loss.result(), mape.result()
                     )
 
-            calibration_logger.debug(message)
+            # So we are not logging very frequently
+            if (epoch + 1) % verbose_length == 0 and epoch > 1:
+                calibration_logger.debug(message)
 
-        new_input_guess[j, :] = tf_var_input_guess_local.numpy();
+        ta.write(
+            j, tf.reshape(
+                tf.concat([fixed_input_guess, variable_input_guess], axis = 1), shape = (-1,
+                                                                                         )
+                )
+            ).mark_used()
 
-    change = new_input_guess - old_input_guess
+    change = ta.stack().numpy() - old_input_guess
+
     message = f"Calibration complete! change in parameters: {np.linalg.norm(change, 'fro')}"
     logger.info(message)
     calibration_logger.info(message)
 
-    np.savetxt(f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat', new_input_guess)
+    np.savetxt(f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat', ta.stack().numpy())
     logger.info(
             f"Saved parameters to file: "
             f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat'}"
             )
-
+    #
     # Errors and plots
+    new_input_guess = ta.stack().numpy().copy()
     percentage_err = np.abs(new_input_guess - parameters_to_calibrate) / np.abs(parameters_to_calibrate)
     mean_percentage_err = np.mean(percentage_err, axis = 0) * 100
     percentage_err_copy = percentage_err.copy()
@@ -508,45 +553,22 @@ def calibrate(
 
     if plot:
 
-        print(parameters)
-
         f = plt.figure(figsize = (20, 15))
-        plt.subplot(3, 3, 1)
-        plt.plot(parameters_to_calibrate[:, 0], percentage_err[:, 0] * 100, '*', color = 'midnightblue')
-        plt.title('a')
-        plt.ylabel('Percentage error');
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        s0 = 'Average: %.2f' % mean_percentage_err[0] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[0] + r'%'
-        plt.text(np.mean(parameters_to_calibrate[:, 0]), np.max(percentage_err[:, 0] * 90), s0, fontsize = 15, weight = 'bold')
+        parameter_names = ['a', "b", "sigma", "r"]
 
-        plt.subplot(3, 3, 2)
-        plt.plot(parameters_to_calibrate[:, 1], percentage_err[:, 1] * 100, '*', color = 'midnightblue')
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('b')
-        plt.ylabel('Percentage error');
-        s1 = 'Average: %.2f' % mean_percentage_err[1] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[1] + r'%'
-        plt.text(np.mean(parameters_to_calibrate[:, 1]), np.max(percentage_err[:, 1] * 90), s1, fontsize = 15, weight = 'bold')
+        for i in range(parameter_size):
 
-        plt.subplot(3, 3, 3)
-        plt.plot(parameters_to_calibrate[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
-        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('k')
-        plt.ylabel('Percentage error');
-        s2 = 'Average: %.2f' % mean_percentage_err[2] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[2] + r'%'
-        plt.text(np.mean(parameters_to_calibrate[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
-
-        for i in range(1, parameter_size - 2):
-
-            plt.subplot(3, 3, 3 + i)
+            plt.subplot(2, 2, 1 + i)
             plt.plot(parameters_to_calibrate[:, 2 + i], percentage_err[:, 2 + i] * 100, '*', color = 'midnightblue')
             plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-            plt.title(f'$z_{i}$')
+            plt.title(f'${parameter_names[i]}$')
             plt.ylabel('Percentage error')
             s2 = 'Average: %.2f' % mean_percentage_err[2 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
                 2 + i] + r'%'
-            plt.text(np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i] * 90), s2, fontsize = 15,
-                     weight = 'bold')
-
+            plt.text(
+                    np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i]), s2, fontsize = 15,
+                    weight = 'bold'
+                    )
 
         f.savefig(
                 f'plotting/pointwise/pointwise_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',

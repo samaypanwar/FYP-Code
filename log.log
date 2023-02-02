@@ -409,3 +409,352 @@
 2023-01-27 00:35:41,428 | INFO | model.py | 406: Beginning calibration for model dense with vasicek
 2023-01-27 00:35:41,655 | INFO | model.py | 432: Calibration complete! change in parameters: 1.105511651622569
 2023-01-27 00:35:41,669 | INFO | model.py | 436: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_vasicek.dat
+2023-01-27 00:45:55,899 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-27 00:46:49,917 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-27 00:47:03,562 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 00:48:20,621 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 00:49:23,552 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-27 00:49:27,072 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 00:50:49,205 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 00:57:44,710 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-27 00:57:51,705 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 00:58:00,260 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 01:09:53,067 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:10:01,216 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 01:11:35,034 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:11:57,777 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 01:17:10,210 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:17:18,382 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 01:19:04,286 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-27 01:19:14,515 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:19:33,270 | INFO | model.py | 263: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 01:22:33,043 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:22:47,551 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 01:23:51,279 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:24:26,944 | INFO | model.py | 88: Model of type: dense has been initialized
+2023-01-27 01:24:27,295 | INFO | model.py | 211: Beginning training for model dense with vasicek
+2023-01-27 01:24:44,103 | INFO | model.py | 262: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:45:34,754 | INFO | model.py | 92: Model of type: dense has been initialized
+2023-01-27 16:45:34,754 | INFO | model.py | 92: Model of type: dense has been initialized
+2023-01-27 16:50:36,845 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:50:36,845 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:50:57,492 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:50:57,492 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:51:32,047 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:51:32,047 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:51:36,047 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:51:36,047 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:54:47,797 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:54:47,797 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:54:51,586 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:54:51,586 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:55:59,488 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:55:59,488 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:56:03,316 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:56:03,316 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:56:30,115 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:56:30,115 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:56:33,528 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:56:33,528 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:57:08,935 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:57:08,935 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:57:11,568 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:57:11,568 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:58:45,115 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:58:45,115 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 16:58:47,372 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 16:58:47,372 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 17:00:19,204 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 17:00:19,204 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 17:00:22,081 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 17:00:22,081 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 17:01:03,814 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 17:01:03,814 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 17:01:08,158 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 17:01:08,158 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 17:02:31,389 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 17:02:31,389 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 17:02:49,328 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 17:02:49,328 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 20:34:22,849 | INFO | model.py | 92: Model of type: dense has been initialized
+2023-01-27 20:34:30,393 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 20:34:35,269 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 20:40:18,526 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 20:40:21,687 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 20:43:37,978 | INFO | model.py | 425: Beginning calibration for model dense with vasicek
+2023-01-27 20:43:38,422 | INFO | model.py | 451: Calibration complete! change in parameters: 1.2859966654123092
+2023-01-27 20:43:38,450 | INFO | model.py | 455: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_vasicek.dat
+2023-01-27 20:48:53,855 | INFO | model.py | 92: Model of type: dense has been initialized
+2023-01-27 20:48:59,240 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 20:49:04,280 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 20:49:54,591 | INFO | model.py | 425: Beginning calibration for model dense with vasicek
+2023-01-27 20:49:56,018 | INFO | model.py | 451: Calibration complete! change in parameters: 1.2229203404454205
+2023-01-27 20:49:56,047 | INFO | model.py | 455: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_vasicek.dat
+2023-01-27 20:56:25,629 | INFO | model.py | 92: Model of type: dense has been initialized
+2023-01-27 20:56:33,549 | INFO | model.py | 216: Beginning training for model dense with vasicek
+2023-01-27 20:56:39,671 | INFO | model.py | 267: Saved weights to file: weights/gridbased/gridbased_weights_dense_vasicek.h5
+2023-01-27 21:01:07,789 | INFO | model.py | 425: Beginning calibration for model dense with vasicek
+2023-01-27 21:01:08,601 | INFO | model.py | 451: Calibration complete! change in parameters: 1.2680507910561458
+2023-01-27 21:01:08,629 | INFO | model.py | 455: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_vasicek.dat
+2023-02-01 17:37:11,281 | INFO | model.py | 101: Model of type: dense has been initialized
+2023-02-01 17:37:11,281 | INFO | model.py | 101: Model of type: dense has been initialized
+2023-02-01 17:37:40,875 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:37:40,875 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:38:59,274 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:38:59,274 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:39:01,065 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 17:39:01,065 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 17:39:55,772 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:39:55,772 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:39:57,536 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 17:39:57,536 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 17:51:27,868 | INFO | model.py | 101: Model of type: dense has been initialized
+2023-02-01 17:51:27,868 | INFO | model.py | 101: Model of type: dense has been initialized
+2023-02-01 17:51:29,652 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:51:29,652 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 17:51:31,633 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 17:51:31,633 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 18:00:36,126 | INFO | model.py | 101: Model of type: dense has been initialized
+2023-02-01 18:00:36,126 | INFO | model.py | 101: Model of type: dense has been initialized
+2023-02-01 18:00:40,390 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 18:00:40,390 | INFO | model.py | 220: Beginning training for model dense with vasicek
+2023-02-01 18:00:42,217 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 18:00:42,217 | INFO | model.py | 269: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 18:57:15,546 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-01 18:57:15,546 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-01 18:57:38,178 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-01 18:57:38,178 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-01 18:57:51,853 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 18:57:51,853 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 18:59:30,249 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-01 18:59:30,249 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-01 18:59:43,594 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-01 18:59:43,594 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-01 19:02:02,826 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 19:02:02,826 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 19:04:48,253 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-01 19:04:48,253 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-01 19:04:54,584 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-01 19:04:54,584 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-01 19:07:12,553 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 19:07:12,553 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-01 19:27:11,248 | INFO | model.py | 660: Beginning calibration for model dense with vasicek
+2023-02-01 19:27:11,248 | INFO | model.py | 660: Beginning calibration for model dense with vasicek
+2023-02-01 19:28:28,322 | INFO | model.py | 660: Beginning calibration for model dense with vasicek
+2023-02-01 19:28:28,322 | INFO | model.py | 660: Beginning calibration for model dense with vasicek
+2023-02-01 19:33:19,823 | INFO | model.py | 659: Beginning calibration for model dense with vasicek
+2023-02-01 19:33:19,823 | INFO | model.py | 659: Beginning calibration for model dense with vasicek
+2023-02-01 19:35:05,860 | INFO | model.py | 691: Calibration complete! change in parameters: 4.827137172158779
+2023-02-01 19:35:05,860 | INFO | model.py | 691: Calibration complete! change in parameters: 4.827137172158779
+2023-02-01 19:35:05,863 | INFO | model.py | 695: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-01 19:35:05,863 | INFO | model.py | 695: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-01 19:37:20,075 | INFO | model.py | 659: Beginning calibration for model dense with vasicek
+2023-02-01 19:37:20,075 | INFO | model.py | 659: Beginning calibration for model dense with vasicek
+2023-02-01 19:38:47,389 | INFO | model.py | 691: Calibration complete! change in parameters: 4.892619660333644
+2023-02-01 19:38:47,389 | INFO | model.py | 691: Calibration complete! change in parameters: 4.892619660333644
+2023-02-01 19:38:47,391 | INFO | model.py | 695: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-01 19:38:47,391 | INFO | model.py | 695: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-02 21:52:16,555 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-02 21:52:16,555 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-02 21:52:51,446 | ERROR | model.py | 131: Failed to load the weights file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2023-02-02 21:52:51,446 | ERROR | model.py | 131: Failed to load the weights file: weights/pointwise/pointwise_weights_dense_nelson_siegel.h5
+2023-02-02 21:53:03,999 | INFO | model.py | 128: Weights loaded successfully
+2023-02-02 21:53:03,999 | INFO | model.py | 128: Weights loaded successfully
+2023-02-02 21:56:01,159 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:56:01,159 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:57:17,001 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:57:17,001 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:57:56,444 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:57:56,444 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:59:21,021 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 21:59:21,021 | INFO | model.py | 831: Beginning calibration for model dense with vasicek
+2023-02-02 22:07:58,909 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:07:58,909 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:08:32,407 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:08:32,407 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:09:12,659 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:09:12,659 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:09:48,551 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:09:48,551 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:09:49,414 | INFO | model.py | 854: Calibration complete! change in parameters: 66.19830456279483
+2023-02-02 22:09:49,414 | INFO | model.py | 854: Calibration complete! change in parameters: 66.19830456279483
+2023-02-02 22:13:17,104 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:13:17,104 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:13:46,971 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:13:46,971 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:13:47,110 | INFO | model.py | 860: Calibration complete! change in parameters: 0.4548693917450892
+2023-02-02 22:13:47,110 | INFO | model.py | 860: Calibration complete! change in parameters: 0.4548693917450892
+2023-02-02 22:14:27,461 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:14:27,461 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:14:27,594 | INFO | model.py | 860: Calibration complete! change in parameters: 0.3837892115166111
+2023-02-02 22:14:27,594 | INFO | model.py | 860: Calibration complete! change in parameters: 0.3837892115166111
+2023-02-02 22:16:11,239 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:16:11,239 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:16:11,383 | INFO | model.py | 860: Calibration complete! change in parameters: 0.42891460545603327
+2023-02-02 22:16:11,383 | INFO | model.py | 860: Calibration complete! change in parameters: 0.42891460545603327
+2023-02-02 22:16:59,565 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:16:59,565 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:16:59,695 | INFO | model.py | 860: Calibration complete! change in parameters: 0.40912228544783386
+2023-02-02 22:16:59,695 | INFO | model.py | 860: Calibration complete! change in parameters: 0.40912228544783386
+2023-02-02 22:17:31,716 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:17:31,716 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:17:31,846 | INFO | model.py | 860: Calibration complete! change in parameters: 0.4206974203653561
+2023-02-02 22:17:31,846 | INFO | model.py | 860: Calibration complete! change in parameters: 0.4206974203653561
+2023-02-02 22:19:33,843 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:19:33,843 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:19:51,249 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:19:51,249 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:20:06,837 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:20:06,837 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:20:40,632 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:20:40,632 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:21:54,285 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:21:54,285 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:22:48,789 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:22:48,789 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:22:48,927 | INFO | model.py | 864: Calibration complete! change in parameters: 0.006364054500256608
+2023-02-02 22:22:48,927 | INFO | model.py | 864: Calibration complete! change in parameters: 0.006364054500256608
+2023-02-02 22:23:20,819 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:23:20,819 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:23:20,951 | INFO | model.py | 861: Calibration complete! change in parameters: 0.010187923116954914
+2023-02-02 22:23:20,951 | INFO | model.py | 861: Calibration complete! change in parameters: 0.010187923116954914
+2023-02-02 22:26:56,052 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:26:56,052 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:28:44,073 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:28:44,073 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:28:44,215 | INFO | model.py | 860: Calibration complete! change in parameters: 0.009593570370908985
+2023-02-02 22:28:44,215 | INFO | model.py | 860: Calibration complete! change in parameters: 0.009593570370908985
+2023-02-02 22:29:06,233 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:29:06,233 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:29:06,841 | INFO | model.py | 860: Calibration complete! change in parameters: 0.11254191048844002
+2023-02-02 22:29:06,841 | INFO | model.py | 860: Calibration complete! change in parameters: 0.11254191048844002
+2023-02-02 22:31:19,509 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:31:19,509 | INFO | model.py | 828: Beginning calibration for model dense with vasicek
+2023-02-02 22:31:20,147 | INFO | model.py | 861: Calibration complete! change in parameters: 0.14584006911653577
+2023-02-02 22:31:20,147 | INFO | model.py | 861: Calibration complete! change in parameters: 0.14584006911653577
+2023-02-02 23:58:09,760 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-02 23:58:09,760 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-02 23:58:09,890 | INFO | model.py | 872: Calibration complete! change in parameters: 29.88570153463322
+2023-02-02 23:58:09,890 | INFO | model.py | 872: Calibration complete! change in parameters: 29.88570153463322
+2023-02-03 00:00:46,343 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:00:46,343 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:00:46,458 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:00:46,458 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:01:36,709 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:01:36,709 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:01:37,010 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:01:37,010 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:02:26,313 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:02:26,313 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:02:26,429 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:02:26,429 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:03:14,659 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:03:14,659 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:03:14,770 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:03:14,770 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:03:56,035 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:03:56,035 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:03:56,151 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:03:56,151 | INFO | model.py | 865: Calibration complete! change in parameters: 0.0
+2023-02-03 00:04:47,658 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:04:47,658 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:04:47,805 | INFO | model.py | 868: Calibration complete! change in parameters: 0.0
+2023-02-03 00:04:47,805 | INFO | model.py | 868: Calibration complete! change in parameters: 0.0
+2023-02-03 00:05:07,441 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:05:07,441 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:05:07,606 | INFO | model.py | 867: Calibration complete! change in parameters: 0.0
+2023-02-03 00:05:07,606 | INFO | model.py | 867: Calibration complete! change in parameters: 0.0
+2023-02-03 00:05:22,040 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:05:22,040 | INFO | model.py | 832: Beginning calibration for model dense with vasicek
+2023-02-03 00:05:22,173 | INFO | model.py | 867: Calibration complete! change in parameters: 0.0
+2023-02-03 00:05:22,173 | INFO | model.py | 867: Calibration complete! change in parameters: 0.0
+2023-02-03 00:05:46,063 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:05:46,063 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:05:46,196 | INFO | model.py | 868: Calibration complete! change in parameters: 0.0
+2023-02-03 00:05:46,196 | INFO | model.py | 868: Calibration complete! change in parameters: 0.0
+2023-02-03 00:06:11,436 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:06:11,436 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:06:28,694 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:06:28,694 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:06:28,823 | INFO | model.py | 868: Calibration complete! change in parameters: 0.0
+2023-02-03 00:06:28,823 | INFO | model.py | 868: Calibration complete! change in parameters: 0.0
+2023-02-03 00:14:39,690 | INFO | model.py | 834: Beginning calibration for model dense with vasicek
+2023-02-03 00:14:39,690 | INFO | model.py | 834: Beginning calibration for model dense with vasicek
+2023-02-03 00:14:39,856 | INFO | model.py | 881: Calibration complete! change in parameters: 0.0033666467004327787
+2023-02-03 00:14:39,856 | INFO | model.py | 881: Calibration complete! change in parameters: 0.0033666467004327787
+2023-02-03 00:22:00,033 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-03 00:22:00,033 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-03 00:22:16,916 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-03 00:22:16,916 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-03 00:22:43,098 | INFO | model.py | 221: Beginning training for model dense with vasicek
+2023-02-03 00:22:43,098 | INFO | model.py | 221: Beginning training for model dense with vasicek
+2023-02-03 00:26:14,077 | INFO | model.py | 270: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-03 00:26:14,077 | INFO | model.py | 270: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-03 00:27:56,111 | INFO | model.py | 221: Beginning training for model dense with vasicek
+2023-02-03 00:27:56,111 | INFO | model.py | 221: Beginning training for model dense with vasicek
+2023-02-03 00:28:25,314 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-03 00:28:25,314 | INFO | model.py | 102: Model of type: dense has been initialized
+2023-02-03 00:28:26,501 | INFO | model.py | 221: Beginning training for model dense with vasicek
+2023-02-03 00:28:26,501 | INFO | model.py | 221: Beginning training for model dense with vasicek
+2023-02-03 00:31:37,388 | INFO | model.py | 270: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-03 00:31:37,388 | INFO | model.py | 270: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-03 00:32:53,916 | INFO | model.py | 128: Weights loaded successfully
+2023-02-03 00:32:53,916 | INFO | model.py | 128: Weights loaded successfully
+2023-02-03 00:33:14,193 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:33:14,193 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:33:37,992 | INFO | model.py | 878: Calibration complete! change in parameters: 1.0189027531952612
+2023-02-03 00:33:37,992 | INFO | model.py | 878: Calibration complete! change in parameters: 1.0189027531952612
+2023-02-03 00:34:08,124 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:34:08,124 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:34:31,343 | INFO | model.py | 878: Calibration complete! change in parameters: 0.9231490132503989
+2023-02-03 00:34:31,343 | INFO | model.py | 878: Calibration complete! change in parameters: 0.9231490132503989
+2023-02-03 00:34:31,345 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:34:31,345 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:41:46,372 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:41:46,372 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:41:49,065 | INFO | model.py | 878: Calibration complete! change in parameters: 0.27422612135085217
+2023-02-03 00:41:49,065 | INFO | model.py | 878: Calibration complete! change in parameters: 0.27422612135085217
+2023-02-03 00:41:49,066 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:41:49,066 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:41:56,802 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:41:56,802 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:41:59,283 | INFO | model.py | 878: Calibration complete! change in parameters: 0.5266584946006017
+2023-02-03 00:41:59,283 | INFO | model.py | 878: Calibration complete! change in parameters: 0.5266584946006017
+2023-02-03 00:41:59,284 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:41:59,284 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:42:32,344 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:42:32,344 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:42:34,919 | INFO | model.py | 878: Calibration complete! change in parameters: 0.5235480059807365
+2023-02-03 00:42:34,919 | INFO | model.py | 878: Calibration complete! change in parameters: 0.5235480059807365
+2023-02-03 00:42:34,921 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:42:34,921 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:44:04,922 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:44:04,922 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:44:07,694 | INFO | model.py | 878: Calibration complete! change in parameters: 0.5103237114420196
+2023-02-03 00:44:07,694 | INFO | model.py | 878: Calibration complete! change in parameters: 0.5103237114420196
+2023-02-03 00:44:07,696 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:44:07,696 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:51:03,844 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:51:03,844 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:51:06,400 | INFO | model.py | 878: Calibration complete! change in parameters: 0.4980658832984393
+2023-02-03 00:51:06,400 | INFO | model.py | 878: Calibration complete! change in parameters: 0.4980658832984393
+2023-02-03 00:51:06,402 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:51:06,402 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:51:15,781 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:51:15,781 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:51:18,269 | INFO | model.py | 878: Calibration complete! change in parameters: 0.25291473803842
+2023-02-03 00:51:18,269 | INFO | model.py | 878: Calibration complete! change in parameters: 0.25291473803842
+2023-02-03 00:51:18,271 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:51:18,271 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:51:54,317 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:51:54,317 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:54:14,063 | INFO | model.py | 878: Calibration complete! change in parameters: 1.752140816207192
+2023-02-03 00:54:14,063 | INFO | model.py | 878: Calibration complete! change in parameters: 1.752140816207192
+2023-02-03 00:54:14,069 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:54:14,069 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 00:57:12,333 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 00:57:12,333 | INFO | model.py | 833: Beginning calibration for model dense with vasicek
+2023-02-03 01:07:08,633 | INFO | model.py | 878: Calibration complete! change in parameters: 2.6382150090050427
+2023-02-03 01:07:08,633 | INFO | model.py | 878: Calibration complete! change in parameters: 2.6382150090050427
+2023-02-03 01:07:08,639 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-03 01:07:08,639 | INFO | model.py | 882: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat

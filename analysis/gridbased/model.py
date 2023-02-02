@@ -7,11 +7,14 @@ import os
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
+import numpy as np
+import tensorflow as tf
 from tqdm import tqdm
 
+from analysis.gridbased import calibration_logger, logger, training_logger
 from analysis.gridbased.dense import DenseModel
-from analysis.gridbased import *
 from helper.utils import assert_file_existence
+from hyperparameters import coupon_range, number_of_coupon_rates, number_of_maturities, test_size, train_size
 
 
 def load_data(parameterization: str = 'vasicek'):
@@ -28,9 +31,10 @@ def load_data(parameterization: str = 'vasicek'):
     """
 
     params_range = np.loadtxt(f'data/gridbased/gridbased_parameters_{parameterization}.dat')
+
     price = np.reshape(
             np.loadtxt(f'data/gridbased/gridbased_price_{parameterization}.dat'),
-            newshape = (train_size + test_size, N1),
+            newshape = (train_size + test_size, number_of_maturities, number_of_coupon_rates),
             order = 'F'
             )
 
@@ -160,6 +164,7 @@ def train_model(
 
     test_dataset = tf.data.Dataset.from_tensor_slices((params_range_test, price_test)).batch(batch_size)
 
+    # TODO: ReduceLROnPlateau callback
 
     # Define the early stop function
     def early_stop(loss_vector):
@@ -246,7 +251,6 @@ def train_model(
         train_loss_vec = np.append(train_loss_vec, train_loss.result())
         test_loss_vec = np.append(test_loss_vec, test_loss.result())
 
-
         if epoch > patience and early_stop(test_loss_vec):
 
             message = f"Early stopping at epoch = {epoch + 1}"
@@ -274,8 +278,8 @@ def train_model(
         # Loss plots
         figure1 = plt.figure(figsize = (10, 5))
         plt.subplot(1, 2, 1)
-        plt.plot(np.arange(epochs)[:len(train_loss_vec)-1], train_loss_vec[1:], '-g')
-        plt.plot(np.arange(epochs)[:len(train_loss_vec)-1], test_loss_vec[1:], '-m')
+        plt.plot(np.arange(epochs)[:len(train_loss_vec) - 1], train_loss_vec[1:], '-g')
+        plt.plot(np.arange(epochs)[:len(train_loss_vec) - 1], test_loss_vec[1:], '-m')
         plt.legend(['Training Loss', 'Test Loss'])
         plt.xlabel("Epoch", fontsize = 15, labelpad = 5)
         plt.ylabel("Loss", fontsize = 15, labelpad = 5)
@@ -286,24 +290,33 @@ def train_model(
         figure1.savefig(f'{plot_path}gridbased_loss_{model_type}_{parameterization}.png')
 
         # Heatmap train loss
-        maturities_label = ['1M', '2M', '3M', '4M', '5M', '6M', '1Y', '2Y', '3Y', '5Y', '10Y', '20Y', '30Y']
+        maturities_label = ['1M', '3M', '6M', '1Y', '2Y', '3Y', '5Y', '10Y', '20Y', '30Y']
 
-        mean_err = 100*np.mean(err_training_train, axis = 0)
-        max_err = 100*np.max(err_training_train, axis = 0)
+        mean_err = 100 * np.mean(err_training_train, axis = 0)
+        max_err = 100 * np.max(err_training_train, axis = 0)
+        # print(mean_err)
 
         import pandas as pd
         import seaborn as sns
 
-        errors = pd.DataFrame(data = {'Mean Error': mean_err, 'Maximum Error': max_err, 'Maturities': maturities_label})
+        mean_errors = pd.DataFrame(mean_err)
+        max_errors = pd.DataFrame(max_err)
 
-        errors.set_index("Maturities", inplace = True)
+        mean_errors['Maturity'] = maturities_label
+        max_errors['Maturity'] = maturities_label
 
-        figure_train, (ax1, ax2) = plt.subplots(nrows = 2, figsize = (15, 3))
+        mean_errors.set_index('Maturity', inplace = True)
+        max_errors.set_index('Maturity', inplace = True)
+
+        mean_errors.columns = coupon_range
+        max_errors.columns = coupon_range
+
+        figure_train, (ax1, ax2) = plt.subplots(nrows = 1, ncols = 2, figsize = (20, 7))
         figure_train.suptitle("Training Error in Prices", fontsize = 15)
-        sns.heatmap(errors[['Mean Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax= ax1)
-        sns.heatmap(errors[['Maximum Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax = ax2,
-                    )
-        # norm=matplotlib.colors.LogNorm()
+        sns.heatmap(mean_errors.T, annot = False, linewidths = 0.0, cmap = 'viridis', ax = ax1)
+        sns.heatmap(
+            max_errors.T, annot = False, linewidths = 0.0, cmap = 'viridis', ax = ax2,
+            )
         plt.tight_layout()
         plt.show()
 
@@ -313,20 +326,27 @@ def train_model(
                 )
 
         # Heatmap test loss
-        mean_err = 100*np.mean(err_training_test, axis = 0)
-        max_err = 100*np.max(err_training_test, axis = 0)
+        mean_err = 100 * np.mean(err_training_test, axis = 0)
+        max_err = 100 * np.max(err_training_test, axis = 0)
 
-        errors = pd.DataFrame(data = {'Mean Error': mean_err, 'Maximum Error': max_err, 'Maturities': maturities_label})
-        errors.set_index("Maturities", inplace = True)
+        mean_errors = pd.DataFrame(mean_err)
+        max_errors = pd.DataFrame(max_err)
 
-        # print(errors)
+        mean_errors['Maturity'] = maturities_label
+        max_errors['Maturity'] = maturities_label
 
-        figure_test, (ax1, ax2) = plt.subplots(nrows = 2, figsize = (15, 3))
+        mean_errors.set_index('Maturity', inplace = True)
+        max_errors.set_index('Maturity', inplace = True)
+
+        mean_errors.columns = coupon_range
+        max_errors.columns = coupon_range
+
+        figure_test, (ax1, ax2) = plt.subplots(nrows = 1, ncols = 2, figsize = (20, 7))
         figure_test.suptitle("Test Error in Prices", fontsize = 15)
-        sns.heatmap(errors[['Mean Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax = ax1)
-        sns.heatmap(errors[['Maximum Error']].T, annot = True, linewidths = 0.1, cmap = 'viridis', ax = ax2)
-        plt.tight_layout()
-        plt.show()
+        sns.heatmap(mean_errors.T, annot = False, linewidths = 0.0, cmap = 'viridis', ax = ax1)
+        sns.heatmap(
+            max_errors.T, annot = False, linewidths = 0.0, cmap = 'viridis', ax = ax2,
+            )
 
         figure_test.savefig(
                 f'{plot_path}gridbased_error_test_{model_type}_{parameterization}.png', bbox_inches =
@@ -390,10 +410,9 @@ def calibrate(
         optimizer.apply_gradients(zip(grads, [input_guess]))
         mape(prices, prediction)
 
-    # TODO: Instead of artificially inducing errors in our params, we can use new prices or shift prices by a bit
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
     input_guess = parameters + np.random.rand(calibration_size, parameter_size) * np.array(
-            [0.05]*parameter_size
+            [0.05] * parameter_size
             )
 
     # I just copy the starting parameters for convenience. This is not necessary
@@ -466,7 +485,7 @@ def calibrate(
         plt.subplot(2, 2, 3)
         plt.plot(parameters[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('sigma')
+        plt.title('r')
         plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[2] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[2] + r'%'
         plt.text(np.mean(parameters[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
@@ -474,14 +493,126 @@ def calibrate(
         plt.subplot(2, 2, 4)
         plt.plot(parameters[:, 3], percentage_err[:, 3] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
-        plt.title('r')
+        plt.title('sigma')
         plt.ylabel('Percentage error')
         s2 = 'Average: %.2f' % mean_percentage_err[3] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[3] + r'%'
         plt.text(np.mean(parameters[:, 3]), np.max(percentage_err[:, 3] * 90), s2, fontsize = 15, weight = 'bold')
-
 
         f.savefig(
                 f'plotting/gridbased/gridbased_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
                 pad_inches =
                 0.01
                 )
+
+
+def calibrate(
+        model, parameters, epochs: int = 1000, model_type: str = 'dense', parameterization: str =
+        'vasicek',
+        plot: bool = False
+        ):
+
+    # The network is done training. We are ready to start on the Calibration step
+    if parameterization == 'vasicek':
+        parameter_size = 4
+
+    else:
+        logger.error("Unknown parameterization: %s" % parameterization)
+        raise ValueError("Unknown parameterization")
+
+    calibration_size = parameters.reshape(-1, parameter_size).shape[0]
+
+    # Choose optimizer and type of loss function
+    optimizer = tf.keras.optimizers.Adam()
+    loss_object = tf.keras.losses.MeanSquaredError()
+    calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
+    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
+
+    # This does depend on the calibration size
+    calibration_dataset = tf.data.Dataset.from_tensor_slices(
+            prices
+            ).batch(calibration_size)
+
+    @tf.function
+    def calibration_step(input_guess, prices):
+
+        with tf.GradientTape() as tape:
+            tape.watch(input_guess)
+            prediction = model(input_guess)
+            c_loss = loss_object(prices, prediction)
+        calibration_loss(c_loss)
+        grads = tape.gradient(c_loss, [input_guess])
+        optimizer.apply_gradients(zip(grads, [input_guess]))
+        mape(prices, prediction)
+
+
+    # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
+    input_guess = parameters + np.random.rand(calibration_size, parameter_size) * np.array(
+            [0.05] * parameter_size
+            )
+
+    # I just copy the starting parameters for convenience. This is not necessary
+    old_input_guess = input_guess.copy()
+
+    # Important: First convert to tensor, then to variable
+    tf_input_guess = tf.convert_to_tensor(input_guess)
+    tf_var_input_guess = tf.Variable(tf_input_guess)
+
+    logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
+    calibration_logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
+
+    # Start the actual calibration
+    for epoch in tqdm(range(epochs)):
+        calibration_loss.reset_states()
+        mape.reset_states()
+        for labels in calibration_dataset:
+            # For each set of labels, compute the gradient of the network, and
+            # preform a gradient update on the input parameters.
+            calibration_step(tf_var_input_guess, labels)
+
+        template = 'Calibration Epoch {0}/{1}, Loss: {2: .6f}, MAPE Loss: {3:.3f}'
+        message = template.format(
+                epoch + 1,
+                epochs,
+                calibration_loss.result(),
+                mape.result().numpy(),
+                )
+
+        calibration_logger.debug(message)
+
+    new_input_guess = tf_var_input_guess.numpy()
+
+    change = new_input_guess - old_input_guess
+    message = f"Calibration complete! change in parameters: {np.linalg.norm(change, 'fro')}"
+    logger.info(message)
+    calibration_logger.info(message)
+
+    np.savetxt(f'data/gridbased/gridbased_params_calibrated_{model_type}_{parameterization}.dat', new_input_guess)
+    logger.info(
+            f"Saved parameters to file: {f'data/gridbased/gridbased_params_calibrated_{model_type}_{parameterization}.dat'}"
+            )
+
+    # Errors and plots
+    # percentage_err = np.abs(new_input_guess - parameters) / np.abs(parameters)
+    # mean_percentage_err = np.mean(percentage_err, axis = 0) * 100
+    # percentage_err_copy = percentage_err.copy()
+    # percentage_err_copy.sort(axis = 0)
+    # median_percentage_err = percentage_err_copy[calibration_size // 2, :] * 100
+
+    # if plot:
+    #
+    #     f = plt.figure(figsize = (20, 15))
+    #
+    #     plt.subplot(2, 2, 3)
+    #     plt.plot(parameters[:, 2], percentage_err[:, 2] * 100, '*', color = 'midnightblue')
+    #     plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
+    #     plt.title('r')
+    #     plt.ylabel('Percentage error')
+    #     s2 = 'Average: %.2f' % mean_percentage_err[2] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[2] + r'%'
+    #     plt.text(np.mean(parameters[:, 2]), np.max(percentage_err[:, 2] * 90), s2, fontsize = 15, weight = 'bold')
+    #
+    #
+    #     f.savefig(
+    #             f'plotting/gridbased/gridbased_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
+    #             pad_inches =
+    #             0.01
+    #             )
