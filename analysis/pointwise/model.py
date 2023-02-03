@@ -575,3 +575,109 @@ def calibrate_synthetic(
                 pad_inches =
                 0.01
                 )
+
+def calibrate_to_market_data(
+        model, market_data, initial_parameters, time_to_expiry, epochs: int = 1000, model_type: str = 'dense',
+        parameterization:
+        str =
+        'vasicek',
+        verbose_length: int = 1
+        ):
+
+    # The network is done training. We are ready to start on the Calibration step
+    if parameterization == 'vasicek':
+        parameter_size = 4
+
+    else:
+        logger.error("Unknown parameterization: %s" % parameterization)
+        raise ValueError("Unknown parameterization")
+
+    parameters_to_calibrate = initial_parameters
+    prices_calibrate = market_data
+
+    # Choose optimizer and type of loss function
+    optimizer = tf.keras.optimizers.Adam()
+    loss_object = tf.keras.losses.MeanSquaredError()
+    calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
+    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
+
+    @tf.function
+    def calibration_step(fixed_input, variable_input, price):
+
+        with tf.GradientTape() as tape:
+            tape.watch(variable_input)
+
+            prediction = model(tf.concat([fixed_input, variable_input], axis = 1))
+            c_loss = loss_object(price, prediction)
+            calibration_loss(c_loss)
+            grads = tape.gradient(c_loss, [variable_input])
+            optimizer.apply_gradients(zip(grads, [variable_input]))
+
+        mape(price, prediction)
+
+    # Important: First convert to tensor, then to variable
+    prices = tf.convert_to_tensor(prices_calibrate)
+    calibration_size = len(prices_calibrate)
+
+    logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
+    calibration_logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
+
+    ta = tf.TensorArray(tf.float64, size = 0, dynamic_size = True, clear_after_read = False)
+
+    parameters = initial_parameters.copy()
+
+    # Start the actual calibration
+    for j in tqdm(range(calibration_size)):
+
+        variable_input_guess = tf.Variable(
+                tf.reshape(
+                        tf.convert_to_tensor(parameters[1:]), shape = (1,
+                                                                                      -1)
+                        )
+                )
+
+        # print(time_to_expiry[j])
+        # print(parameters[0])
+        fixed_input_guess = np.array([time_to_expiry[j], parameters[0]], dtype = np.float64)
+        fixed_input_guess = tf.reshape(
+                tf.convert_to_tensor(fixed_input_guess), shape = (1,
+                                                                              -1)
+                )
+
+        for epoch in range(epochs):
+            calibration_loss.reset_states()
+            mape.reset_states()
+
+            calibration_step(fixed_input_guess, variable_input_guess, prices[j])
+
+            template = 'Set: {0}/{1} Calibration Epoch: {2}/{3}, Loss: {4}, MAPE: {5}'
+            message = template.format(
+                    j, calibration_size, epoch + 1, epochs, calibration_loss.result(), mape.result()
+                    )
+
+            # So we are not logging very frequently
+            if (epoch + 1) % verbose_length == 0 and epoch > 1:
+                calibration_logger.debug(message)
+
+        ta.write(
+            j, tf.reshape(
+                tf.concat([fixed_input_guess, variable_input_guess], axis = 1), shape = (-1,
+                                                                                         )
+                )
+            ).mark_used()
+
+        parameters = ta.read(j).numpy()[1:]
+
+    change = ta.read(j).numpy()[1:] - initial_parameters
+
+    message = f"Calibration complete! change in parameters: {np.linalg.norm(change)}"
+    logger.info(message)
+    calibration_logger.info(message)
+
+    np.savetxt(f'data/pointwise/pointwise_params_market_calibrated_{model_type}_{parameterization}.dat',
+               ta.stack().numpy())
+    logger.info(
+            f"Saved parameters to file: "
+            f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat'}"
+            )
+
