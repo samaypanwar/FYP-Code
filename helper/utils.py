@@ -39,3 +39,17 @@ def assert_file_existence(path):
     filename.touch(exist_ok = True)
 
     return None
+
+
+def bond_price(par_value, time_to_maturity, yield_to_maturity, coupon_rate, frequency: float = 2):
+
+    frequency = float(frequency)
+    periods = time_to_maturity * frequency
+    coupon = coupon_rate * par_value / frequency
+    dt = [(i+1) / frequency for i in range(int(periods))]
+    price = sum([coupon / (1 + yield_to_maturity / frequency) ** (frequency * t) for t in dt]) + \
+            par_value / (1 + yield_to_maturity / frequency) ** (frequency * time_to_maturity)
+
+    return price
+
+

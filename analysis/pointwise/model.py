@@ -566,7 +566,7 @@ def calibrate_synthetic(
             s2 = 'Average: %.2f' % mean_percentage_err[2 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
                 2 + i] + r'%'
             plt.text(
-                    np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i]), s2, fontsize = 15,
+                    np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i]*90), s2, fontsize = 15,
                     weight = 'bold'
                     )
 
