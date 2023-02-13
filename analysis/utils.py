@@ -25,12 +25,15 @@ def begin_logging():
     console_handler.setFormatter(logging.Formatter(console_handler_format))
     logger.addHandler(console_handler)
 
+
     # the second handler is a file handler
     file_handler = logging.FileHandler('log.log')
     file_handler.setLevel(logging.INFO)
     file_handler_format = '%(asctime)s | %(levelname)s | %(filename)s | %(lineno)d: %(message)s'
     file_handler.setFormatter(logging.Formatter(file_handler_format))
     logger.addHandler(file_handler)
+
+    logger.propagate = False
 
     # the third handler is a file handler for training epochs
     training_logger = logging.getLogger('training')
@@ -43,6 +46,8 @@ def begin_logging():
     training_logger.addHandler(training_handler)
     # training_logger.addHandler(console_handler)
 
+    training_logger.propagate = False
+
     # the third handler is a file handler for calibration epochs
     calibration_logger = logging.getLogger('calibration')
     calibration_logger.setLevel(logging.DEBUG)
@@ -52,5 +57,7 @@ def begin_logging():
     calibration_handler_format = '%(asctime)s | %(levelname)s | %(message)s'
     calibration_handler.setFormatter(logging.Formatter(calibration_handler_format))
     calibration_logger.addHandler(calibration_handler)
+
+    calibration_logger.propagate = False
 
     return logger, training_logger, calibration_logger

@@ -12,12 +12,14 @@ import pandas as pd
 import seaborn as sns
 from tqdm import tqdm
 
-from analysis.gridbased import calibration_logger, logger, training_logger
-from analysis.pointwise import *
+from analysis.pointwise import calibration_logger, logger, training_logger
+import tensorflow as tf
 from analysis.pointwise.dense import DenseModel
 from helper.utils import assert_file_existence
 from hyperparameters import coupon_range, maturities, maturities_label, number_of_coupon_rates, number_of_maturities, \
     test_size, train_size
+
+tf.random.set_seed(42)
 
 
 def load_data(parameterization: str = 'vasicek'):
@@ -278,7 +280,7 @@ def train_model(
     err_training_test = abs(price_predicted_test - price_test) / price_test
 
     # Loss plots
-    figure1 = plt.figure(figsize = (10, 5))
+    figure1 = plt.figure(figsize = (8, 7))
     plt.subplot(1, 2, 1)
     plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
     plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
@@ -375,7 +377,7 @@ def train_model(
 
     figure_train.savefig(
             f'{plot_path}pointwise_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
-            pad_inches = 0.01
+            pad_inches = 0.3
             )
 
     # Heatmap test loss
@@ -409,7 +411,7 @@ def train_model(
     plt.show()
     figure_test.savefig(
             f'{plot_path}pointwise_error_test_{model_type}_{parameterization}.png', bbox_inches =
-            'tight', pad_inches = 0.01
+            'tight', pad_inches = 0.3
             )
 
 
@@ -473,7 +475,6 @@ def calibrate_synthetic(
 
         mape(price, prediction)
 
-    # TODO: don't induce errors in the fixed columns
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
     parameters_with_errors = parameters_to_calibrate + np.concatenate(
             (
@@ -573,7 +574,7 @@ def calibrate_synthetic(
         f.savefig(
                 f'plotting/pointwise/pointwise_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
                 pad_inches =
-                0.01
+                0.3
                 )
 
 def calibrate_to_market_data(
@@ -581,6 +582,7 @@ def calibrate_to_market_data(
         parameterization:
         str =
         'vasicek',
+        maturity: str = '1M',
         verbose_length: int = 1
         ):
 
@@ -619,8 +621,8 @@ def calibrate_to_market_data(
     prices = tf.convert_to_tensor(prices_calibrate)
     calibration_size = len(prices_calibrate)
 
-    logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
-    calibration_logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
+    logger.info(f"Beginning calibration for model {model_type} with {parameterization} for {maturity} maturity")
+    calibration_logger.info(f"Beginning calibration for model {model_type} with {parameterization} for {maturity} maturity")
 
     ta = tf.TensorArray(tf.float64, size = 0, dynamic_size = True, clear_after_read = False)
 
@@ -636,8 +638,6 @@ def calibrate_to_market_data(
                         )
                 )
 
-        # print(time_to_expiry[j])
-        # print(parameters[0])
         fixed_input_guess = np.array([time_to_expiry[j], parameters[0]], dtype = np.float64)
         fixed_input_guess = tf.reshape(
                 tf.convert_to_tensor(fixed_input_guess), shape = (1,
@@ -674,10 +674,10 @@ def calibrate_to_market_data(
     logger.info(message)
     calibration_logger.info(message)
 
-    np.savetxt(f'data/pointwise/pointwise_params_market_calibrated_{model_type}_{parameterization}.dat',
+    np.savetxt(f'data/pointwise/pointwise_params_market_calibrated_{model_type}_{parameterization}_{maturity}.dat',
                ta.stack().numpy())
     logger.info(
             f"Saved parameters to file: "
-            f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat'}"
+            f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}_{maturity}.dat'}"
             )
 

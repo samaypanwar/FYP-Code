@@ -18,5 +18,3 @@ if gpus:
         # Memory growth must be set before GPUs have been initialized
         print(e)
 
-# TODO: Calibrate models using real world data
-# TODO: Fix as much linting errors as possible
