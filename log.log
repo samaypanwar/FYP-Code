@@ -41,3 +41,7 @@
 2023-02-12 14:45:05,253 | INFO | model.py | 624: Beginning calibration for model dense with vasicek for 30Y maturity
 2023-02-12 14:47:49,739 | INFO | model.py | 674: Calibration complete! change in parameters: 0.39423990536572573
 2023-02-12 14:47:49,742 | INFO | model.py | 679: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_30Y.dat
+2023-02-13 15:33:18,318 | ERROR | model.py | 87: Unknown parameterization: two_factor
+2023-02-13 15:35:46,323 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-13 15:36:20,744 | INFO | model.py | 222: Beginning training for model dense with two_factor
+2023-02-13 15:40:30,104 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_two_factor.h5

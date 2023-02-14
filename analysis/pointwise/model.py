@@ -22,7 +22,7 @@ from hyperparameters import coupon_range, maturities, maturities_label, number_o
 tf.random.set_seed(42)
 
 
-def load_data(parameterization: str = 'vasicek'):
+def load_data(parameterization: str = 'two_factor'):
     """
     This function loads up our data for the prices/parameters and creates train test splits on the same
 
@@ -48,7 +48,7 @@ def load_data(parameterization: str = 'vasicek'):
     return params_range_train, params_range_test, price_train, price_test
 
 
-def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
+def init_model(model_type: str = 'dense', parameterization: str = 'two_factor'):
     """
     This function initializes and compiles our model type with the stated optimizer and loss function
 
@@ -71,7 +71,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
         logger.error("Unknown model type: %s" % model_type)
         raise ValueError("Unknown model type")
 
-    if parameterization == 'vasicek':
+    if parameterization == 'two_factor':
         """
         The number of parameters we consider in our model in pointwise are:
         a: vasicek process parameter
@@ -81,7 +81,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
         
         It returns the price of the bond
         """
-        parameter_size = 4
+        parameter_size = 7
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -105,7 +105,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
     return model
 
 
-def load_weights(model, model_type: str = 'dense', parameterization: str = 'vasicek'):
+def load_weights(model, model_type: str = 'dense', parameterization: str = 'two_factor'):
     """
     This function loads the weight of a trained model into the compiled model if they exist
 
@@ -135,7 +135,7 @@ def load_weights(model, model_type: str = 'dense', parameterization: str = 'vasi
 
 def train_model(
         model, epochs: int = 200, batch_size: int = 30, patience: int = 20, delta: int = 0.0002,
-        model_type: str = 'dense', parameterization: str = 'vasicek', plot: bool = True
+        model_type: str = 'dense', parameterization: str = 'two_factor', plot: bool = True
         ):
     """
     This function trains our model with the given parameters and prices.
@@ -418,7 +418,7 @@ def train_model(
 def calibrate_synthetic(
         model, calibration_size: int = 10_000, epochs: int = 1000, model_type: str = 'dense', parameterization:
         str =
-        'vasicek',
+        'two_factor',
         plot: bool = False,
         verbose_length: int = 1
         ):
@@ -439,8 +439,8 @@ def calibrate_synthetic(
 
     """
     # The network is done training. We are ready to start on the Calibration step
-    if parameterization == 'vasicek':
-        parameter_size = 4
+    if parameterization == 'two_factor':
+        parameter_size = 7
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -581,14 +581,14 @@ def calibrate_to_market_data(
         model, market_data, initial_parameters, time_to_expiry, epochs: int = 1000, model_type: str = 'dense',
         parameterization:
         str =
-        'vasicek',
+        'two_factor',
         maturity: str = '1M',
         verbose_length: int = 1
         ):
 
     # The network is done training. We are ready to start on the Calibration step
-    if parameterization == 'vasicek':
-        parameter_size = 4
+    if parameterization == 'two_factor':
+        parameter_size = 7
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
