@@ -1,83 +1,60 @@
+from random import sample
+
 import numpy as np
+from scipy.stats import norm
 from tqdm import tqdm
 
 from helper.utils import BondPricing, assert_file_existence
-from hyperparameters import coupon_range, maturities, number_of_coupon_rates, number_of_maturities, test_size, \
+from hyperparameters import test_size, \
     train_size
 
 
-def create_features_linspace(vector_max: np.array, vector_min: np.array, num: int) -> np.array:
-    """This function creates the features range for the input of the neural network
+def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
 
-    Parameters
-    ----------
-    vector_max : vector containing the lower bound for each parameter
-    vector_min : vector containing the upper bound for each parameter
-    num : the number of features we want to create
+    a_range = np.linspace(start = vector_ranges['a'][0], stop = vector_ranges['a'][1], num = num)
+    b_range = np.linspace(start = vector_ranges['b'][0], stop = vector_ranges['b'][1], num = num)
+    sigma_range = np.linspace(start = vector_ranges['sigma'][0], stop = vector_ranges['sigma'][1], num = num)
+    c_range = np.linspace(start = vector_ranges['c'][0], stop = vector_ranges['c'][1], num = num)
+    maturity_range = np.linspace(start = vector_ranges['maturity'][0], stop = vector_ranges['maturity'][1], num = num)
 
-    Returns
-    -------
-    features_range : returns a random feature sample from our vector range
-    """
+    features = np.zeros((num, len(vector_ranges.keys()) + 1), dtype = np.float64)
 
-    number_of_features = len(vector_max)
+    count = 0
+    max_iter = 10 * num
+    iter_num = 0
+    pbar = tqdm(total = num)
 
-    range_linspace = np.linspace(start = vector_min, stop = vector_max, num = num)
-    features_range = np.zeros((num, number_of_features))
+    while count < num and iter_num < max_iter:
 
-    for i in range(number_of_features):
+        iter_num += 1
 
-        np.random.shuffle(range_linspace[:, i])
-        features_range[:, i] = range_linspace[:, i]
+        a = sample(a_range.tolist(), k = 1)[0]
+        b = sample(b_range.tolist(), k = 1)[0]
+        sigma = sample(sigma_range.tolist(), k = 1)[0]
+        c = sample(c_range.tolist(), k = 1)[0]
+        maturity = sample(maturity_range.tolist(), k = 1)[0]
 
-    return features_range
+        # If the expected value of the interest rate is greater than 5% or the vol is greater than 80%
+        if abs(a / b) < 0.05 and (sigma ** 2) / (2 * b) < 0.8:
+            r = norm.rvs(loc = a / b, scale = (sigma ** 2) / (2 * b))
 
+            features[count, :] = np.array([maturity, c, a, b, sigma, r])
+            a_range = np.delete(a_range, np.where(a_range == a))
+            b_range = np.delete(b_range, np.where(b_range == b))
+            sigma_range = np.delete(sigma_range, np.where(sigma_range == sigma))
+            c_range = np.delete(c_range, np.where(c_range == c))
+            maturity_range = np.delete(maturity_range, np.where(maturity_range == maturity))
 
-def generate_grid_data(
-        parameterization: str = 'vasicek'
-        ):
+            count += 1
+            pbar.update(1)
 
-    vector_ranges = {
-            'a'    : [0.01, 0.1],
-            'b'    : [0.25, 0.8],
-            'sigma': [0.005, 0.05],
-            'r'    : [0.005, 0.06]
-            }
+        else:
 
-    params_range = create_features_linspace(
-            num = train_size + test_size,
-            vector_min = [vector_ranges[key][0] for key in sorted(vector_ranges.keys())],
-            vector_max = [vector_ranges[key][1] for key in sorted(vector_ranges.keys())]
-            )
+            continue
+    else:
+        pbar.close()
 
-    price = np.empty((train_size + test_size, number_of_maturities, number_of_coupon_rates))
-
-    for i in tqdm(range(train_size + test_size)):
-
-        parameters = list(params_range[i, :])
-
-        bond_price = BondPricing(parameters = parameters, parameterization = parameterization)
-
-        for maturity_idx, maturity in enumerate(maturities):
-            for coupon_idx, coupon in enumerate(coupon_range):
-
-                price[i, maturity_idx, coupon_idx] = bond_price(
-                        time_to_expiry = maturity,
-                        coupon = coupon
-                        )
-
-    price_grid = np.reshape(
-            price, newshape = (train_size + test_size, number_of_maturities * number_of_coupon_rates),
-            order = 'F'
-            )
-
-    assert_file_existence(f'data/gridbased/gridbased_parameters_{parameterization}.dat')
-    assert_file_existence(f'data/gridbased/gridbased_price_{parameterization}.dat')
-
-    np.savetxt(f'data/gridbased/gridbased_parameters_{parameterization}.dat', params_range)
-    np.savetxt(f'data/gridbased/gridbased_price_{parameterization}.dat', price_grid)
-
-    print("Data successfully generated!")
+    return features, count
 
 
 def generate_pointwise_data(
@@ -88,23 +65,23 @@ def generate_pointwise_data(
     vector_ranges = {
             'c'       : [0, 0.1],
             'maturity': [1 / 24, 20],
-            'a'       : [0.01, 0.1],
-            'b'       : [0.25, 0.8],
-            'sigma'   : [0.005, 0.05],
-            'r'       : [0.005, 0.06]
+            # 'a' can be negative as well but we keep the parameter range as positive to keep our calculated r positive
+            'a'       : [0.01, .2],
+            'b'       : [1, 10],
+            'sigma'   : [0.1, 1],
             }
 
-    params_range = create_features_linspace(
-            num = train_size + test_size,
-            vector_min = [vector_ranges[key][0] for key in sorted(vector_ranges.keys())],
-            vector_max = [vector_ranges[key][1] for key in sorted(vector_ranges.keys())]
+    params_range, count = create_features_linspace(
+            num = train_size + test_size, vector_ranges = vector_ranges
             )
 
-    price = np.empty((train_size + test_size, 1))
+    params_range = params_range[:count]
 
-    for i in tqdm(range(train_size + test_size)):
+    price = np.empty((count, 1))
 
-        a, b, c, time_to_expiry, r, sigma = params_range[i, :]
+    for i in tqdm(range(count)):
+
+        time_to_expiry, c, a, b, sigma, r = params_range[i, :]
 
         parameters = [a, b, sigma, r]
 
@@ -112,11 +89,16 @@ def generate_pointwise_data(
 
         price[i] = bond_price(time_to_expiry = time_to_expiry, coupon = c)
 
+    wrong_indices = np.where(price > 200)[0].tolist() or np.where(price < 70)[0].tolist()
+
+    price = np.delete(price, wrong_indices)
+    params_range = np.delete(params_range, wrong_indices, axis = 0)
+
     assert_file_existence(f'data/pointwise/pointwise_parameters_{parameterization}.dat')
     assert_file_existence(f'data/pointwise/pointwise_price_{parameterization}.dat')
 
     # The order for the columns are maturity, c, a, b, sigma, r
-    np.savetxt(f'data/pointwise/pointwise_parameters_{parameterization}.dat', params_range[:, [3, 2, 0, 1, 5, 4]])
+    np.savetxt(f'data/pointwise/pointwise_parameters_{parameterization}.dat', params_range)
     np.savetxt(f'data/pointwise/pointwise_price_{parameterization}.dat', price)
 
     print("Data successfully generated!")
