@@ -41,3 +41,268 @@
 2023-02-12 14:45:05,253 | INFO | model.py | 624: Beginning calibration for model dense with vasicek for 30Y maturity
 2023-02-12 14:47:49,739 | INFO | model.py | 674: Calibration complete! change in parameters: 0.39423990536572573
 2023-02-12 14:47:49,742 | INFO | model.py | 679: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_30Y.dat
+2023-02-15 11:50:59,577 | INFO | model.py | 103: Model of type: dense has been initialized
+2023-02-15 11:51:31,947 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-15 11:51:44,243 | WARNING | model.py | 264: Early stopping at epoch = 22
+2023-02-15 11:51:44,257 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-15 11:57:01,895 | INFO | model.py | 222: Beginning training for model dense with vasicek
+2023-02-15 11:57:13,875 | WARNING | model.py | 264: Early stopping at epoch = 22
+2023-02-15 11:57:13,880 | INFO | model.py | 271: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-15 12:08:56,163 | INFO | model.py | 107: Model of type: dense has been initialized
+2023-02-15 12:09:12,136 | INFO | model.py | 107: Model of type: dense has been initialized
+2023-02-15 12:10:32,610 | INFO | model.py | 107: Model of type: dense has been initialized
+2023-02-15 12:10:35,246 | INFO | model.py | 226: Beginning training for model dense with vasicek
+2023-02-15 12:12:24,696 | INFO | model.py | 275: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-15 12:23:37,141 | INFO | model.py | 507: Beginning calibration for model dense with vasicek
+2023-02-15 12:25:35,199 | INFO | model.py | 507: Beginning calibration for model dense with vasicek
+2023-02-15 12:27:02,764 | INFO | model.py | 551: Calibration complete! change in parameters: 2.153892866892789
+2023-02-15 12:27:02,768 | INFO | model.py | 555: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-02-15 12:28:00,435 | INFO | model.py | 109: Model of type: dense has been initialized
+2023-02-15 12:28:00,441 | INFO | model.py | 135: Weights loaded successfully
+2023-02-15 12:28:44,842 | INFO | model.py | 637: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:29:11,546 | INFO | model.py | 687: Calibration complete! change in parameters: 3.759642170178993
+2023-02-15 12:29:11,550 | INFO | model.py | 692: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-02-15 12:47:57,470 | INFO | model.py | 637: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:49:00,005 | INFO | model.py | 637: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:50:44,971 | INFO | model.py | 638: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:50:45,208 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 4), dtype=float64)
+2023-02-15 12:50:45,939 | INFO | api.py | 446: (1, 4)
+2023-02-15 12:51:54,405 | INFO | model.py | 640: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:51:54,443 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 2) dtype=float64>
+2023-02-15 12:51:54,455 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:51:54,467 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 4), dtype=float64)
+2023-02-15 12:51:54,478 | INFO | api.py | 446: (1, 4)
+2023-02-15 12:55:13,601 | INFO | model.py | 632: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:55:13,602 | INFO | model.py | 638: Initial Parameters: [0.04 0.05 0.5  0.02]
+2023-02-15 12:55:13,603 | INFO | model.py | 649: Parameters which are variable: [0.5  0.02]
+2023-02-15 12:55:13,604 | INFO | model.py | 655: Fixed input guess: [[1.10958904 0.05      ]]
+2023-02-15 12:55:13,641 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 2) dtype=float64>
+2023-02-15 12:55:13,653 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:55:13,666 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 4), dtype=float64)
+2023-02-15 12:55:13,678 | INFO | api.py | 446: (1, 4)
+2023-02-15 12:56:40,775 | INFO | model.py | 632: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:56:40,776 | INFO | model.py | 638: Initial Parameters: [1.   0.04 0.05 0.5  0.02 0.02]
+2023-02-15 12:56:40,777 | INFO | model.py | 649: Parameters which are variable: [0.05 0.5  0.02 0.02]
+2023-02-15 12:56:40,778 | INFO | model.py | 655: Fixed input guess: [[1.10958904 0.04      ]]
+2023-02-15 12:56:40,782 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 4) dtype=float64>
+2023-02-15 12:56:40,793 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:56:40,805 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 6), dtype=float64)
+2023-02-15 12:56:40,817 | INFO | api.py | 446: (1, 6)
+2023-02-15 12:56:40,881 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 4) dtype=float64>
+2023-02-15 12:56:40,892 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:56:40,905 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 6), dtype=float64)
+2023-02-15 12:56:40,917 | INFO | api.py | 446: (1, 6)
+2023-02-15 12:56:41,096 | INFO | model.py | 649: Parameters which are variable: [ 0.56604549 -0.0786453  -0.07289122]
+2023-02-15 12:56:41,096 | INFO | model.py | 655: Fixed input guess: [[ 1.10684932 -0.00971282]]
+2023-02-15 12:56:41,100 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 3) dtype=float64>
+2023-02-15 12:56:41,111 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:56:41,123 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 5), dtype=float64)
+2023-02-15 12:56:41,135 | INFO | api.py | 446: (1, 5)
+2023-02-15 12:59:28,370 | INFO | model.py | 632: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:59:28,371 | INFO | model.py | 638: Initial Parameters: [1.   0.04 0.05 0.5  0.02 0.02]
+2023-02-15 12:59:28,372 | INFO | model.py | 649: Parameters which are variable: [0.04 0.05 0.5  0.02 0.02]
+2023-02-15 12:59:28,373 | INFO | model.py | 655: Fixed input guess: [[1.10958904 1.        ]]
+2023-02-15 12:59:28,376 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 5) dtype=float64>
+2023-02-15 12:59:28,389 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:59:28,401 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 7), dtype=float64)
+2023-02-15 12:59:28,413 | INFO | api.py | 446: (1, 7)
+2023-02-15 12:59:42,523 | INFO | model.py | 632: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 12:59:42,523 | INFO | model.py | 638: Initial Parameters: [0.04 0.05 0.5  0.02 0.02]
+2023-02-15 12:59:42,525 | INFO | model.py | 649: Parameters which are variable: [0.05 0.5  0.02 0.02]
+2023-02-15 12:59:42,525 | INFO | model.py | 655: Fixed input guess: [[1.10958904 0.04      ]]
+2023-02-15 12:59:42,528 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 4) dtype=float64>
+2023-02-15 12:59:42,539 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:59:42,551 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 6), dtype=float64)
+2023-02-15 12:59:42,563 | INFO | api.py | 446: (1, 6)
+2023-02-15 12:59:42,626 | INFO | api.py | 446: <tf.Variable 'Variable:0' shape=(1, 4) dtype=float64>
+2023-02-15 12:59:42,637 | INFO | api.py | 446: Tensor("fixed_input:0", shape=(1, 2), dtype=float64)
+2023-02-15 12:59:42,649 | INFO | api.py | 446: Tensor("concat:0", shape=(1, 6), dtype=float64)
+2023-02-15 12:59:42,660 | INFO | api.py | 446: (1, 6)
+2023-02-15 12:59:42,836 | INFO | model.py | 649: Parameters which are variable: [-0.00971282  0.56604549 -0.0786453  -0.07289122]
+2023-02-15 12:59:42,837 | INFO | model.py | 655: Fixed input guess: [[1.10684932 0.04      ]]
+2023-02-15 12:59:42,929 | INFO | model.py | 649: Parameters which are variable: [-0.01740618  0.58135765 -0.13313493 -0.12067963]
+2023-02-15 12:59:42,930 | INFO | model.py | 655: Fixed input guess: [[1.10410959 0.04      ]]
+2023-02-15 12:59:43,023 | INFO | model.py | 649: Parameters which are variable: [-0.02107176  0.58864702 -0.15873163 -0.14320308]
+2023-02-15 12:59:43,023 | INFO | model.py | 655: Fixed input guess: [[1.09863014 0.04      ]]
+2023-02-15 12:59:43,119 | INFO | model.py | 649: Parameters which are variable: [-0.0222192   0.59092855 -0.16672929 -0.15024352]
+2023-02-15 12:59:43,119 | INFO | model.py | 655: Fixed input guess: [[1.09589041 0.04      ]]
+2023-02-15 12:59:43,211 | INFO | model.py | 649: Parameters which are variable: [-0.02253612  0.5915587  -0.1689379  -0.15218785]
+2023-02-15 12:59:43,212 | INFO | model.py | 655: Fixed input guess: [[1.09315068 0.04      ]]
+2023-02-15 12:59:43,304 | INFO | model.py | 649: Parameters which are variable: [-0.02257651  0.59163901 -0.16921939 -0.15243566]
+2023-02-15 12:59:43,305 | INFO | model.py | 655: Fixed input guess: [[1.09041096 0.04      ]]
+2023-02-15 12:59:43,397 | INFO | model.py | 649: Parameters which are variable: [-0.02266251  0.59181001 -0.16981872 -0.15296328]
+2023-02-15 12:59:43,398 | INFO | model.py | 655: Fixed input guess: [[1.08767123 0.04      ]]
+2023-02-15 12:59:43,489 | INFO | model.py | 649: Parameters which are variable: [-0.02270258  0.59188967 -0.17009793 -0.15320907]
+2023-02-15 12:59:43,490 | INFO | model.py | 655: Fixed input guess: [[1.08493151 0.04      ]]
+2023-02-15 12:59:43,583 | INFO | model.py | 649: Parameters which are variable: [-0.02269225  0.59186915 -0.17002599 -0.15314574]
+2023-02-15 12:59:43,583 | INFO | model.py | 655: Fixed input guess: [[1.07945205 0.04      ]]
+2023-02-15 12:59:43,674 | INFO | model.py | 649: Parameters which are variable: [-0.0226975   0.59187957 -0.17006254 -0.15317792]
+2023-02-15 12:59:43,674 | INFO | model.py | 655: Fixed input guess: [[1.07671233 0.04      ]]
+2023-02-15 12:59:43,765 | INFO | model.py | 649: Parameters which are variable: [-0.02279734  0.5920781  -0.17075835 -0.15379047]
+2023-02-15 12:59:43,765 | INFO | model.py | 655: Fixed input guess: [[1.0739726 0.04     ]]
+2023-02-15 12:59:43,856 | INFO | model.py | 649: Parameters which are variable: [-0.02278604  0.59205563 -0.17067959 -0.15372113]
+2023-02-15 12:59:43,856 | INFO | model.py | 655: Fixed input guess: [[1.07123288 0.04      ]]
+2023-02-15 12:59:43,947 | INFO | model.py | 649: Parameters which are variable: [-0.02285906  0.59220082 -0.17118846 -0.15416911]
+2023-02-15 12:59:43,948 | INFO | model.py | 655: Fixed input guess: [[1.06849315 0.04      ]]
+2023-02-15 12:59:44,038 | INFO | model.py | 649: Parameters which are variable: [-0.0227672   0.59201817 -0.1705483  -0.15360556]
+2023-02-15 12:59:44,039 | INFO | model.py | 655: Fixed input guess: [[1.06575342 0.04      ]]
+2023-02-15 12:59:44,141 | INFO | model.py | 649: Parameters which are variable: [-0.02284963  0.59218208 -0.17112277 -0.15411129]
+2023-02-15 12:59:44,142 | INFO | model.py | 655: Fixed input guess: [[1.06027397 0.04      ]]
+2023-02-15 12:59:44,233 | INFO | model.py | 649: Parameters which are variable: [-0.02287955  0.59224156 -0.17133125 -0.15429482]
+2023-02-15 12:59:44,233 | INFO | model.py | 655: Fixed input guess: [[1.05753425 0.04      ]]
+2023-02-15 12:59:44,324 | INFO | model.py | 649: Parameters which are variable: [-0.02300201  0.59248505 -0.17218465 -0.1550461 ]
+2023-02-15 12:59:44,325 | INFO | model.py | 655: Fixed input guess: [[1.05479452 0.04      ]]
+2023-02-15 12:59:44,416 | INFO | model.py | 649: Parameters which are variable: [-0.02303706  0.59255474 -0.1724289  -0.15526113]
+2023-02-15 12:59:44,416 | INFO | model.py | 655: Fixed input guess: [[1.05205479 0.04      ]]
+2023-02-15 12:59:44,508 | INFO | model.py | 649: Parameters which are variable: [-0.02303032  0.59254135 -0.17238197 -0.15521982]
+2023-02-15 12:59:44,508 | INFO | model.py | 655: Fixed input guess: [[1.04931507 0.04      ]]
+2023-02-15 12:59:44,614 | INFO | model.py | 649: Parameters which are variable: [-0.02306538  0.59261106 -0.17262628 -0.15543489]
+2023-02-15 12:59:44,614 | INFO | model.py | 655: Fixed input guess: [[1.04657534 0.04      ]]
+2023-02-15 12:59:44,707 | INFO | model.py | 649: Parameters which are variable: [-0.023105    0.59268983 -0.17290238 -0.15567796]
+2023-02-15 12:59:44,708 | INFO | model.py | 655: Fixed input guess: [[1.03835616 0.04      ]]
+2023-02-15 12:59:44,803 | INFO | model.py | 649: Parameters which are variable: [-0.02315707  0.59279336 -0.17326524 -0.1559974 ]
+2023-02-15 12:59:44,803 | INFO | model.py | 655: Fixed input guess: [[1.03561644 0.04      ]]
+2023-02-15 12:59:44,895 | INFO | model.py | 649: Parameters which are variable: [-0.02320799  0.5928946  -0.17362006 -0.15630977]
+2023-02-15 12:59:44,895 | INFO | model.py | 655: Fixed input guess: [[1.03287671 0.04      ]]
+2023-02-15 12:59:44,986 | INFO | model.py | 649: Parameters which are variable: [-0.02324284  0.59296391 -0.17386295 -0.15652359]
+2023-02-15 12:59:44,987 | INFO | model.py | 655: Fixed input guess: [[1.03013699 0.04      ]]
+2023-02-15 12:59:45,079 | INFO | model.py | 649: Parameters which are variable: [-0.02329127  0.5930602  -0.17420043 -0.15682069]
+2023-02-15 12:59:45,080 | INFO | model.py | 655: Fixed input guess: [[1.02739726 0.04      ]]
+2023-02-15 12:59:45,170 | INFO | model.py | 649: Parameters which are variable: [-0.02311319  0.59270612 -0.17295953 -0.15572825]
+2023-02-15 12:59:45,171 | INFO | model.py | 655: Fixed input guess: [[1.02191781 0.04      ]]
+2023-02-15 12:59:45,262 | INFO | model.py | 649: Parameters which are variable: [-0.02316381  0.59280676 -0.17331223 -0.15603877]
+2023-02-15 12:59:45,263 | INFO | model.py | 655: Fixed input guess: [[1.01917808 0.04      ]]
+2023-02-15 12:59:45,353 | INFO | model.py | 649: Parameters which are variable: [-0.02322325  0.59292494 -0.1737264  -0.15640339]
+2023-02-15 12:59:45,354 | INFO | model.py | 655: Fixed input guess: [[1.01643836 0.04      ]]
+2023-02-15 12:59:45,445 | INFO | model.py | 649: Parameters which are variable: [-0.02304791  0.59257632 -0.17250471 -0.15532783]
+2023-02-15 12:59:45,445 | INFO | model.py | 655: Fixed input guess: [[1.01369863 0.04      ]]
+2023-02-15 12:59:45,536 | INFO | model.py | 649: Parameters which are variable: [-0.02294962  0.59238088 -0.1718199  -0.15472493]
+2023-02-15 12:59:45,537 | INFO | model.py | 655: Fixed input guess: [[1.0109589 0.04     ]]
+2023-02-15 12:59:45,629 | INFO | model.py | 649: Parameters which are variable: [-0.02273641  0.59195696 -0.17033464 -0.15341727]
+2023-02-15 12:59:45,630 | INFO | model.py | 655: Fixed input guess: [[1.00821918 0.04      ]]
+2023-02-15 12:59:45,721 | INFO | model.py | 649: Parameters which are variable: [-0.02278625  0.59205605 -0.1706818  -0.15372292]
+2023-02-15 12:59:45,722 | INFO | model.py | 655: Fixed input guess: [[1.00273973 0.04      ]]
+2023-02-15 12:59:45,819 | INFO | model.py | 649: Parameters which are variable: [-0.02275412  0.59199218 -0.17045803 -0.15352591]
+2023-02-15 12:59:45,820 | INFO | model.py | 655: Fixed input guess: [[1.   0.04]]
+2023-02-15 12:59:45,912 | INFO | model.py | 649: Parameters which are variable: [-0.02289546  0.5922732  -0.17144247 -0.15439267]
+2023-02-15 12:59:45,912 | INFO | model.py | 655: Fixed input guess: [[0.99726027 0.04      ]]
+2023-02-15 12:59:46,005 | INFO | model.py | 649: Parameters which are variable: [-0.02301077  0.59250247 -0.17224553 -0.15509975]
+2023-02-15 12:59:46,005 | INFO | model.py | 655: Fixed input guess: [[0.99452055 0.04      ]]
+2023-02-15 12:59:46,099 | INFO | model.py | 649: Parameters which are variable: [-0.02300305  0.59248711 -0.17219172 -0.15505236]
+2023-02-15 12:59:46,100 | INFO | model.py | 655: Fixed input guess: [[0.99178082 0.04      ]]
+2023-02-15 12:59:46,192 | INFO | model.py | 649: Parameters which are variable: [-0.02317456  0.59282811 -0.17338585 -0.15610383]
+2023-02-15 12:59:46,192 | INFO | model.py | 655: Fixed input guess: [[0.9890411 0.04     ]]
+2023-02-15 12:59:46,284 | INFO | model.py | 649: Parameters which are variable: [-0.02291403  0.59231014 -0.17157316 -0.15450745]
+2023-02-15 12:59:46,285 | INFO | model.py | 655: Fixed input guess: [[0.98356164 0.04      ]]
+2023-02-15 12:59:46,377 | INFO | model.py | 649: Parameters which are variable: [-0.02299264  0.59246642 -0.17211985 -0.15498896]
+2023-02-15 12:59:46,377 | INFO | model.py | 655: Fixed input guess: [[0.98082192 0.04      ]]
+2023-02-15 12:59:46,468 | INFO | model.py | 649: Parameters which are variable: [-0.0229111   0.59230433 -0.17155287 -0.15448957]
+2023-02-15 12:59:46,469 | INFO | model.py | 655: Fixed input guess: [[0.97808219 0.04      ]]
+2023-02-15 12:59:46,561 | INFO | model.py | 649: Parameters which are variable: [-0.02297363  0.59242864 -0.17198765 -0.15487253]
+2023-02-15 12:59:46,561 | INFO | model.py | 655: Fixed input guess: [[0.97534247 0.04      ]]
+2023-02-15 12:59:46,653 | INFO | model.py | 649: Parameters which are variable: [-0.02292428  0.59233052 -0.17164452 -0.1545703 ]
+2023-02-15 12:59:46,653 | INFO | model.py | 655: Fixed input guess: [[0.97260274 0.04      ]]
+2023-02-15 12:59:46,744 | INFO | model.py | 649: Parameters which are variable: [-0.02320129  0.59288119 -0.17356815 -0.15626512]
+2023-02-15 12:59:46,744 | INFO | model.py | 655: Fixed input guess: [[0.96986301 0.04      ]]
+2023-02-15 12:59:46,836 | INFO | model.py | 649: Parameters which are variable: [-0.0230103   0.59250157 -0.17224458 -0.15509843]
+2023-02-15 12:59:46,837 | INFO | model.py | 655: Fixed input guess: [[0.96438356 0.04      ]]
+2023-02-15 12:59:46,930 | INFO | model.py | 649: Parameters which are variable: [-0.02305776  0.59259591 -0.17257323 -0.15538818]
+2023-02-15 12:59:46,930 | INFO | model.py | 655: Fixed input guess: [[0.96164384 0.04      ]]
+2023-02-15 12:59:47,023 | INFO | model.py | 649: Parameters which are variable: [-0.02312895  0.59273739 -0.173066   -0.15582266]
+2023-02-15 12:59:47,023 | INFO | model.py | 655: Fixed input guess: [[0.95890411 0.04      ]]
+2023-02-15 12:59:47,116 | INFO | model.py | 649: Parameters which are variable: [-0.02324192  0.59296192 -0.17384768 -0.15651194]
+2023-02-15 12:59:47,116 | INFO | model.py | 655: Fixed input guess: [[0.95616438 0.04      ]]
+2023-02-15 12:59:47,208 | INFO | model.py | 649: Parameters which are variable: [-0.02346489  0.59340501 -0.17538745 -0.15787028]
+2023-02-15 12:59:47,208 | INFO | model.py | 655: Fixed input guess: [[0.95342466 0.04      ]]
+2023-02-15 12:59:47,299 | INFO | model.py | 649: Parameters which are variable: [-0.02343722  0.59335003 -0.17519691 -0.15770208]
+2023-02-15 12:59:47,299 | INFO | model.py | 655: Fixed input guess: [[0.95068493 0.04      ]]
+2023-02-15 12:59:47,390 | INFO | model.py | 649: Parameters which are variable: [-0.02339297  0.59326211 -0.17489225 -0.15743314]
+2023-02-15 12:59:47,391 | INFO | model.py | 655: Fixed input guess: [[0.94520548 0.04      ]]
+2023-02-15 12:59:47,482 | INFO | model.py | 649: Parameters which are variable: [-0.02347889  0.59343281 -0.17548352 -0.15795514]
+2023-02-15 12:59:47,482 | INFO | model.py | 655: Fixed input guess: [[0.94246575 0.04      ]]
+2023-02-15 12:59:47,575 | INFO | model.py | 649: Parameters which are variable: [-0.02347644  0.59342796 -0.17546673 -0.15794031]
+2023-02-15 12:59:47,576 | INFO | model.py | 655: Fixed input guess: [[0.93972603 0.04      ]]
+2023-02-15 12:59:47,667 | INFO | model.py | 649: Parameters which are variable: [-0.0235252   0.59352483 -0.17580199 -0.15823637]
+2023-02-15 12:59:47,667 | INFO | model.py | 655: Fixed input guess: [[0.9369863 0.04     ]]
+2023-02-15 12:59:47,759 | INFO | model.py | 649: Parameters which are variable: [-0.0237119   0.59389567 -0.17708269 -0.15936787]
+2023-02-15 12:59:47,759 | INFO | model.py | 655: Fixed input guess: [[0.93424658 0.04      ]]
+2023-02-15 12:59:47,850 | INFO | model.py | 649: Parameters which are variable: [-0.02368491  0.59384208 -0.1768989  -0.15920522]
+2023-02-15 12:59:47,851 | INFO | model.py | 655: Fixed input guess: [[0.93150685 0.04      ]]
+2023-02-15 12:59:47,942 | INFO | model.py | 649: Parameters which are variable: [-0.02358708  0.59364787 -0.17623329 -0.15861608]
+2023-02-15 12:59:47,943 | INFO | model.py | 655: Fixed input guess: [[0.9260274 0.04     ]]
+2023-02-15 12:59:48,035 | INFO | model.py | 649: Parameters which are variable: [-0.02351456  0.59350392 -0.17574152 -0.15818049]
+2023-02-15 12:59:48,035 | INFO | model.py | 655: Fixed input guess: [[0.92328767 0.04      ]]
+2023-02-15 12:59:48,129 | INFO | model.py | 649: Parameters which are variable: [-0.02369318  0.59385835 -0.17694719 -0.15924951]
+2023-02-15 12:59:48,130 | INFO | model.py | 655: Fixed input guess: [[0.92054795 0.04      ]]
+2023-02-15 12:59:48,222 | INFO | model.py | 649: Parameters which are variable: [-0.02370913  0.59388997 -0.17705327 -0.15934388]
+2023-02-15 12:59:48,223 | INFO | model.py | 655: Fixed input guess: [[0.91780822 0.04      ]]
+2023-02-15 12:59:48,315 | INFO | model.py | 649: Parameters which are variable: [-0.02375883  0.5939885  -0.17738371 -0.15963783]
+2023-02-15 12:59:48,316 | INFO | model.py | 655: Fixed input guess: [[0.91506849 0.04      ]]
+2023-02-15 12:59:48,407 | INFO | model.py | 649: Parameters which are variable: [-0.02380009  0.59407027 -0.17765747 -0.15988146]
+2023-02-15 12:59:48,408 | INFO | model.py | 655: Fixed input guess: [[0.91232877 0.04      ]]
+2023-02-15 12:59:48,499 | INFO | model.py | 649: Parameters which are variable: [-0.02355028  0.59357543 -0.17601447 -0.15841645]
+2023-02-15 12:59:48,500 | INFO | model.py | 655: Fixed input guess: [[0.90684932 0.04      ]]
+2023-02-15 12:59:48,593 | INFO | model.py | 649: Parameters which are variable: [-0.02352222  0.5935201  -0.17584052 -0.15825952]
+2023-02-15 12:59:48,594 | INFO | model.py | 655: Fixed input guess: [[0.90410959 0.04      ]]
+2023-02-15 12:59:48,686 | INFO | model.py | 649: Parameters which are variable: [-0.02357803  0.59363015 -0.17618616 -0.15857142]
+2023-02-15 12:59:48,687 | INFO | model.py | 655: Fixed input guess: [[0.90136986 0.04      ]]
+2023-02-15 12:59:48,779 | INFO | model.py | 649: Parameters which are variable: [-0.02375584  0.5939806  -0.17727863 -0.15955879]
+2023-02-15 12:59:48,779 | INFO | model.py | 655: Fixed input guess: [[0.89863014 0.04      ]]
+2023-02-15 12:59:48,872 | INFO | model.py | 649: Parameters which are variable: [-0.02377458  0.5940174  -0.17738878 -0.15965914]
+2023-02-15 12:59:48,873 | INFO | model.py | 655: Fixed input guess: [[0.89589041 0.04      ]]
+2023-02-15 12:59:48,966 | INFO | model.py | 649: Parameters which are variable: [-0.02361899  0.59371196 -0.17647795 -0.15882871]
+2023-02-15 12:59:48,966 | INFO | model.py | 655: Fixed input guess: [[0.88767123 0.04      ]]
+2023-02-15 12:59:49,060 | INFO | model.py | 649: Parameters which are variable: [-0.02296984  0.59244815 -0.17307055 -0.15566118]
+2023-02-15 12:59:49,060 | INFO | model.py | 655: Fixed input guess: [[0.88493151 0.04      ]]
+2023-02-15 12:59:49,155 | INFO | model.py | 649: Parameters which are variable: [-0.02330683  0.59306713 -0.17428034 -0.15682934]
+2023-02-15 12:59:49,156 | INFO | model.py | 655: Fixed input guess: [[0.88219178 0.04      ]]
+2023-02-15 12:59:49,250 | INFO | model.py | 649: Parameters which are variable: [-0.0236138   0.5936257  -0.1753336  -0.15784959]
+2023-02-15 12:59:49,250 | INFO | model.py | 655: Fixed input guess: [[0.87945205 0.04      ]]
+2023-02-15 12:59:49,343 | INFO | model.py | 649: Parameters which are variable: [-0.02367011  0.59372736 -0.17552002 -0.1580306 ]
+2023-02-15 12:59:49,343 | INFO | model.py | 655: Fixed input guess: [[0.87671233 0.04      ]]
+2023-02-15 12:59:49,434 | INFO | model.py | 649: Parameters which are variable: [-0.02367487  0.59373595 -0.17553574 -0.15804586]
+2023-02-15 12:59:49,434 | INFO | model.py | 655: Fixed input guess: [[0.8739726 0.04     ]]
+2023-02-15 12:59:49,525 | INFO | model.py | 649: Parameters which are variable: [-0.02283108  0.59222399 -0.17284815 -0.15542922]
+2023-02-15 12:59:49,525 | INFO | model.py | 655: Fixed input guess: [[0.86849315 0.04      ]]
+2023-02-15 12:59:49,617 | INFO | model.py | 649: Parameters which are variable: [-0.02254972  0.59175817 -0.17216023 -0.15475152]
+2023-02-15 12:59:49,618 | INFO | model.py | 655: Fixed input guess: [[0.86575342 0.04      ]]
+2023-02-15 12:59:49,708 | INFO | model.py | 649: Parameters which are variable: [-0.02364129  0.59353967 -0.17471831 -0.15727553]
+2023-02-15 12:59:49,709 | INFO | model.py | 655: Fixed input guess: [[0.8630137 0.04     ]]
+2023-02-15 12:59:49,798 | INFO | model.py | 649: Parameters which are variable: [-0.02430715  0.59454375 -0.17601039 -0.15855684]
+2023-02-15 12:59:49,799 | INFO | model.py | 655: Fixed input guess: [[0.86027397 0.04      ]]
+2023-02-15 13:00:34,609 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 13:01:01,666 | INFO | model.py | 680: Calibration complete! change in parameters: 0.5240624148818291
+2023-02-15 13:01:01,669 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-02-15 13:04:04,390 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 13:04:31,313 | INFO | model.py | 680: Calibration complete! change in parameters: 0.2996034731238721
+2023-02-15 13:04:31,315 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-02-15 13:05:27,578 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 1M maturity
+2023-02-15 13:05:54,496 | INFO | model.py | 680: Calibration complete! change in parameters: 0.2996034731238721
+2023-02-15 13:05:54,499 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-02-15 13:05:54,504 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 3M maturity
+2023-02-15 13:06:21,189 | INFO | model.py | 680: Calibration complete! change in parameters: 0.18631362265216214
+2023-02-15 13:06:21,193 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_3M.dat
+2023-02-15 13:06:21,198 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 6M maturity
+2023-02-15 13:06:47,885 | INFO | model.py | 680: Calibration complete! change in parameters: 0.12448385659526227
+2023-02-15 13:06:47,888 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_6M.dat
+2023-02-15 13:06:47,893 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-02-15 13:07:14,425 | INFO | model.py | 680: Calibration complete! change in parameters: 0.04552401393561839
+2023-02-15 13:07:14,428 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1Y.dat
+2023-02-15 13:07:14,433 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 2Y maturity
+2023-02-15 13:07:40,996 | INFO | model.py | 680: Calibration complete! change in parameters: 0.6287561426905879
+2023-02-15 13:07:41,000 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_2Y.dat
+2023-02-15 13:07:41,005 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 3Y maturity
+2023-02-15 13:08:07,595 | INFO | model.py | 680: Calibration complete! change in parameters: 0.1435151229608495
+2023-02-15 13:08:07,598 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_3Y.dat
+2023-02-15 13:08:07,603 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 5Y maturity
+2023-02-15 13:08:34,025 | INFO | model.py | 680: Calibration complete! change in parameters: 0.21367800794369002
+2023-02-15 13:08:34,028 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_5Y.dat
+2023-02-15 13:08:34,034 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 10Y maturity
+2023-02-15 13:09:00,623 | INFO | model.py | 680: Calibration complete! change in parameters: 0.4851230126101093
+2023-02-15 13:09:00,626 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_10Y.dat
+2023-02-15 13:09:00,631 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 20Y maturity
+2023-02-15 13:09:27,282 | INFO | model.py | 680: Calibration complete! change in parameters: 0.1931979993433995
+2023-02-15 13:09:27,285 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_20Y.dat
+2023-02-15 13:09:27,290 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 30Y maturity
+2023-02-15 13:09:53,874 | INFO | model.py | 680: Calibration complete! change in parameters: 0.26379685660165675
+2023-02-15 13:09:53,877 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_30Y.dat

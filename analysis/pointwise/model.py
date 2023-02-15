@@ -38,12 +38,18 @@ def load_data(parameterization: str = 'vasicek'):
     params_range = np.loadtxt(f'data/pointwise/pointwise_parameters_{parameterization}.dat')
     price = np.loadtxt(f'data/pointwise/pointwise_price_{parameterization}.dat')
 
-    # Train and test sets
-    params_range_train = params_range[:train_size, :]
-    params_range_test = params_range[train_size: train_size + test_size, :]
 
-    price_train = price[:train_size]
-    price_test = price[train_size: train_size + test_size]
+    samples = params_range.shape[0]
+
+    train_proportion = round(train_size / (train_size + test_size), 2)
+
+
+    # Train and test sets
+    params_range_train = params_range[:round(samples*train_proportion), :]
+    params_range_test = params_range[round(samples*train_proportion):, :]
+
+    price_train = price[:round(samples*train_proportion)]
+    price_test = price[round(samples*train_proportion):]
 
     return params_range_train, params_range_test, price_train, price_test
 
@@ -282,14 +288,14 @@ def train_model(
     # Loss plots
     figure1 = plt.figure(figsize = (8, 7))
     plt.subplot(1, 2, 1)
-    plt.plot(np.arange(epochs), train_loss_vec[1:], '-g')
-    plt.plot(np.arange(epochs), test_loss_vec[1:], '-m')
+    plt.plot(np.arange(min(epochs, epoch+1)), train_loss_vec[1:], '-g')
+    plt.plot(np.arange(min(epochs, epoch+1)), test_loss_vec[1:], '-m')
     plt.legend(['Training Loss', 'Test Loss'])
     plt.xlabel("Epoch", fontsize = 15, labelpad = 5);
     plt.ylabel("Loss", fontsize = 15, labelpad = 5);
     text = 'Test Loss Last Epoch = %.10f' % test_loss.result().numpy() + '\n' + 'Last Epoch = %d' % (
             epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
-    plt.text(epochs // 4, train_loss_vec[1] / 2, text, fontsize = 12);
+    plt.text(min(epochs, epoch+1) // 4, train_loss_vec[1] / 2, text, fontsize = 12);
 
     figure1.savefig(f'{plot_path}pointwise_loss_{model_type}_{parameterization}.png')
 
@@ -447,10 +453,17 @@ def calibrate_synthetic(
         raise ValueError("Unknown parameterization")
 
     parameters_to_calibrate = np.loadtxt(f'data/pointwise/pointwise_parameters_{parameterization}.dat')
-    prices_calibrate = np.reshape(
-            np.loadtxt(f'data/pointwise/pointwise_price_{parameterization}.dat'),
-            newshape = (train_size + test_size, 1), order = 'F'
-            )
+    prices_calibrate = np.loadtxt(f'data/pointwise/pointwise_price_{parameterization}.dat')
+
+    samples = prices_calibrate.shape[0]
+    from hyperparameters import train_size
+
+    train_proportion = round(train_size / (train_size + test_size), 2)
+
+    train_size = round(samples*train_proportion)
+
+
+    train_size = round(prices_calibrate.shape[0]*train_proportion)
 
     parameters_to_calibrate = parameters_to_calibrate[train_size + np.arange(calibration_size), :]
     prices_calibrate = prices_calibrate[train_size + np.arange(calibration_size)]
@@ -586,14 +599,6 @@ def calibrate_to_market_data(
         verbose_length: int = 1
         ):
 
-    # The network is done training. We are ready to start on the Calibration step
-    if parameterization == 'vasicek':
-        parameter_size = 4
-
-    else:
-        logger.error("Unknown parameterization: %s" % parameterization)
-        raise ValueError("Unknown parameterization")
-
     parameters_to_calibrate = initial_parameters
     prices_calibrate = market_data
 
@@ -643,6 +648,7 @@ def calibrate_to_market_data(
                 tf.convert_to_tensor(fixed_input_guess), shape = (1,
                                                                               -1)
                 )
+
 
         for epoch in range(epochs):
             calibration_loss.reset_states()

@@ -11,11 +11,11 @@ from hyperparameters import test_size, \
 
 def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
 
-    a_range = np.linspace(start = vector_ranges['a'][0], stop = vector_ranges['a'][1], num = num)
-    b_range = np.linspace(start = vector_ranges['b'][0], stop = vector_ranges['b'][1], num = num)
-    sigma_range = np.linspace(start = vector_ranges['sigma'][0], stop = vector_ranges['sigma'][1], num = num)
+    a_range = np.linspace(start = vector_ranges['a'][0], stop = vector_ranges['a'][1], num = 2*num)
+    b_range = np.linspace(start = vector_ranges['b'][0], stop = vector_ranges['b'][1], num = 2*num)
+    sigma_range = np.linspace(start = vector_ranges['sigma'][0], stop = vector_ranges['sigma'][1], num = 2*num)
     c_range = np.linspace(start = vector_ranges['c'][0], stop = vector_ranges['c'][1], num = num)
-    maturity_range = np.linspace(start = vector_ranges['maturity'][0], stop = vector_ranges['maturity'][1], num = num)
+    maturity_range = np.linspace(start = vector_ranges['maturity'][0], stop = vector_ranges['maturity'][1], num = 2*num)
 
     features = np.zeros((num, len(vector_ranges.keys()) + 1), dtype = np.float64)
 
@@ -33,10 +33,10 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
         sigma = sample(sigma_range.tolist(), k = 1)[0]
         c = sample(c_range.tolist(), k = 1)[0]
         maturity = sample(maturity_range.tolist(), k = 1)[0]
+        r = norm.rvs(loc = a / b, scale = (sigma ** 2) / (2 * b))
 
         # If the expected value of the interest rate is greater than 5% or the vol is greater than 80%
-        if abs(a / b) < 0.05 and (sigma ** 2) / (2 * b) < 0.8:
-            r = norm.rvs(loc = a / b, scale = (sigma ** 2) / (2 * b))
+        if abs(a / b) < 0.05 and (sigma ** 2) / (2 * b) < 0.8 and abs(r) <= 0.1:
 
             features[count, :] = np.array([maturity, c, a, b, sigma, r])
             a_range = np.delete(a_range, np.where(a_range == a))
