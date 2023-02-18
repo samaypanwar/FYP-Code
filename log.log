@@ -306,3 +306,9 @@
 2023-02-15 13:09:27,290 | INFO | model.py | 629: Beginning calibration for model dense with vasicek for 30Y maturity
 2023-02-15 13:09:53,874 | INFO | model.py | 680: Calibration complete! change in parameters: 0.26379685660165675
 2023-02-15 13:09:53,877 | INFO | model.py | 685: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_30Y.dat
+2023-02-18 16:33:13,794 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-02-18 16:38:18,919 | INFO | model_training.py | 104: Beginning training for model dense with vasicek
+2023-02-18 16:40:08,737 | INFO | model_training.py | 153: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-02-18 17:01:09,351 | INFO | model_calibration.py | 96: Beginning calibration for model dense with vasicek
+2023-02-18 17:02:37,345 | INFO | model_calibration.py | 140: Calibration complete! change in parameters: 2.1263668422391224
+2023-02-18 17:02:37,350 | INFO | model_calibration.py | 144: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
