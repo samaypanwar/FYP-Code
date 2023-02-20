@@ -12,6 +12,8 @@ matplotlib = "*"
 pytest = "*"
 seaborn = "*"
 ipympl = "*"
+sklearn = "*"
+scikit-learn = "*"
 
 [dev-packages]
 

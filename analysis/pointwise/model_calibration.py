@@ -16,8 +16,7 @@ def calibrate_synthetic(
         model, calibration_size: int = 10_000, epochs: int = 1000, model_type: str = 'dense', parameterization:
         str =
         'vasicek',
-        plot: bool = False,
-        verbose_length: int = 1
+        plot: bool = True,
         ):
     """
 
@@ -57,26 +56,6 @@ def calibrate_synthetic(
     parameters_to_calibrate = parameters_to_calibrate[number_of_training_samples + np.arange(calibration_size), :]
     prices_calibrate = prices_calibrate[number_of_training_samples + np.arange(calibration_size)]
 
-    # Choose optimizer and type of loss function
-    optimizer = tf.keras.optimizers.Adam()
-    loss_object = tf.keras.losses.MeanSquaredError()
-    calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
-    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
-
-    @tf.function
-    def calibration_step(fixed_input, variable_input, price):
-
-        with tf.GradientTape() as tape:
-            tape.watch(variable_input)
-
-            prediction = model(tf.concat([fixed_input, variable_input], axis = 1))
-            c_loss = loss_object(price, prediction)
-            calibration_loss(c_loss)
-            grads = tape.gradient(c_loss, [variable_input])
-            optimizer.apply_gradients(zip(grads, [variable_input]))
-
-        mape(price, prediction)
-
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
     parameters_with_errors = parameters_to_calibrate + np.concatenate(
             (
@@ -91,63 +70,72 @@ def calibrate_synthetic(
     old_input_guess = parameters_with_errors.copy()
 
     # Important: First convert to tensor, then to variable
-    prices = tf.convert_to_tensor(prices_calibrate)
 
     logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
     calibration_logger.info(f"Beginning calibration for model {model_type} with {parameterization}")
 
-    ta = tf.TensorArray(tf.float64, size = 0, dynamic_size = True, clear_after_read = False)
+    from scipy.optimize import Bounds
 
-    # Start the actual calibration
-    for j in tqdm(range(calibration_size)):
+    variable_bounds = {
+            'a'    : [0.01, 0.20],
+            'b'    : [1, 10],
+            'sigma': [0.1, 1],
+            'r'    : [0.00, 0.1]
+            }
 
-        variable_input_guess = tf.Variable(
-                tf.reshape(
-                        tf.convert_to_tensor(parameters_with_errors[j, 2:]), shape = (1,
-                                                                                      -1)
+    bounds = Bounds(
+            [variable_bounds[key][0] for key in variable_bounds], [variable_bounds[key][1] for key in variable_bounds]
+            )
+
+    from sklearn.metrics import mean_squared_error as mse
+
+    def objective_function(variable_input, fixed_input, model, y_true):
+
+        y_pred = model(
+                np.reshape(
+                        np.concatenate([fixed_input, variable_input])
+                        , newshape = (1, -1)
                         )
+                )[0].numpy()
+
+        return mse(y_true, y_pred)
+
+    import scipy
+
+    updated_variable_input = np.empty(shape = (1, 4))
+
+    for i in tqdm(range(calibration_size)):
+
+        variable_input = parameters_with_errors[i, 2:]
+        fixed_input = parameters_with_errors[i, :2]
+        y_true = np.array([prices_calibrate[i]])
+        args = (fixed_input, model, y_true)
+        x0 = variable_input
+        s = scipy.optimize.minimize(
+                objective_function, x0, method = 'trust-constr',
+                options = {'verbose': 0}, bounds = bounds, args = args
                 )
-        fixed_input_guess = tf.reshape(
-                tf.convert_to_tensor(parameters_with_errors[j, :2]), shape = (1,
-                                                                              -1)
-                )
 
-        for epoch in range(epochs):
-            calibration_loss.reset_states()
-            mape.reset_states()
+        updated_variable_input = np.append(updated_variable_input, s.x.reshape((1, -1)), axis = 0)
+        text = f"Set {i+1}/{calibration_size}, Time Elapsed: {round(s.execution_time, 3)} seconds"
+        calibration_logger.debug(text)
 
-            calibration_step(fixed_input_guess, variable_input_guess, prices[j])
+    updated_variable_input = np.concatenate([parameters_with_errors[:, :2], updated_variable_input[1:, :]], axis=1)
 
-            template = 'Set: {0}/{1} Calibration Epoch: {2}/{3}, Loss: {4}, MAPE: {5}'
-            message = template.format(
-                    j, calibration_size, epoch + 1, epochs, calibration_loss.result(), mape.result()
-                    )
-
-            # So we are not logging very frequently
-            if (epoch + 1) % verbose_length == 0 and epoch > 1:
-                calibration_logger.debug(message)
-
-        ta.write(
-                j, tf.reshape(
-                        tf.concat([fixed_input_guess, variable_input_guess], axis = 1), shape = (-1,
-                                                                                                 )
-                        )
-                ).mark_used()
-
-    change = ta.stack().numpy() - old_input_guess
+    change = updated_variable_input - old_input_guess
 
     message = f"Calibration complete! change in parameters: {np.linalg.norm(change, 'fro')}"
     logger.info(message)
     calibration_logger.info(message)
 
-    np.savetxt(f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat', ta.stack().numpy())
+    np.savetxt(f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat', updated_variable_input)
     logger.info(
             f"Saved parameters to file: "
             f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat'}"
             )
     #
     # Errors and plots
-    new_input_guess = ta.stack().numpy().copy()
+    new_input_guess = updated_variable_input
     percentage_err = np.abs(new_input_guess - parameters_to_calibrate) / np.abs(parameters_to_calibrate)
     mean_percentage_err = np.mean(percentage_err, axis = 0) * 100
     percentage_err_copy = percentage_err.copy()
