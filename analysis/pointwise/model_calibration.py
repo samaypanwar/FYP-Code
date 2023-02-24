@@ -174,39 +174,16 @@ def calibrate_synthetic(
 
 
 def calibrate_to_market_data(
-        model, market_data, initial_parameters, time_to_expiry, epochs: int = 1000, model_type: str = 'dense',
+        model, market_data, initial_parameters, coupon_rate, time_to_expiry, model_type: str =
+        'dense',
         parameterization:
         str =
         'vasicek',
         maturity: str = '1M',
-        verbose_length: int = 1
         ):
 
-    parameters_to_calibrate = initial_parameters
     prices_calibrate = market_data
 
-    # Choose optimizer and type of loss function
-    optimizer = tf.keras.optimizers.Adam()
-    loss_object = tf.keras.losses.MeanSquaredError()
-    calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
-    mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
-
-    @tf.function
-    def calibration_step(fixed_input, variable_input, price):
-
-        with tf.GradientTape() as tape:
-            tape.watch(variable_input)
-
-            prediction = model(tf.concat([fixed_input, variable_input], axis = 1))
-            c_loss = loss_object(price, prediction)
-            calibration_loss(c_loss)
-            grads = tape.gradient(c_loss, [variable_input])
-            optimizer.apply_gradients(zip(grads, [variable_input]))
-
-        mape(price, prediction)
-
-    # Important: First convert to tensor, then to variable
-    prices = tf.convert_to_tensor(prices_calibrate)
     calibration_size = len(prices_calibrate)
 
     logger.info(f"Beginning calibration for model {model_type} with {parameterization} for {maturity} maturity")
@@ -214,51 +191,55 @@ def calibrate_to_market_data(
         f"Beginning calibration for model {model_type} with {parameterization} for {maturity} maturity"
         )
 
-    ta = tf.TensorArray(tf.float64, size = 0, dynamic_size = True, clear_after_read = False)
+    from scipy.optimize import Bounds
+
+    variable_bounds = {
+            'a'    : [0.01, 0.20],
+            'b'    : [1, 10],
+            'sigma': [0.1, 1],
+            'r'    : [0.00, 0.1]
+            }
+
+    bounds = Bounds(
+            [variable_bounds[key][0] for key in variable_bounds], [variable_bounds[key][1] for key in variable_bounds]
+            )
+
+    from sklearn.metrics import mean_squared_error as mse
+
+    def objective_function(variable_input, fixed_input, model, y_true):
+
+        y_pred = model(
+                np.reshape(
+                        np.concatenate([fixed_input, variable_input])
+                        , newshape = (1, -1)
+                        )
+                )[0].numpy()
+
+        return mse(y_true, y_pred)
 
     parameters = initial_parameters.copy()
 
+    import scipy
+    updated_variable_input = np.empty(shape = (1, 4))
     # Start the actual calibration
     for j in tqdm(range(calibration_size)):
 
-        variable_input_guess = tf.Variable(
-                tf.reshape(
-                        tf.convert_to_tensor(parameters[1:]), shape = (1,
-                                                                       -1)
-                        )
+        variable_input = parameters
+        fixed_input = np.array([time_to_expiry[j], coupon_rate], dtype=np.float64)
+        y_true = np.array([prices_calibrate[j]])
+        args = (fixed_input, model, y_true)
+        x0 = variable_input
+        s = scipy.optimize.minimize(
+                objective_function, x0, method = 'trust-constr',
+                options = {'verbose': 0}, bounds = bounds, args = args
                 )
+        updated_variable_input = np.append(updated_variable_input, s.x.reshape((1, -1)), axis = 0)
+        text = f"Set {j + 1}/{calibration_size}, Time Elapsed: {round(s.execution_time, 3)} seconds"
+        calibration_logger.debug(text)
 
-        fixed_input_guess = np.array([time_to_expiry[j], parameters[0]], dtype = np.float64)
-        fixed_input_guess = tf.reshape(
-                tf.convert_to_tensor(fixed_input_guess), shape = (1,
-                                                                  -1)
-                )
+    updated_variable_input = updated_variable_input[1:, :]
 
-        for epoch in range(epochs):
-            calibration_loss.reset_states()
-            mape.reset_states()
-
-            calibration_step(fixed_input_guess, variable_input_guess, prices[j])
-
-            template = 'Set: {0}/{1} Calibration Epoch: {2}/{3}, Loss: {4}, MAPE: {5}'
-            message = template.format(
-                    j, calibration_size, epoch + 1, epochs, calibration_loss.result(), mape.result()
-                    )
-
-            # So we are not logging very frequently
-            if (epoch + 1) % verbose_length == 0 and epoch > 1:
-                calibration_logger.debug(message)
-
-        ta.write(
-                j, tf.reshape(
-                        tf.concat([fixed_input_guess, variable_input_guess], axis = 1), shape = (-1,
-                                                                                                 )
-                        )
-                ).mark_used()
-
-        parameters = ta.read(j).numpy()[1:]
-
-    change = ta.read(j).numpy()[1:] - initial_parameters
+    change = updated_variable_input - initial_parameters
 
     message = f"Calibration complete! change in parameters: {np.linalg.norm(change)}"
     logger.info(message)
@@ -266,7 +247,7 @@ def calibrate_to_market_data(
 
     np.savetxt(
         f'data/pointwise/pointwise_params_market_calibrated_{model_type}_{parameterization}_{maturity}.dat',
-        ta.stack().numpy()
+        updated_variable_input
         )
     logger.info(
             f"Saved parameters to file: "
