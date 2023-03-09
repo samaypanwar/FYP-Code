@@ -18,15 +18,15 @@ class BondPricing(VasicekModel):
         else:
             raise ValueError(f'Parameterization {parameterization} not recognized')
 
-    def __call__(self, time_to_expiry: float, coupon: float = 0) -> float:
+    def __call__(self, time_to_expiry: float, coupon: float = 0, r: float = 0.02) -> float:
 
         if self.parameterization == 'vasicek':
 
             vm = VasicekModel(parameters = self.parameters)
 
-            a, b, r, sigma = self.parameters
+            a, b, sigma = self.parameters
 
-            A, C = vm(time_to_expiry = time_to_expiry)
+            A, C = vm(time_to_expiry = time_to_expiry, r = r)
 
         result = np.exp(coupon * time_to_expiry) * np.exp(A + r * C)
 

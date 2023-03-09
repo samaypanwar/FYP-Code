@@ -312,3 +312,91 @@
 2023-02-18 17:01:09,351 | INFO | model_calibration.py | 96: Beginning calibration for model dense with vasicek
 2023-02-18 17:02:37,345 | INFO | model_calibration.py | 140: Calibration complete! change in parameters: 2.1263668422391224
 2023-02-18 17:02:37,350 | INFO | model_calibration.py | 144: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-03-09 21:17:07,360 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:17:07,548 | INFO | train.py | 120: Beginning training for model dense with vasicek
+2023-03-09 21:17:23,627 | INFO | train.py | 169: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-03-09 21:27:23,474 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:27:23,494 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 21:27:23,683 | INFO | calibrate_synthetic.py | 109: Beginning calibration for model dense with vasicek
+2023-03-09 21:27:25,706 | INFO | calibrate_synthetic.py | 153: Calibration complete! change in parameters: 0.23494681387334987
+2023-03-09 21:27:25,708 | INFO | calibrate_synthetic.py | 157: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-03-09 21:47:04,466 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:47:04,477 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 21:47:04,486 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with vasicek for 1M maturity
+2023-03-09 21:48:54,604 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:48:54,615 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 21:48:54,623 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with vasicek for 1M maturity
+2023-03-09 21:48:57,576 | INFO | calibrate_market.py | 120: Calibration complete! change in parameters: 4.0839364056029925
+2023-03-09 21:48:57,579 | INFO | calibrate_market.py | 127: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-03-09 21:51:16,627 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:51:16,638 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 21:51:16,648 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1M maturity
+2023-03-09 21:51:20,315 | INFO | calibrate_market.py | 121: Calibration complete! change in parameters: 4.0839364056029925
+2023-03-09 21:51:20,319 | INFO | calibrate_market.py | 128: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-03-09 21:54:07,145 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:54:07,158 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 21:54:07,168 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1M maturity
+2023-03-09 21:54:10,390 | INFO | calibrate_market.py | 121: Calibration complete! change in parameters: 4.0839364056029925
+2023-03-09 21:54:10,393 | INFO | calibrate_market.py | 128: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-03-09 21:55:50,202 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 21:55:50,213 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 21:55:50,222 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1M maturity
+2023-03-09 21:55:53,446 | INFO | calibrate_market.py | 121: Calibration complete! change in parameters: 0.35770345821682714
+2023-03-09 21:55:53,449 | INFO | calibrate_market.py | 128: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-03-09 23:23:49,537 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:23:49,605 | INFO | train.py | 120: Beginning training for model dense with vasicek
+2023-03-09 23:26:24,855 | INFO | train.py | 169: Saved weights to file: weights/pointwise/pointwise_weights_dense_vasicek.h5
+2023-03-09 23:26:59,013 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:26:59,022 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:26:59,091 | INFO | calibrate_synthetic.py | 112: Beginning calibration for model dense with vasicek
+2023-03-09 23:37:11,369 | INFO | calibrate_synthetic.py | 156: Calibration complete! change in parameters: 4.5708381274891785
+2023-03-09 23:37:11,375 | INFO | calibrate_synthetic.py | 160: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-03-09 23:40:57,125 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:40:57,136 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:40:57,199 | INFO | calibrate_synthetic.py | 112: Beginning calibration for model dense with vasicek
+2023-03-09 23:41:19,842 | INFO | calibrate_synthetic.py | 156: Calibration complete! change in parameters: 0.445625626941865
+2023-03-09 23:41:19,846 | INFO | calibrate_synthetic.py | 160: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek.dat
+2023-03-09 23:43:04,730 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:43:04,736 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:43:56,943 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:43:56,951 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:43:56,954 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:45:27,628 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:45:27,636 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:45:27,639 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:46:24,170 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:46:24,179 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:46:24,185 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:46:46,958 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:46:46,966 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:46:46,969 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:49:48,482 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:49:48,489 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:49:48,493 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:54:50,909 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:54:50,918 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:54:50,924 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:55:34,939 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:55:34,947 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:55:34,951 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:56:18,503 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:56:18,512 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:56:18,518 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:56:36,631 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:56:36,634 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:56:36,638 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:58:24,555 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-09 23:58:24,565 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-09 23:58:24,569 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-09 23:58:51,479 | INFO | calibrate_market.py | 124: Calibration complete! change in parameters: 0.38597725195751204
+2023-03-09 23:58:51,483 | INFO | calibrate_market.py | 131: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1Y.dat
+2023-03-10 00:05:40,023 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-10 00:05:40,031 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-10 00:05:40,037 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-10 00:06:06,411 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.38314168270846327
+2023-03-10 00:06:06,413 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1Y.dat
+2023-03-10 00:08:05,551 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-10 00:08:05,560 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-10 00:08:05,566 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-10 00:08:32,661 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.38314168270846327
+2023-03-10 00:08:32,663 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1Y.dat
