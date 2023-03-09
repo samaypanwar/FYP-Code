@@ -400,3 +400,34 @@
 2023-03-10 00:08:05,566 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
 2023-03-10 00:08:32,661 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.38314168270846327
 2023-03-10 00:08:32,663 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1Y.dat
+2023-03-10 00:32:43,583 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-10 00:32:43,592 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-10 00:32:59,355 | INFO | utils.py | 92: Model of type: dense has been initialized
+2023-03-10 00:32:59,363 | INFO | utils.py | 118: Weights loaded successfully
+2023-03-10 00:32:59,370 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1M maturity
+2023-03-10 00:33:26,493 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.39536438291094916
+2023-03-10 00:33:26,496 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1M.dat
+2023-03-10 00:33:26,709 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 3M maturity
+2023-03-10 00:33:53,731 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 1.465159196162596
+2023-03-10 00:33:53,733 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_3M.dat
+2023-03-10 00:33:53,819 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 6M maturity
+2023-03-10 00:34:20,855 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.18779312293438613
+2023-03-10 00:34:20,857 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_6M.dat
+2023-03-10 00:34:20,945 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 1Y maturity
+2023-03-10 00:34:48,012 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.38314168270846327
+2023-03-10 00:34:48,014 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_1Y.dat
+2023-03-10 00:34:48,101 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 2Y maturity
+2023-03-10 00:35:15,215 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.41028408124944044
+2023-03-10 00:35:15,217 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_2Y.dat
+2023-03-10 00:35:15,310 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 3Y maturity
+2023-03-10 00:35:42,302 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.18397089198085603
+2023-03-10 00:35:42,303 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_3Y.dat
+2023-03-10 00:35:42,395 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 5Y maturity
+2023-03-10 00:36:09,477 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.3748664470956029
+2023-03-10 00:36:09,479 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_5Y.dat
+2023-03-10 00:36:09,569 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 10Y maturity
+2023-03-10 00:36:37,030 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.29648404856451827
+2023-03-10 00:36:37,031 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_10Y.dat
+2023-03-10 00:36:37,130 | INFO | calibrate_market.py | 69: Beginning calibration for model dense with vasicek for 20Y maturity
+2023-03-10 00:37:08,769 | INFO | calibrate_market.py | 122: Calibration complete! change in parameters: 0.14184868446025314
+2023-03-10 00:37:08,771 | INFO | calibrate_market.py | 129: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_vasicek_20Y.dat

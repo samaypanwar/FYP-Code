@@ -76,7 +76,7 @@ def calibrate_to_market_data(
     parameters = initial_parameters.copy()[1:]
 
     # Start the actual calibration
-    for j in tqdm(range(calibration_size), desc = 'Calibrating...'):
+    for j in tqdm(range(calibration_size), desc = f'Calibrating {maturity}...'):
 
         variable_input_guess = tf.Variable(
                 tf.reshape(
@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
     parser.add_argument(
             '-m', "--maturity", type = str,
-            help = "Maturity of bond contract", default = '1Y', choices = maturities_label
+            help = "Maturity of bond contract", default = 'NA', choices = maturities_label
             )
 
     args = parser.parse_args()
@@ -178,23 +178,49 @@ if __name__ == '__main__':
     model = init_model(parameterization = args.parameterisation)
     load_weights(model)
 
-    df = pd.read_csv(f'market_data/{args.maturity}_cleaned.csv')
+    if args.maturity != 'NA':
 
-    c = coupons[args.maturity]
-    b = 5
-    a = (b * df.Price[0]) / 100
-    sigma = 0.3
-    initial_parameters = [c, a, b, sigma]
+        df = pd.read_csv(f'market_data/{args.maturity}_cleaned.csv')
 
-    calibrate_to_market_data(
-            model = model,
-            market_data = df['Bond Price'],
-            time_to_expiry = df['Time to Expiry'],
-            yields = df['Price'],
-            initial_parameters = np.array(initial_parameters, dtype = np.float64),
-            epochs = args.epochs,
-            model_type = 'dense',
-            parameterization = args.parameterisation,
-            verbose_length = args.verbose_length,
-            maturity = args.maturity,
-            )
+        c = coupons[args.maturity]
+        b = 5
+        a = (b * df.Price[0]) / 100
+        sigma = 0.3
+        initial_parameters = [c, a, b, sigma]
+
+        calibrate_to_market_data(
+                model = model,
+                market_data = df['Bond Price'],
+                time_to_expiry = df['Time to Expiry'],
+                yields = df['Price'],
+                initial_parameters = np.array(initial_parameters, dtype = np.float64),
+                epochs = args.epochs,
+                model_type = 'dense',
+                parameterization = args.parameterisation,
+                verbose_length = args.verbose_length,
+                maturity = args.maturity,
+                )
+
+    else:
+        for maturity in maturities_label:
+
+            df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
+
+            c = coupons[maturity]
+            b = 5
+            a = (b * df.Price[0]) / 100
+            sigma = 0.3
+            initial_parameters = [c, a, b, sigma]
+
+            calibrate_to_market_data(
+                    model = model,
+                    market_data = df['Bond Price'],
+                    time_to_expiry = df['Time to Expiry'],
+                    yields = df['Price'],
+                    initial_parameters = np.array(initial_parameters, dtype = np.float64),
+                    epochs = args.epochs,
+                    model_type = 'dense',
+                    parameterization = args.parameterisation,
+                    verbose_length = args.verbose_length,
+                    maturity = maturity,
+                    )
