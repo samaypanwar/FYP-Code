@@ -163,7 +163,7 @@ def train_model(
 
             break
 
-    path_to_weights = f"weights/pointwise/pointwise_weights_{model_type}_{parameterization}.h5"
+    path_to_weights = f"weights/pointwise/weights.h5"
     assert_file_existence(path_to_weights)
     model.save_weights(path_to_weights)
     logger.info("Saved weights to file: {}".format(path_to_weights))
@@ -189,7 +189,7 @@ def train_model(
             epochs + 1) + '\n' + 'Batch Size = %d' % batch_size
     ax.text(min(epochs, epoch + 1) // 4, train_loss_vec[1] / 2, text, fontsize = 12);
 
-    figure1.savefig(f'{plot_path}pointwise_loss_{model_type}_{parameterization}.png')
+    figure1.savefig(f'{plot_path}loss_plot.png')
 
     # I cluster the errors so to create the same plot as in the grid approach
 
@@ -276,7 +276,7 @@ def train_model(
         plt.show()
 
     figure_train.savefig(
-            f'{plot_path}pointwise_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
+            f'{plot_path}train_heatmap.png', bbox_inches = 'tight',
             pad_inches = 0.3
             )
 
@@ -313,7 +313,7 @@ def train_model(
         plt.show()
 
     figure_test.savefig(
-            f'{plot_path}pointwise_error_test_{model_type}_{parameterization}.png', bbox_inches =
+            f'{plot_path}test_heatmap.png', bbox_inches =
             'tight', pad_inches = 0.3
             )
 

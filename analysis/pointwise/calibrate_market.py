@@ -123,16 +123,16 @@ def calibrate_to_market_data(
     calibration_logger.info(message)
 
     np.savetxt(
-            f'data/pointwise/pointwise_params_market_calibrated_{model_type}_{parameterization}_{maturity}.dat',
+            f'data/pointwise/market_calibrated_parameters_{maturity}.dat',
             ta.stack().numpy()
             )
     logger.info(
             f"Saved parameters to file: "
-            f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}_{maturity}.dat'}"
+            f"{ f'data/pointwise/market_calibrated_parameters_{maturity}.dat'}"
             )
 
     calib = pd.read_table(
-            f"data/pointwise/pointwise_params_market_calibrated_dense_vasicek_{maturity}.dat", sep = " ", header = None
+             f'data/pointwise/market_calibrated_parameters_{maturity}.dat', sep = " ", header = None
             )
     fig, ax = plt.subplots(nrows = 1, ncols = 1)
 
@@ -142,7 +142,7 @@ def calibrate_to_market_data(
     ax.set_title(f'Maturity: {maturity}')
 
     fig.savefig(
-            f'plotting/pointwise/calibrated_market_{maturity}_comparison.png', bbox_inches = 'tight',
+            f'plotting/pointwise/market_calibrated_{maturity}_rates.png', bbox_inches = 'tight',
             pad_inches =
             0.3
             )

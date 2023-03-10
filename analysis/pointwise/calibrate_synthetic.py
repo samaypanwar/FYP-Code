@@ -156,10 +156,10 @@ def calibrate_synthetic(
     logger.info(message)
     calibration_logger.info(message)
 
-    np.savetxt(f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat', ta.stack().numpy())
+    np.savetxt(f'data/pointwise/calibrated_parameters.dat', ta.stack().numpy())
     logger.info(
             f"Saved parameters to file: "
-            f"{f'data/pointwise/pointwise_params_calibrated_{model_type}_{parameterization}.dat'}"
+            f"{f'data/pointwise/calibrated_parameters.dat'}"
             )
     #
     # Errors and plots
@@ -193,7 +193,7 @@ def calibrate_synthetic(
                 )
 
     f.savefig(
-            f'plotting/pointwise/pointwise_calibrated_{model_type}_{parameterization}.png', bbox_inches = 'tight',
+            f'plotting/pointwise/calibrated_scatterplot.png', bbox_inches = 'tight',
             pad_inches =
             0.3
             )
