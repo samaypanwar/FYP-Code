@@ -23,7 +23,7 @@ sys.path.append(path)
 
 from analysis.pointwise import calibration_logger, logger
 from analysis.pointwise.utils import init_model, load_weights
-from hyperparameters import coupons, maturities_label
+from hyperparameters import coupons, maturities_label, optimizer, loss_object
 
 plt.style.use('seaborn-v0_8')
 plt.rcParams.update({'font.family': 'Times New Roman'})
@@ -43,8 +43,7 @@ def calibrate_to_market_data(
     prices_calibrate = market_data
 
     # Choose optimizer and type of loss function
-    optimizer = tf.keras.optimizers.Adam()
-    loss_object = tf.keras.losses.MeanSquaredError()
+
     calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
     mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 

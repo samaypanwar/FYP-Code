@@ -23,7 +23,7 @@ sys.path.append(path)
 
 from analysis.pointwise import calibration_logger, logger
 from analysis.pointwise.utils import load_weights, init_model
-from hyperparameters import test_size, train_size
+from hyperparameters import test_size, train_size, optimizer, loss_object
 
 plt.style.use('seaborn-v0_8')
 plt.rcParams.update({'font.family': 'Times New Roman'})
@@ -74,8 +74,6 @@ def calibrate_synthetic(
     prices_calibrate = prices_calibrate[number_of_training_samples + np.arange(calibration_size)]
 
     # Choose optimizer and type of loss function
-    optimizer = tf.keras.optimizers.Adam()
-    loss_object = tf.keras.losses.MeanSquaredError()
     calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
     mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 

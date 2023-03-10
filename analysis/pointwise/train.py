@@ -24,7 +24,8 @@ sys.path.append(path)
 from analysis.pointwise import logger, training_logger
 from analysis.pointwise.utils import load_data, init_model
 from helper.utils import assert_file_existence
-from hyperparameters import coupon_range, maturities, maturities_label, number_of_coupon_rates, number_of_maturities
+from hyperparameters import coupon_range, maturities, maturities_label, number_of_coupon_rates, number_of_maturities,\
+    optimizer, loss_object
 
 plt.style.use('seaborn-v0_8')
 plt.rcParams.update({'font.family': 'Times New Roman'})
@@ -85,9 +86,6 @@ def train_model(
         return np.prod(delta_loss < delta)
 
     # Next we compile a few low level functions which will compute the actual gradient.
-
-    optimizer = tf.keras.optimizers.Adam()
-    loss_object = tf.keras.losses.MeanSquaredError()
 
     @tf.function
     def train_step(input_parameters, prices):
