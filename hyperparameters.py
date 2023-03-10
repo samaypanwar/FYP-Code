@@ -39,5 +39,8 @@ coupons = {
         '30Y': 4 / 100
         }
 
-optimizer = tf.keras.optimizers.Adam()
-loss_object = tf.keras.losses.MeanSquaredError();
+learning_rate = tf.keras.optimizers.schedules.CosineDecay(
+    initial_learning_rate = 0.05, decay_steps = 50, alpha=0.01, name=None
+)
+optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate)
+loss_object = tf.keras.losses.MeanAbsoluteError()
