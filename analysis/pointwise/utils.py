@@ -5,7 +5,7 @@ from analysis.pointwise import logger
 import tensorflow as tf
 from analysis.pointwise.dense import DenseModel
 
-from hyperparameters import test_size, train_size
+from hyperparameters import test_size, train_size, optimizer, loss_object
 
 def load_data(parameterization: str = 'vasicek'):
     """
@@ -77,8 +77,6 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
         raise ValueError("Unknown parameterization")
 
     # Choose optimizer and type of loss function
-    optimizer = tf.keras.optimizers.Adam()
-    loss_object = tf.keras.losses.MeanSquaredError();
 
     model.compile(
             loss = loss_object,

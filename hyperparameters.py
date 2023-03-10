@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 
 # Size of the data
 train_size = 50_000  # Size of the training set
@@ -37,3 +38,6 @@ coupons = {
         '20Y': 4 / 100,
         '30Y': 4 / 100
         }
+
+optimizer = tf.keras.optimizers.Adam()
+loss_object = tf.keras.losses.MeanSquaredError();

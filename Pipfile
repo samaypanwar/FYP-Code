@@ -12,6 +12,8 @@ matplotlib = "*"
 pytest = "*"
 seaborn = "*"
 ipympl = "*"
+scienceplots = "*"
+latex = "*"
 
 [dev-packages]
 

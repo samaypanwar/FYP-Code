@@ -1,28 +1,41 @@
+import os
+import sys
 from random import sample
 
 import numpy as np
 from scipy.stats import norm
 from tqdm import tqdm
 
+path_parent = os.path.dirname(os.getcwd())
+
+if os.getcwd()[-8:] != 'FYP-Code':
+    os.chdir(path_parent)
+
+path = os.getcwd()
+sys.path.append(path)
+
 from helper.utils import BondPricing, assert_file_existence
 from hyperparameters import test_size, \
     train_size
+import argparse
 
 
 def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
 
-    a_range = np.linspace(start = vector_ranges['a'][0], stop = vector_ranges['a'][1], num = 2*num)
-    b_range = np.linspace(start = vector_ranges['b'][0], stop = vector_ranges['b'][1], num = 2*num)
-    sigma_range = np.linspace(start = vector_ranges['sigma'][0], stop = vector_ranges['sigma'][1], num = 2*num)
+    a_range = np.linspace(start = vector_ranges['a'][0], stop = vector_ranges['a'][1], num = 2 * num)
+    b_range = np.linspace(start = vector_ranges['b'][0], stop = vector_ranges['b'][1], num = 2 * num)
+    sigma_range = np.linspace(start = vector_ranges['sigma'][0], stop = vector_ranges['sigma'][1], num = 2 * num)
     c_range = np.linspace(start = vector_ranges['c'][0], stop = vector_ranges['c'][1], num = num)
-    maturity_range = np.linspace(start = vector_ranges['maturity'][0], stop = vector_ranges['maturity'][1], num = 2*num)
+    maturity_range = np.linspace(
+            start = vector_ranges['maturity'][0], stop = vector_ranges['maturity'][1], num = 2 * num
+            )
 
     features = np.zeros((num, len(vector_ranges.keys()) + 1), dtype = np.float64)
 
     count = 0
     max_iter = 10 * num
     iter_num = 0
-    pbar = tqdm(total = num)
+    pbar = tqdm(total = num, desc = 'Generating Viable Samples...')
 
     while count < num and iter_num < max_iter:
 
@@ -36,9 +49,9 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
         r = norm.rvs(loc = a / b, scale = (sigma ** 2) / (2 * b))
 
         # If the expected value of the interest rate is greater than 5% or the vol is greater than 80%
-        if abs(a / b) < 0.05 and (sigma ** 2) / (2 * b) < 0.8 and abs(r) <= 0.1:
+        if abs(a / b) < 0.1 and (sigma ** 2) / (2 * b) < 0.8 and abs(r) <= 0.1:
 
-            features[count, :] = np.array([maturity, c, a, b, sigma, r])
+            features[count, :] = np.array([maturity, c, r, a, b, sigma])
             a_range = np.delete(a_range, np.where(a_range == a))
             b_range = np.delete(b_range, np.where(b_range == b))
             sigma_range = np.delete(sigma_range, np.where(sigma_range == sigma))
@@ -57,7 +70,7 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
     return features, count
 
 
-def generate_pointwise_data(
+def generate_data(
         parameterization: str = 'vasicek'
         ):
 
@@ -66,7 +79,7 @@ def generate_pointwise_data(
             'c'       : [0, 0.1],
             'maturity': [1 / 24, 20],
             # 'a' can be negative as well but we keep the parameter range as positive to keep our calculated r positive
-            'a'       : [0.01, .2],
+            'a'       : [0.001, .2],
             'b'       : [1, 10],
             'sigma'   : [0.1, 1],
             }
@@ -79,15 +92,15 @@ def generate_pointwise_data(
 
     price = np.empty((count, 1))
 
-    for i in tqdm(range(count)):
+    for i in tqdm(range(count), desc = 'Calculating Bond Price...'):
 
-        time_to_expiry, c, a, b, sigma, r = params_range[i, :]
+        time_to_expiry, c, r, a, b, sigma = params_range[i, :]
 
-        parameters = [a, b, sigma, r]
+        parameters = [a, b, sigma]
 
         bond_price = BondPricing(parameters = parameters, parameterization = parameterization)
 
-        price[i] = bond_price(time_to_expiry = time_to_expiry, coupon = c)
+        price[i] = bond_price(time_to_expiry = time_to_expiry, coupon = c, r = r)
 
     wrong_indices = np.where(price > 200)[0].tolist() or np.where(price < 70)[0].tolist()
 
@@ -102,3 +115,18 @@ def generate_pointwise_data(
     np.savetxt(f'data/pointwise/pointwise_price_{parameterization}.dat', price)
 
     print("Data successfully generated!")
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+            '-p', "--parameterisation", type = str,
+            help = "Parameterisation for our underlying bond pricing model", default = 'vasicek',
+            choices = ['vasicek']
+            )
+
+    args = parser.parse_args()
+
+    generate_data(args.parameterisation)
