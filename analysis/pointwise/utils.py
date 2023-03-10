@@ -70,7 +70,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
 
         It returns the price of the bond
         """
-        parameter_size = 4
+        parameter_size = 3
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -84,7 +84,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
             )
 
     #  tau: time to maturity for our bond + coupon rate, which is not to be calibrated
-    model.build(input_shape = (1, parameter_size + 2))
+    model.build(input_shape = (1, parameter_size + 3))
     model.summary()
 
     logger.info(f"Model of type: {model_type} has been initialized")
@@ -92,7 +92,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
     return model
 
 
-def load_weights(model, model_type: str = 'dense', parameterization: str = 'vasicek'):
+def load_weights(model):
     """
     This function loads the weight of a trained model into the compiled model if they exist
 
@@ -108,7 +108,7 @@ def load_weights(model, model_type: str = 'dense', parameterization: str = 'vasi
     """
 
     # Path to our weights file
-    path = f"weights/pointwise/pointwise_weights_{model_type}_{parameterization}.h5"
+    path = f"weights/pointwise/weights.h5"
 
     # Check if the weights file exists
     if os.path.isfile(path):
