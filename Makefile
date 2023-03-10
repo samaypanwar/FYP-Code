@@ -31,4 +31,9 @@ run:
 	$(MAKE) calibrate_market
 	$(MAKE) git
 
-.PHONY = train generate calibrate_synthetic calibrate_market connect get_python run git
+env:
+	@pip install pipenv
+	@pipenv shell
+	@pipenv install -r requirements.txt
+
+.PHONY = train generate calibrate_synthetic calibrate_market connect get_python run git env
