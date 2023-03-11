@@ -1,8 +1,9 @@
 import numpy as np
+import tensorflow as tf
 
 # Size of the data
 train_size = 50_000  # Size of the training set
-test_size = 10_000  # Size of the test set
+test_size = 10_000 # Size of the test set
 
 maturities = np.array([1 / 24, 1 / 12, 3 / 12, 6 / 12, 1, 2, 3, 5, 10, 20])
 maturities_label = ['1M', '3M', '6M', '1Y', '2Y', '3Y', '5Y', '10Y', '20Y']
@@ -37,3 +38,9 @@ coupons = {
         '20Y': 4 / 100,
         '30Y': 4 / 100
         }
+
+learning_rate = tf.keras.optimizers.schedules.CosineDecay(
+    initial_learning_rate = 0.05, decay_steps = 50, alpha=0.01, name=None
+)
+optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate)
+loss_object = tf.keras.losses.MeanAbsoluteError()

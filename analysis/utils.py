@@ -4,9 +4,10 @@ import sys
 from stat import S_IREAD, S_IWUSR  # Need to add this import to the ones above
 
 # ADD YOUR PATH HERE
-path = "/Users/samaypanwar/Library/CloudStorage/OneDrive-NanyangTechnologicalUniversity/Uni/FYP/FYP-Code"
-os.chdir(path)
+path_parent = os.path.dirname(os.getcwd())
 
+if os.getcwd()[-8:] != 'FYP-Code':
+    os.chdir(path_parent)
 
 def begin_logging():
     """This function takes care of the logging configuration"""

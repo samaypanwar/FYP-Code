@@ -1,3 +1,12 @@
+"""
+This directory handles all the training/calibration of our models
+It contains the following files:
+    1. dense.py: contains the model architecture
+    2. calibrate_synthetic.py: contains the model claibration, both the synthetic calibration and the market calibration
+    3. train.py: contains the model training function
+    4. utils.py: contains the supplementary functions such as loading weights and initialising models
+"""
+
 import tensorflow as tf
 
 from analysis.utils import begin_logging
@@ -18,3 +27,4 @@ if gpus:
         # Memory growth must be set before GPUs have been initialized
         print(e)
 
+tf.random.set_seed(42)

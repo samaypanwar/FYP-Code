@@ -1,3 +1,4 @@
+
 import numpy as np
 import scipy
 from numpy import exp
@@ -5,7 +6,6 @@ from numpy import exp
 class TwoFactorVasicekModel:
     """
     This class implements the analytical solution to the Two factor vasicek process PDE
-
     Parameters
     ----------
     parameters : vector of 4 parameters, a ,b, sigma, eta, r
@@ -13,17 +13,14 @@ class TwoFactorVasicekModel:
 
     def __init__(self, parameters: np.array):
         """
-
         """
         self.parameters = parameters
 
     def __call__(self, T: float, t: float) -> tuple:
         """
         This function returns the value of the two parameters at the given time to expiry
-
         Parameters
         ----------
-
         Returns
         -------
         A, C

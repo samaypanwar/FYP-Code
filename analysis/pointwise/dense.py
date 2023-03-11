@@ -1,3 +1,7 @@
+"""
+This file contains the model architecture for our feedforward neural network
+"""
+
 import tensorflow as tf
 from tensorflow.keras import regularizers
 from tensorflow.keras.layers import BatchNormalization
