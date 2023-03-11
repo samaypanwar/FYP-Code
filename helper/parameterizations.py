@@ -1,40 +1,47 @@
+
 import numpy as np
+import scipy
+from numpy import exp
 
-
-class VasicekModel:
+class TwoFactorVasicekModel:
     """
-    This class implements the analytical solution to the vasicek process PDE
-
+    This class implements the analytical solution to the Two factor vasicek process PDE
     Parameters
     ----------
-    parameters : vector of 4 parameters, a ,b, sigma, r
+    parameters : vector of 4 parameters, a ,b, sigma, eta, r
     """
 
     def __init__(self, parameters: np.array):
         """
-
         """
         self.parameters = parameters
 
-    def __call__(self, time_to_expiry: float, r: float) -> tuple:
+    def __call__(self, T: float, t: float) -> tuple:
         """
         This function returns the value of the two parameters at the given time to expiry
-
         Parameters
         ----------
-        time_to_expiry : time to expiry for the bond contract
-
         Returns
         -------
         A, C
         """
 
-        a, b, sigma = self.parameters
+        time_to_expiry = T - t
 
-        A = ((4 * a * b - 3 * sigma ** 2) / (4 * (b ** 3))) + time_to_expiry * (
-                (sigma ** 2 - 2 * a * b) / (2 * (b ** 2))) + np.exp(-b * time_to_expiry) * (
-                    (sigma ** 2 - a * b) / (b ** 3)) - np.exp(-2 * b * time_to_expiry) * (sigma ** 2) / (4 * (b ** 3))
+        x, y, a, b, sigma, eta, rho = self.parameters
 
-        C = (-1 / b) * (1 - np.exp(-b * time_to_expiry))
+        A = - (1 / a) * (1 - exp(-a * time_to_expiry)) * x
+        B = - (1 / b) * (1 - exp(-b * time_to_expiry)) * y
 
-        return A, C
+        integrand_1 = scipy.integrate.quadrature(func = lambda s: (exp(-a * (T - s)) - 1) ** 2, a = t, b = T)[0]
+        integrand_2 = scipy.integrate.quadrature(func = lambda s: (exp(-b * (T - s)) - 1) ** 2, a = t, b = T)[0]
+        integrand_3 = scipy.integrate.quadrature(
+                func = lambda s: (exp(-a * (T - s)) - 1) * (exp(-b * (T - s)) - 1), a = t, b = T
+                )[0]
+
+        C = (sigma ** 2) / (2 * np.power(a, 2)) * integrand_1
+        D = (eta ** 2) / (2 * np.power(b, 2)) * integrand_2
+
+        E = (rho * (sigma * eta) / (a * b)) * integrand_3
+
+        return A, B, C, D, E

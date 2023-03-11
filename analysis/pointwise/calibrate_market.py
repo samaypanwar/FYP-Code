@@ -31,10 +31,10 @@ plt.rcParams.update({'axes.grid': True, 'axes.linewidth': 0.5, 'axes.edgecolor':
 
 
 def calibrate_to_market_data(
-        model, market_data, initial_parameters, time_to_expiry, yields, epochs: int = 1000, model_type: str = 'dense',
+        model, market_data, initial_parameters, time_to_expiry, epochs: int = 1000, model_type: str = 'dense',
         parameterization:
         str =
-        'vasicek',
+        'two_factor',
         maturity: str = '1Y',
         verbose_length: int = 1,
         ):
@@ -84,7 +84,7 @@ def calibrate_to_market_data(
                         )
                 )
 
-        fixed_input_guess = np.array([time_to_expiry[j], initial_parameters[0], yields[j] / 100], dtype = np.float64)
+        fixed_input_guess = np.array([time_to_expiry[j], initial_parameters[0]], dtype = np.float64)
 
         fixed_input_guess = tf.reshape(
                 tf.convert_to_tensor(fixed_input_guess), shape = (1,
@@ -113,9 +113,9 @@ def calibrate_to_market_data(
                         )
                 ).mark_used()
 
-        parameters = ta.read(j).numpy()[3:]
+        parameters = ta.read(j).numpy()[2:]
 
-    change = ta.read(j).numpy()[3:] - initial_parameters[1:]
+    change = ta.read(j).numpy()[2:] - initial_parameters[1:]
 
     message = f"Calibration complete! change in parameters: {np.linalg.norm(change)}"
     logger.info(message)
@@ -133,10 +133,11 @@ def calibrate_to_market_data(
     calib = pd.read_table(
              f'data/pointwise/market_calibrated_parameters_{maturity}.dat', sep = " ", header = None
             )
+    df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
     fig, ax = plt.subplots(nrows = 1, ncols = 1)
 
-    (100 * calib.loc[:, 3] / calib.loc[:, 4]).plot(ax = ax, label = 'Predicted Rate');
-    ax.plot(100*calib.loc[:, 2], label = 'Market Rate');
+    (100 * (1/calib.loc[:, 4] + (1/calib.loc[:, 5]))).plot(ax = ax, label = 'Predicted Rate');
+    ax.plot(100*df.Price, label = 'Market Rate');
     ax.legend();
     ax.set_title(f'Maturity: {maturity}')
 
@@ -153,8 +154,8 @@ if __name__ == '__main__':
 
     parser.add_argument(
             '-p', "--parameterisation", type = str,
-            help = "Parameterisation for our underlying bond pricing model", default = 'vasicek',
-            choices = ['vasicek']
+            help = "Parameterisation for our underlying bond pricing model", default = 'two_factor',
+            choices = ['two_factor']
             )
 
     parser.add_argument(
@@ -191,7 +192,6 @@ if __name__ == '__main__':
                 model = model,
                 market_data = df['Bond Price'],
                 time_to_expiry = df['Time to Expiry'],
-                yields = df['Price'],
                 initial_parameters = np.array(initial_parameters, dtype = np.float64),
                 epochs = args.epochs,
                 model_type = 'dense',
@@ -206,16 +206,20 @@ if __name__ == '__main__':
             df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
 
             c = coupons[maturity]
-            b = 5
-            a = (b * df.Price[0]) / 100
+            b = 100
+            a = 100
             sigma = 0.3
-            initial_parameters = [c, a, b, sigma]
+            rho = 0
+            eta = 0.3
+            x = 0.005
+            y = 0.005
+
+            initial_parameters = [c, x, y, a, b, sigma, eta, rho]
 
             calibrate_to_market_data(
                     model = model,
                     market_data = df['Bond Price'],
                     time_to_expiry = df['Time to Expiry'],
-                    yields = df['Price'],
                     initial_parameters = np.array(initial_parameters, dtype = np.float64),
                     epochs = args.epochs,
                     model_type = 'dense',

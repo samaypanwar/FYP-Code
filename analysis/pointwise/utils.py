@@ -7,7 +7,7 @@ from analysis.pointwise.dense import DenseModel
 
 from hyperparameters import test_size, train_size, optimizer, loss_object
 
-def load_data(parameterization: str = 'vasicek'):
+def load_data(parameterization: str = 'two_factor'):
     """
     This function loads up our data for the prices/parameters and creates train test splits on the same
 
@@ -37,7 +37,7 @@ def load_data(parameterization: str = 'vasicek'):
     return params_range_train, params_range_test, price_train, price_test
 
 
-def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
+def init_model(model_type: str = 'dense', parameterization: str = 'two_factor'):
     """
     This function initializes and compiles our model type with the stated optimizer and loss function
 
@@ -60,7 +60,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
         logger.error("Unknown model type: %s" % model_type)
         raise ValueError("Unknown model type")
 
-    if parameterization == 'vasicek':
+    if parameterization == 'two_factor':
         """
         The number of parameters we consider in our model in pointwise are:
         a: vasicek process parameter
@@ -70,7 +70,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
 
         It returns the price of the bond
         """
-        parameter_size = 3
+        parameter_size = 7
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -84,7 +84,7 @@ def init_model(model_type: str = 'dense', parameterization: str = 'vasicek'):
             )
 
     #  tau: time to maturity for our bond + coupon rate, which is not to be calibrated
-    model.build(input_shape = (1, parameter_size + 3))
+    model.build(input_shape = (1, parameter_size + 2))
     model.summary()
 
     logger.info(f"Model of type: {model_type} has been initialized")

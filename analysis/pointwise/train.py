@@ -34,7 +34,7 @@ plt.rcParams.update({'axes.grid': True, 'axes.linewidth': 0.5, 'axes.edgecolor':
 
 def train_model(
         model, epochs: int = 200, batch_size: int = 30, patience: int = 20, delta: float = 0.0002,
-        model_type: str = 'dense', parameterization: str = 'vasicek', plot: bool = True
+        model_type: str = 'dense', parameterization: str = 'two_factor', plot: bool = True
         ):
     """
     This function trains our model with the given parameters and prices.
@@ -211,9 +211,13 @@ def train_model(
             pos_K = (params_range_train[:, 1] >= coupon_range[j]) * (params_range_train[:, 1] < coupon_range[j + 1])
 
             # now that you have two ranges for our maturities and coupon rates, find the mean error for that range
+            try:
+                mean_square_err_training_train[j, k] = 100 * np.mean(err_training_train[pos_K * pos_tau])
+                max_square_err_training_train[j, k] = 100 * np.max(err_training_train[pos_K * pos_tau])
 
-            mean_square_err_training_train[j, k] = 100 * np.mean(err_training_train[pos_K * pos_tau])
-            max_square_err_training_train[j, k] = 100 * np.max(err_training_train[pos_K * pos_tau])
+            except:
+                mean_square_err_training_train[j, k] = 0
+                max_square_err_training_train[j, k] = 0
 
     mean_square_err_training_test = np.zeros((N1, N2))
     max_square_err_training_test = np.zeros((N1, N2))
@@ -323,8 +327,8 @@ if __name__ == '__main__':
 
     parser.add_argument(
             '-p', "--parameterisation", type = str,
-            help = "Parameterisation for our underlying bond pricing model", default = 'vasicek',
-            choices = ['vasicek']
+            help = "Parameterisation for our underlying bond pricing model", default = 'two_factor',
+            choices = ['vasicek', 'two_factor']
             )
 
     parser.add_argument(
@@ -343,6 +347,6 @@ if __name__ == '__main__':
             patience = 20,
             delta = 0.0002,
             model_type = 'dense',
-            parameterization = 'vasicek',
+            parameterization = args.parameterisation,
             plot = False
             )

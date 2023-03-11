@@ -32,7 +32,7 @@ plt.rcParams.update({'axes.grid': True, 'axes.linewidth': 0.5, 'axes.edgecolor':
 def calibrate_synthetic(
         model, calibration_size: int = 10_000, epochs: int = 1000, model_type: str = 'dense', parameterization:
         str =
-        'vasicek',
+        'two_factor',
         verbose_length: int = 1
         ):
     """
@@ -52,8 +52,8 @@ def calibrate_synthetic(
 
     """
     # The network is done training. We are ready to start on the Calibration step
-    if parameterization == 'vasicek':
-        parameter_size = 3
+    if parameterization == 'two_factor':
+        parameter_size = 7
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -94,7 +94,7 @@ def calibrate_synthetic(
     # We need to guess some initial model parameters. We induce errors in our old guesses here as a test
     parameters_with_errors = parameters_to_calibrate + parameters_to_calibrate * np.concatenate(
             (
-                    np.zeros(shape = (calibration_size, 3)),
+                    np.zeros(shape = (calibration_size, 2)),
                     np.random.rand(
                             calibration_size,
                             parameter_size
@@ -117,12 +117,12 @@ def calibrate_synthetic(
 
         variable_input_guess = tf.Variable(
                 tf.reshape(
-                        tf.convert_to_tensor(parameters_with_errors[j, 3:]), shape = (1,
+                        tf.convert_to_tensor(parameters_with_errors[j, 2:]), shape = (1,
                                                                                       -1)
                         )
                 )
         fixed_input_guess = tf.reshape(
-                tf.convert_to_tensor(parameters_with_errors[j, :3]), shape = (1,
+                tf.convert_to_tensor(parameters_with_errors[j, :2]), shape = (1,
                                                                               -1)
                 )
 
@@ -172,20 +172,20 @@ def calibrate_synthetic(
     mae = np.mean(absolute_error, axis = 0)
 
     f = plt.figure(figsize = (20, 15))
-    parameter_names = ['a', "b", "sigma"]
+    parameter_names = ['x', 'y', 'a', "b", "sigma", 'eta', 'rho']
 
     for i in range(parameter_size):
 
-        plt.subplot(2, 2, 1 + i)
-        plt.plot(parameters_to_calibrate[:, 3 + i], percentage_err[:, 3 + i] * 100, '*', color = 'midnightblue')
+        plt.subplot(3, 3, 1 + i)
+        plt.plot(parameters_to_calibrate[:, 2 + i], percentage_err[:, 2 + i] * 100, '*', color = 'midnightblue')
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter())
         plt.title(f'${parameter_names[i]}$')
         plt.ylabel('Percentage error')
-        s2 = 'Average: %.2f' % mean_percentage_err[3 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
-            3 + i] + r'%' + '\n' + 'MAE: %.2f' % mae[3 + i]
+        s2 = 'Average: %.2f' % mean_percentage_err[2 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
+            2 + i] + r'%' + '\n' + 'MAE: %.2f' % mae[2 + i]
 
         plt.text(
-                np.mean(parameters_to_calibrate[:, 3 + i]), np.max(percentage_err[:, 3 + i] * 90), s2,
+                np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i] * 90), s2,
                 fontsize = 15,
                 weight = 'bold'
                 )
@@ -203,8 +203,8 @@ if __name__ == '__main__':
 
     parser.add_argument(
             '-p', "--parameterisation", type = str,
-            help = "Parameterisation for our underlying bond pricing model", default = 'vasicek',
-            choices = ['vasicek']
+            help = "Parameterisation for our underlying bond pricing model", default = 'two_factor',
+            choices = ['two_factor']
             )
 
     parser.add_argument(

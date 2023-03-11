@@ -3,32 +3,32 @@ from typing import List
 
 import numpy as np
 
-from helper.parameterizations import VasicekModel
+from helper.parameterizations import TwoFactorVasicekModel
 
 
-class BondPricing(VasicekModel):
+class BondPricing(TwoFactorVasicekModel):
 
-    def __init__(self, parameters: List[float], parameterization: str = 'vasicek'):
+    def __init__(self, parameters: List[float], parameterization: str = 'two_factor'):
 
         self.parameterization = parameterization
 
-        if parameterization == 'vasicek':
-            VasicekModel.__init__(self, parameters)
+        if parameterization == 'two_factor':
+            TwoFactorVasicekModel.__init__(self, parameters)
 
         else:
             raise ValueError(f'Parameterization {parameterization} not recognized')
 
-    def __call__(self, time_to_expiry: float, coupon: float = 0, r: float = 0.02) -> float:
+    def __call__(self, time_to_expiry: float, coupon: float = 0) -> float:
 
-        if self.parameterization == 'vasicek':
+        assert self.parameterization == 'two_factor'
 
-            vm = VasicekModel(parameters = self.parameters)
+        vm = TwoFactorVasicekModel(parameters = self.parameters)
+        T = time_to_expiry
+        t = 0
 
-            a, b, sigma = self.parameters
+        A, B, C, D, E = vm(t = t, T = T)
 
-            A, C = vm(time_to_expiry = time_to_expiry, r = r)
-
-        result = np.exp(coupon * time_to_expiry) * np.exp(A + r * C)
+        result = np.exp(coupon * time_to_expiry) * np.exp(A + B + C + D + E)
 
         return 100 * result
 
