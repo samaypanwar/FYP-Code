@@ -21,7 +21,8 @@ connect2: fyp2.pem
 	@ssh -i fyp2.pem ec2-user@ec2-18-141-2-190.ap-southeast-1.compute.amazonaws.com
 
 git:
-	@git add .
+	@git add plotting/*
+	@git add data/*
 	@git commit -m "RUN"
 	@git push origin
 
@@ -34,6 +35,7 @@ run:
 env:
 	@pip install pipenv
 	@pipenv shell
-	@pipenv install -r requirements.txt
+	@pip list
+	@pip install -r requirements.txt
 
 .PHONY = train generate calibrate_synthetic calibrate_market connect get_python run git env
