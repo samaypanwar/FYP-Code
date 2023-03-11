@@ -23,6 +23,7 @@ connect2: fyp2.pem
 git:
 	@git add plotting/*
 	@git add data/*
+	@git add weights/*
 	@git commit -m "RUN"
 	@git push origin
 
