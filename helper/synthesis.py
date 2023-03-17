@@ -29,6 +29,7 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
     eta_range = np.linspace(start = vector_ranges['eta'][0], stop = vector_ranges['eta'][1], num = 2 * num)
 
     rho_range = np.linspace(start = vector_ranges['rho'][0], stop = vector_ranges['rho'][1], num = num)
+    phi_range = np.linspace(start = vector_ranges['phi'][0], stop = vector_ranges['phi'][1], num = num)
 
     c_range = np.linspace(start = vector_ranges['c'][0], stop = vector_ranges['c'][1], num = 2*num)
     maturity_range = np.linspace(
@@ -53,21 +54,21 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
         eta = sample(eta_range.tolist(), k = 1)[0]
 
         rho = sample(rho_range.tolist(), k = 1)[0]
+        phi = sample(phi_range.tolist(), k = 1)[0]
 
         c = sample(c_range.tolist(), k = 1)[0]
         maturity = sample(maturity_range.tolist(), k = 1)[0]
 
-        x = norm.rvs(loc = 1 / a, scale = (sigma ** 2) / (2 * a))
-        y = norm.rvs(loc = 1 / b, scale = (eta ** 2) / (2 * b))
+        x = norm.rvs(loc = 0, scale = (sigma ** 2) / (2 * a))
+        y = norm.rvs(loc = 0, scale = (eta ** 2) / (2 * b))
 
-        viable_mean_rate = abs((1 / b) + (1 / a)) < 0.1
         viable_volatility = (sigma ** 2) / (2 * a) < 0.8 and (eta ** 2) / (2 * b) < 0.8
         not_large_rate = abs(x + y) <= 0.1
 
         # If the expected value of the interest rate is greater than 5% or the vol is greater than 80%
-        if viable_volatility and viable_mean_rate and not_large_rate:
+        if viable_volatility and not_large_rate:
 
-            features[count, :] = np.array([maturity, c, x, y, a, b, sigma, eta, rho])
+            features[count, :] = np.array([maturity, c, x, y, a, b, sigma, eta, rho, phi])
 
             a_range = np.delete(a_range, np.where(a_range == a))
             b_range = np.delete(b_range, np.where(b_range == b))
@@ -76,6 +77,7 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
             eta_range = np.delete(eta_range, np.where(eta_range == eta))
 
             rho_range = np.delete(rho_range, np.where(rho_range == rho))
+            phi_range = np.delete(phi_range, np.where(phi_range == phi))
 
             c_range = np.delete(c_range, np.where(c_range == c))
             maturity_range = np.delete(maturity_range, np.where(maturity_range == maturity))
@@ -99,11 +101,12 @@ def generate_data(
     vector_ranges = {
             'c'       : [0, 0.1],
             'maturity': [1 / 24, 20],
-            'a'       : [20, 5000],
-            'b'       : [20, 5000],
+            'a'       : [1, 10],
+            'b'       : [1, 10],
             'sigma'   : [0.1, 1],
             'eta': [0.1, 1],
-            'rho': [-1, 1]
+            'rho': [-1, 1],
+            'phi': [0.001, 0.1]
             }
 
     params_range, count = create_features_linspace(
@@ -116,9 +119,9 @@ def generate_data(
 
     for i in tqdm(range(count), desc = 'Calculating Bond Price...'):
 
-        time_to_expiry, c, x, y, a, b, sigma, eta, rho = params_range[i, :]
+        time_to_expiry, c, x, y, a, b, sigma, eta, rho, phi = params_range[i, :]
 
-        parameters = [x, y, a, b, sigma, eta, rho]
+        parameters = [x, y, a, b, sigma, eta, rho, phi]
 
         bond_price = BondPricing(parameters = parameters, parameterization = parameterization)
 

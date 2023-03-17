@@ -28,10 +28,12 @@ class TwoFactorVasicekModel:
 
         time_to_expiry = T - t
 
-        x, y, a, b, sigma, eta, rho = self.parameters
+        x, y, a, b, sigma, eta, rho, phi = self.parameters
 
         A = - (1 / a) * (1 - exp(-a * time_to_expiry)) * x
         B = - (1 / b) * (1 - exp(-b * time_to_expiry)) * y
+
+        integrand_0 = -scipy.integrate.quadrature(func = lambda s: phi, a = t, b = T)[0]
 
         integrand_1 = scipy.integrate.quadrature(func = lambda s: (exp(-a * (T - s)) - 1) ** 2, a = t, b = T)[0]
         integrand_2 = scipy.integrate.quadrature(func = lambda s: (exp(-b * (T - s)) - 1) ** 2, a = t, b = T)[0]
@@ -44,4 +46,4 @@ class TwoFactorVasicekModel:
 
         E = (rho * (sigma * eta) / (a * b)) * integrand_3
 
-        return A, B, C, D, E
+        return integrand_0, A, B, C, D, E

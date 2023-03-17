@@ -26,9 +26,9 @@ class BondPricing(TwoFactorVasicekModel):
         T = time_to_expiry
         t = 0
 
-        A, B, C, D, E = vm(t = t, T = T)
+        integrand_0, A, B, C, D, E = vm(t = t, T = T)
 
-        result = np.exp(coupon * time_to_expiry) * np.exp(A + B + C + D + E)
+        result = np.exp(coupon * time_to_expiry) * np.exp(integrand_0 + A + B + C + D + E)
 
         return 100 * result
 
