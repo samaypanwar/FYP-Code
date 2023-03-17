@@ -53,7 +53,7 @@ def calibrate_synthetic(
     """
     # The network is done training. We are ready to start on the Calibration step
     if parameterization == 'two_factor':
-        parameter_size = 7
+        parameter_size = 8
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
@@ -172,7 +172,7 @@ def calibrate_synthetic(
     mae = np.mean(absolute_error, axis = 0)
 
     f = plt.figure(figsize = (20, 15))
-    parameter_names = ['x', 'y', 'a', "b", "sigma", 'eta', 'rho']
+    parameter_names = ['x', 'y', 'a', "b", "sigma", 'eta', 'rho', 'phi']
 
     for i in range(parameter_size):
 

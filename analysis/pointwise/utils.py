@@ -63,14 +63,18 @@ def init_model(model_type: str = 'dense', parameterization: str = 'two_factor'):
     if parameterization == 'two_factor':
         """
         The number of parameters we consider in our model in pointwise are:
-        a: vasicek process parameter
-        b: vasicek process parameter
-        sigma: vasicek process parameter
-        r: yield of our bond
+        a: reversion rate for X_t
+        b: reversion rate for X_t
+        sigma: volatility rate for X_t
+        eta: volatility rate for Y_t
+        rho: correlation factor
+        X_t: process 1
+        Y_t: process 2
+        phi: initial yield curve
 
         It returns the price of the bond
         """
-        parameter_size = 7
+        parameter_size = 8
 
     else:
         logger.error("Unknown parameterization: %s" % parameterization)
