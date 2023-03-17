@@ -136,7 +136,7 @@ def calibrate_to_market_data(
     df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
     fig, ax = plt.subplots(nrows = 1, ncols = 1)
 
-    (100 * calib.loc[:, -1]).plot(ax = ax, label = 'Predicted Rate');
+    (100 * calib.loc[:, 9]).plot(ax = ax, label = 'Predicted Rate');
     ax.plot(100*df.Price, label = 'Market Rate');
     ax.legend();
     ax.set_title(f'Maturity: {maturity}')
