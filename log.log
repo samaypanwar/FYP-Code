@@ -727,3 +727,5 @@
 2023-03-11 11:49:56,653 | INFO | calibrate_market.py | 121: Calibration complete! change in parameters: 1.7646073071561799
 2023-03-11 11:49:56,657 | INFO | calibrate_market.py | 128: Saved parameters to file: data/pointwise/market_calibrated_parameters_3M.dat
 2023-03-11 11:49:56,833 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with two_factor for 6M maturity
+2023-03-17 18:24:40,152 | INFO | utils.py | 90: Model of type: dense has been initialized
+2023-03-17 18:24:40,381 | INFO | train.py | 118: Beginning training for model dense with two_factor

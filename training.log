@@ -2832,3 +2832,4 @@
 2023-03-11 11:29:15,986 | DEBUG | Training Epoch: 198/200, Loss: 11.988368,  Test Loss: 10.917025, Delta Test Loss: 15.996311, Test MAPE : 8.285
 2023-03-11 11:29:16,927 | DEBUG | Training Epoch: 199/200, Loss: 11.964120,  Test Loss: 13.006685, Delta Test Loss: 2.089660, Test MAPE : 9.688
 2023-03-11 11:29:17,893 | DEBUG | Training Epoch: 200/200, Loss: 12.070752,  Test Loss: 81.028047, Delta Test Loss: 68.021362, Test MAPE : 63.414
+2023-03-17 18:24:40,381 | INFO | Beginning training for model dense with two_factor
