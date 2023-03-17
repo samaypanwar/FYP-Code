@@ -136,7 +136,7 @@ def calibrate_to_market_data(
     df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
     fig, ax = plt.subplots(nrows = 1, ncols = 1)
 
-    (100 * (1/calib.loc[:, 4] + (1/calib.loc[:, 5]))).plot(ax = ax, label = 'Predicted Rate');
+    (100 * calib.loc[:, -1]).plot(ax = ax, label = 'Predicted Rate');
     ax.plot(100*df.Price, label = 'Market Rate');
     ax.legend();
     ax.set_title(f'Maturity: {maturity}')
@@ -184,9 +184,15 @@ if __name__ == '__main__':
 
         c = coupons[args.maturity]
         b = 5
-        a = (b * df.Price[0]) / 100
+        a = 5
         sigma = 0.3
-        initial_parameters = [c, a, b, sigma]
+        rho = 0
+        eta = 0.3
+        x = 0.01
+        y = 0.01
+        phi = df.Price[0]
+
+        initial_parameters = [c, x, y, a, b, sigma, eta, rho, phi]
 
         calibrate_to_market_data(
                 model = model,
@@ -206,15 +212,16 @@ if __name__ == '__main__':
             df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
 
             c = coupons[maturity]
-            b = 100
-            a = 100
+            b = 5
+            a = 5
             sigma = 0.3
             rho = 0
             eta = 0.3
-            x = 0.005
-            y = 0.005
+            x = 0.01
+            y = 0.01
+            phi = df.Price[0]
 
-            initial_parameters = [c, x, y, a, b, sigma, eta, rho]
+            initial_parameters = [c, x, y, a, b, sigma, eta, rho, phi]
 
             calibrate_to_market_data(
                     model = model,
