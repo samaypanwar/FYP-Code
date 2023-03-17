@@ -729,3 +729,25 @@
 2023-03-11 11:49:56,833 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with two_factor for 6M maturity
 2023-03-17 18:24:40,152 | INFO | utils.py | 90: Model of type: dense has been initialized
 2023-03-17 18:24:40,381 | INFO | train.py | 118: Beginning training for model dense with two_factor
+2023-03-17 18:32:44,692 | INFO | utils.py | 94: Model of type: dense has been initialized
+2023-03-17 18:32:44,902 | INFO | train.py | 118: Beginning training for model dense with two_factor
+2023-03-17 18:37:54,163 | INFO | train.py | 167: Saved weights to file: weights/pointwise/weights.h5
+2023-03-17 18:38:40,323 | INFO | utils.py | 94: Model of type: dense has been initialized
+2023-03-17 18:38:40,335 | INFO | utils.py | 120: Weights loaded successfully
+2023-03-17 18:38:40,532 | INFO | calibrate_synthetic.py | 110: Beginning calibration for model dense with two_factor
+2023-03-17 18:44:43,015 | INFO | calibrate_synthetic.py | 154: Calibration complete! change in parameters: 1.1424271738179335
+2023-03-17 18:44:43,027 | INFO | calibrate_synthetic.py | 158: Saved parameters to file: data/pointwise/calibrated_parameters.dat
+2023-03-17 18:47:20,305 | INFO | utils.py | 94: Model of type: dense has been initialized
+2023-03-17 18:47:20,317 | INFO | utils.py | 120: Weights loaded successfully
+2023-03-17 18:47:20,326 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with two_factor for 1M maturity
+2023-03-17 18:52:19,269 | INFO | utils.py | 94: Model of type: dense has been initialized
+2023-03-17 18:52:19,281 | INFO | utils.py | 120: Weights loaded successfully
+2023-03-17 18:52:19,289 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with two_factor for 1M maturity
+2023-03-17 18:54:04,193 | INFO | calibrate_market.py | 121: Calibration complete! change in parameters: 0.47624727158412206
+2023-03-17 18:54:04,215 | INFO | calibrate_market.py | 128: Saved parameters to file: data/pointwise/market_calibrated_parameters_1M.dat
+2023-03-17 18:57:28,760 | INFO | utils.py | 94: Model of type: dense has been initialized
+2023-03-17 18:57:28,772 | INFO | utils.py | 120: Weights loaded successfully
+2023-03-17 18:57:28,780 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with two_factor for 1M maturity
+2023-03-17 18:59:16,547 | INFO | calibrate_market.py | 121: Calibration complete! change in parameters: 0.47624727158412206
+2023-03-17 18:59:16,569 | INFO | calibrate_market.py | 128: Saved parameters to file: data/pointwise/market_calibrated_parameters_1M.dat
+2023-03-17 18:59:16,795 | INFO | calibrate_market.py | 68: Beginning calibration for model dense with two_factor for 3M maturity
