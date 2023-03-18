@@ -68,7 +68,7 @@ def create_features_linspace(vector_ranges: dict, num: int) -> np.array:
         # If the expected value of the interest rate is greater than 5% or the vol is greater than 80%
         if viable_volatility and not_large_rate:
 
-            features[count, :] = np.array([maturity, c, x, y, a, b, sigma, eta, rho, phi])
+            features[count, :] = np.array([maturity, c, phi, x, y, a, b, sigma, eta, rho])
 
             a_range = np.delete(a_range, np.where(a_range == a))
             b_range = np.delete(b_range, np.where(b_range == b))
@@ -119,9 +119,9 @@ def generate_data(
 
     for i in tqdm(range(count), desc = 'Calculating Bond Price...'):
 
-        time_to_expiry, c, x, y, a, b, sigma, eta, rho, phi = params_range[i, :]
+        time_to_expiry, c, phi, x, y, a, b, sigma, eta, rho = params_range[i, :]
 
-        parameters = [x, y, a, b, sigma, eta, rho, phi]
+        parameters = [phi, x, y, a, b, sigma, eta, rho]
 
         bond_price = BondPricing(parameters = parameters, parameterization = parameterization)
 

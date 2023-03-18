@@ -28,7 +28,7 @@ class TwoFactorVasicekModel:
 
         time_to_expiry = T - t
 
-        x, y, a, b, sigma, eta, rho, phi = self.parameters
+        phi, x, y, a, b, sigma, eta, rho = self.parameters
 
         A = - (1 / a) * (1 - exp(-a * time_to_expiry)) * x
         B = - (1 / b) * (1 - exp(-b * time_to_expiry)) * y

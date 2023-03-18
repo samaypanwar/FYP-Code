@@ -72,7 +72,8 @@ def calibrate_to_market_data(
 
     ta = tf.TensorArray(tf.float64, size = 0, dynamic_size = True, clear_after_read = False)
 
-    parameters = initial_parameters.copy()[1:]
+    # For the first set, we do not calibrate phi
+    parameters = initial_parameters.copy()[2:]
 
     # Start the actual calibration
     for j in tqdm(range(calibration_size), desc = f'Calibrating {maturity}...'):
@@ -84,12 +85,23 @@ def calibrate_to_market_data(
                         )
                 )
 
-        fixed_input_guess = np.array([time_to_expiry[j], initial_parameters[0]], dtype = np.float64)
+        if j == 0:
 
-        fixed_input_guess = tf.reshape(
-                tf.convert_to_tensor(fixed_input_guess), shape = (1,
-                                                                  -1)
-                )
+            fixed_input_guess = np.array([time_to_expiry[j], initial_parameters[0], initial_parameters[1]],
+                                          dtype = np.float64)
+
+            fixed_input_guess = tf.reshape(
+                    tf.convert_to_tensor(fixed_input_guess), shape = (1,
+                                                                      -1)
+                    )
+        else:
+
+            fixed_input_guess = np.array([time_to_expiry[j], initial_parameters[0]], dtype = np.float64)
+
+            fixed_input_guess = tf.reshape(
+                    tf.convert_to_tensor(fixed_input_guess), shape = (1,
+                                                                      -1)
+                    )
 
         for epoch in range(epochs):
             calibration_loss.reset_states()
@@ -115,7 +127,7 @@ def calibrate_to_market_data(
 
         parameters = ta.read(j).numpy()[2:]
 
-    change = ta.read(j).numpy()[2:] - initial_parameters[1:]
+    change = ta.read(calibration_size-1).numpy()[2:] - initial_parameters[1:]
 
     message = f"Calibration complete! change in parameters: {np.linalg.norm(change)}"
     logger.info(message)
@@ -136,8 +148,8 @@ def calibrate_to_market_data(
     df = pd.read_csv(f'market_data/{maturity}_cleaned.csv')
     fig, ax = plt.subplots(nrows = 1, ncols = 1)
 
-    (100 * calib.loc[:, 9]).plot(ax = ax, label = 'Predicted Rate');
-    ax.plot(100*df.Price, label = 'Market Rate');
+    (100 * calib.loc[:, 2]).plot(ax = ax, label = 'Predicted Rate');
+    ax.plot(df.Price, label = 'Market Rate');
     ax.legend();
     ax.set_title(f'Maturity: {maturity}')
 
@@ -192,7 +204,7 @@ if __name__ == '__main__':
         y = 0.01
         phi = df.Price[0]
 
-        initial_parameters = [c, x, y, a, b, sigma, eta, rho, phi]
+        initial_parameters = [c, phi, x, y, a, b, sigma, eta, rho]
 
         calibrate_to_market_data(
                 model = model,
@@ -221,7 +233,7 @@ if __name__ == '__main__':
             y = 0.01
             phi = df.Price[0]
 
-            initial_parameters = [c, x, y, a, b, sigma, eta, rho, phi]
+            initial_parameters = [c, phi, x, y, a, b, sigma, eta, rho]
 
             calibrate_to_market_data(
                     model = model,

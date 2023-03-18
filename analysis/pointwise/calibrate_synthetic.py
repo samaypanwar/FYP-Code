@@ -172,7 +172,7 @@ def calibrate_synthetic(
     mae = np.mean(absolute_error, axis = 0)
 
     f = plt.figure(figsize = (20, 15))
-    parameter_names = ['x', 'y', 'a', "b", "sigma", 'eta', 'rho', 'phi']
+    parameter_names = ['phi', 'x', 'y', 'a', "b", "sigma", 'eta', 'rho']
 
     for i in range(parameter_size):
 
@@ -185,7 +185,7 @@ def calibrate_synthetic(
             2 + i] + r'%' + '\n' + 'MAE: %.2f' % mae[2 + i]
 
         plt.text(
-                np.mean(parameters_to_calibrate[:, 2 + i]), np.max(percentage_err[:, 2 + i] * 90), s2,
+                1, 1, s2,
                 fontsize = 15,
                 weight = 'bold'
                 )
