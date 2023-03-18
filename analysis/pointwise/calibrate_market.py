@@ -47,7 +47,6 @@ def calibrate_to_market_data(
     calibration_loss = tf.keras.metrics.Mean(name = 'calibration_mean')
     mape = tf.keras.metrics.MeanAbsolutePercentageError(name = 'mape')
 
-    @tf.function
     def calibration_step(fixed_input, variable_input, price):
 
         with tf.GradientTape() as tape:
@@ -92,8 +91,9 @@ def calibrate_to_market_data(
 
             fixed_input_guess = tf.reshape(
                     tf.convert_to_tensor(fixed_input_guess), shape = (1,
-                                                                      -1)
-                    )
+                                                                          -1)
+                        )
+
         else:
 
             fixed_input_guess = np.array([time_to_expiry[j], initial_parameters[0]], dtype = np.float64)
@@ -202,7 +202,7 @@ if __name__ == '__main__':
         eta = 0.3
         x = 0.01
         y = 0.01
-        phi = df.Price[0]
+        phi = df.Price[0] / 100
 
         initial_parameters = [c, phi, x, y, a, b, sigma, eta, rho]
 
@@ -231,7 +231,7 @@ if __name__ == '__main__':
             eta = 0.3
             x = 0.01
             y = 0.01
-            phi = df.Price[0]
+            phi = df.Price[0] / 100
 
             initial_parameters = [c, phi, x, y, a, b, sigma, eta, rho]
 

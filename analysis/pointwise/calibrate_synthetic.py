@@ -184,11 +184,14 @@ def calibrate_synthetic(
         s2 = 'Average: %.2f' % mean_percentage_err[2 + i] + r'%' + '\n' + 'Median: %.2f' % median_percentage_err[
             2 + i] + r'%' + '\n' + 'MAE: %.2f' % mae[2 + i]
 
-        plt.text(
-                1, 1, s2,
+        plt.text(0.73,
+                 0.95,
+                s2,
                 fontsize = 15,
-                weight = 'bold'
+                weight = 'bold', ha = 'left', va = 'top', transform=plt.gca().transAxes
                 )
+
+        plt.tight_layout()
 
     f.savefig(
             f'plotting/pointwise/calibrated_scatterplot.png', bbox_inches = 'tight',
