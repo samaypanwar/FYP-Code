@@ -276,3 +276,105 @@
 2023-01-21 00:10:53,970 | INFO | model.py | 418: Beginning calibration for model dense with svensson
 2023-01-21 00:10:59,885 | INFO | model.py | 441: Calibration complete! change in parameters: 4.8806879603645115
 2023-01-21 00:10:59,931 | INFO | model.py | 445: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2023-03-25 10:20:38,278 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-03-25 10:21:17,264 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-03-25 10:22:36,941 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-03-25 10:23:51,804 | INFO | model.py | 95: Model of type: dense has been initialized
+2023-03-25 10:23:55,671 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:25:41,974 | INFO | model.py | 257: Saved weights to file: weights/gridbased/gridbased_weights_dense_svensson.h5
+2023-03-25 10:25:53,086 | INFO | model.py | 123: Weights loaded successfully
+2023-03-25 10:25:56,247 | INFO | model.py | 418: Beginning calibration for model dense with svensson
+2023-03-25 10:25:57,344 | INFO | model.py | 441: Calibration complete! change in parameters: 3.4098052497369573
+2023-03-25 10:25:57,360 | INFO | model.py | 445: Saved parameters to file: data/gridbased/gridbased_params_calibrated_dense_svensson.dat
+2023-03-25 10:30:13,298 | INFO | model.py | 97: Model of type: dense has been initialized
+2023-03-25 10:30:13,298 | INFO | model.py | 97: Model of type: dense has been initialized
+2023-03-25 10:30:19,459 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:30:19,459 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:31:56,098 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:31:56,098 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:31:56,738 | INFO | model.py | 123: Weights loaded successfully
+2023-03-25 10:31:56,738 | INFO | model.py | 123: Weights loaded successfully
+2023-03-25 10:32:12,960 | INFO | model.py | 470: Beginning calibration for model dense with svensson
+2023-03-25 10:32:12,960 | INFO | model.py | 470: Beginning calibration for model dense with svensson
+2023-03-25 10:39:17,229 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:39:17,229 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:39:19,890 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:39:19,890 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:39:37,022 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:39:37,022 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:39:39,554 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:39:39,554 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:40:00,782 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:40:00,782 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:40:03,430 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:40:03,430 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:40:43,659 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:40:43,659 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:40:46,435 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:40:46,435 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:41:25,068 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:41:25,068 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:41:27,849 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:41:27,849 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:41:44,522 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:41:44,522 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:41:47,341 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:41:47,341 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:42:51,246 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:42:51,246 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:42:54,106 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:42:54,106 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:44:39,120 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:44:39,120 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:44:42,060 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:44:42,060 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:47:14,793 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:47:14,793 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:47:17,313 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:47:17,313 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:47:34,968 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:47:34,968 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:47:37,565 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:47:37,565 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:48:08,490 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:48:08,490 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:48:11,098 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:48:11,098 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:48:30,873 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:48:30,873 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:48:33,505 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:48:33,505 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:49:58,254 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:49:58,254 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:00,928 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:00,928 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:23,248 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:23,248 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:26,170 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:26,170 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:37,361 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:37,361 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:40,004 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:40,004 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:52,303 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:52,303 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:50:54,903 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:50:54,903 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:54:42,768 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:54:42,768 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:54:45,259 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:54:45,259 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:55:11,560 | INFO | model.py | 97: Model of type: dense has been initialized
+2023-03-25 10:55:11,560 | INFO | model.py | 97: Model of type: dense has been initialized
+2023-03-25 10:55:16,361 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:55:16,361 | INFO | model.py | 212: Beginning training for model dense with svensson
+2023-03-25 10:56:51,225 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:56:51,225 | INFO | model.py | 257: Saved weights to file: weights/pointwise/pointwise_weights_dense_svensson.h5
+2023-03-25 10:56:58,542 | INFO | model.py | 123: Weights loaded successfully
+2023-03-25 10:56:58,542 | INFO | model.py | 123: Weights loaded successfully
+2023-03-25 10:57:24,998 | INFO | model.py | 472: Beginning calibration for model dense with svensson
+2023-03-25 10:57:24,998 | INFO | model.py | 472: Beginning calibration for model dense with svensson
+2023-03-25 11:09:58,083 | INFO | model.py | 500: Calibration complete! change in parameters: 14.765630383588489
+2023-03-25 11:09:58,083 | INFO | model.py | 500: Calibration complete! change in parameters: 14.765630383588489
+2023-03-25 11:09:58,104 | INFO | model.py | 504: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat
+2023-03-25 11:09:58,104 | INFO | model.py | 504: Saved parameters to file: data/pointwise/pointwise_params_calibrated_dense_svensson.dat

@@ -15,6 +15,11 @@ from analysis.pointwise import *
 from analysis.pointwise.convolutional import CNN
 from analysis.pointwise.dense import DenseModel
 
+plt.style.use('seaborn-v0_8-pastel')
+plt.rcParams.update({'font.family': 'Times New Roman'})
+plt.rcParams.update({'axes.grid': True, 'axes.linewidth': 0.5, 'axes.edgecolor': 'black'})
+
+
 
 def load_data(parameterization: str = 'nelson_siegel'):
     """
@@ -307,28 +312,30 @@ def train_model(
         K_label = np.array([31.6, 31.8, 32.0, 32.2, 32.4, 32.6, 32.8, 33.0, 33.2])
         tau_label = ['1', '2', '3', '4', '5', '6', '12']
 
-        figure_train = plt.figure(1, figsize = (10, 5))
-        ax = plt.subplot(1, 2, 1)
-        plt.title("Average percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(mean_square_err_training_train))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        figure_train, ax = plt.subplots(figsize = (15, 5), ncols = 2)
 
-        ax = plt.subplot(1, 2, 2)
-        plt.title("Maximum percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(max_square_err_training_train))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        ax[0].set_title("Average percentage error", fontsize = 15, y = 1.04)
+        im = ax[0].imshow(np.transpose(mean_square_err_training_train))
+        figure_train.colorbar(im, ax=ax[0], format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046,
+                              )
+        ax[0].set_xticks(np.linspace(0, N1 - 1, N1))
+        ax[0].set_xticklabels(K_label)
+        ax[0].set_yticks(np.linspace(0, N2 - 1, N2))
+        ax[0].set_yticklabels(tau_label)
+        ax[0].set_xlabel("Strike", fontsize = 15, labelpad = 5);
+        ax[0].set_ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+
+        ax[1].set_title("Maximum percentage error", fontsize = 15, y = 1.04)
+        im2 = ax[1].imshow(np.transpose(max_square_err_training_train))
+        figure_train.colorbar(im2, ax=ax[1], format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
+        ax[1].set_xticks(np.linspace(0, N1 - 1, N1))
+        ax[1].set_xticklabels(K_label)
+        ax[1].set_yticks(np.linspace(0, N2 - 1, N2))
+        ax[1].set_yticklabels(tau_label)
+        ax[1].set_xlabel("Strike", fontsize = 15, labelpad = 5);
+        ax[1].set_ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+
+        figure_train.suptitle('Training Error', fontsize = 15)
 
         figure_train.savefig(
                 f'{plot_path}pointwise_error_train_{model_type}_{parameterization}.png', bbox_inches = 'tight',
@@ -336,28 +343,28 @@ def train_model(
                 )
 
         # Heatmap test loss
-        figure_test = plt.figure(1, figsize = (16, 5))
-        ax = plt.subplot(1, 2, 1)
-        plt.title("Average percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(mean_square_err_training_test))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        figure_test, ax = plt.subplots(ncols = 2, figsize = (15, 5))
+        ax[0].set_title("Average percentage error", fontsize = 15, y = 1.04)
+        im = ax[0].imshow(np.transpose(mean_square_err_training_test))
+        figure_test.colorbar(im, ax=ax[0], format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
+        ax[0].set_xticks(np.linspace(0, N1 - 1, N1))
+        ax[0].set_xticklabels(K_label)
+        ax[0].set_yticks(np.linspace(0, N2 - 1, N2))
+        ax[0].set_yticklabels(tau_label)
+        ax[0].set_xlabel("Strike", fontsize = 15, labelpad = 5);
+        ax[0].set_ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
 
-        ax = plt.subplot(1, 2, 2)
-        plt.title("Maximum percentage error", fontsize = 15, y = 1.04)
-        plt.imshow(np.transpose(max_square_err_training_test))
-        plt.colorbar(format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
-        ax.set_xticks(np.linspace(0, N1 - 1, N1))
-        ax.set_xticklabels(K_label)
-        ax.set_yticks(np.linspace(0, N2 - 1, N2))
-        ax.set_yticklabels(tau_label)
-        plt.xlabel("Strike", fontsize = 15, labelpad = 5);
-        plt.ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+        ax[1].set_title("Maximum percentage error", fontsize = 15, y = 1.04)
+        im2 = ax[1].imshow(np.transpose(max_square_err_training_test))
+        figure_test.colorbar(im2, ax=ax[1], format = mtick.PercentFormatter(), pad = 0.01, fraction = 0.046)
+        ax[1].set_xticks(np.linspace(0, N1 - 1, N1))
+        ax[1].set_xticklabels(K_label)
+        ax[1].set_yticks(np.linspace(0, N2 - 1, N2))
+        ax[1].set_yticklabels(tau_label)
+        ax[1].set_xlabel("Strike", fontsize = 15, labelpad = 5);
+        ax[1].set_ylabel("Maturity (month)", fontsize = 15, labelpad = 5);
+
+        figure_test.suptitle('Test Error', fontsize = 15)
 
         figure_test.savefig(
                 f'{plot_path}pointwise_error_test_{model_type}_{parameterization}.png', bbox_inches =
